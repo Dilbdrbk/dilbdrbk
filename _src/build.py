@@ -11,6 +11,7 @@ folder name starts with an underscore.
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import pathlib
@@ -72,7 +73,13 @@ PAGES = [
 ]
 
 # The dbk. wordmark, made by make_images.py at 3x its 24 px display height.
-LOGO_IMG = '<img class="brand-logo" src="/assets/img/logo-dbk.webp" width="63" height="24" alt="Dil Bahadur B.K., home">'
+def asset(path: str) -> str:
+    """Path plus a short content hash, so browsers refetch the file whenever it changes."""
+    digest = hashlib.md5((ROOT / path.lstrip("/")).read_bytes()).hexdigest()[:8]
+    return f"{path}?v={digest}"
+
+
+LOGO_IMG = f'<img class="brand-logo" src="{asset("/assets/img/logo-dbk.webp")}" width="63" height="24" alt="Dil Bahadur B.K., home">'
 
 
 def esc(text: str) -> str:
@@ -267,7 +274,7 @@ def head(page: dict, schema: dict, noindex: bool = False) -> str:
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="{asset("/assets/css/site.css")}">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {json_ld(schema)}
@@ -336,7 +343,7 @@ def footer() -> str:
     <span>{SITE["locality"]} <time data-clock>--:--</time> NPT</span>
   </div>
 </footer>
-<script src="/assets/js/site.js" defer></script>
+<script src="{asset("/assets/js/site.js")}" defer></script>
 </body>
 </html>
 """
