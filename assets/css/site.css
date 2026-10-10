@@ -1251,3 +1251,41 @@ body :is(h3, .ch-title):not(.stage-copy h3) { font-family: var(--font-display); 
   text-transform: uppercase;
 }
 .list-title { font-family: var(--font); font-stretch: 100%; font-size: 0.875rem; font-weight: 600; letter-spacing: 0; color: var(--muted); }
+
+/* ------------------------------------------------------------ centered container
+   Content sits in one centered column (max 1240px); section borders and
+   backgrounds still run edge to edge. --edge is 0 on screens narrower than that. */
+:root { --container: 1240px; }
+.frame, .stat-row { padding-inline: max(0px, calc((100% - var(--container)) / 2)); }
+.web-strip, .footer { padding-inline: calc(max(0px, (100% - var(--container)) / 2) + var(--gutter)); }
+.topbar { grid-template-columns: auto minmax(0, 1fr) auto; padding-inline: max(0px, calc((100% - var(--container)) / 2)); }
+.nav ul { justify-content: center; }
+@media (max-width: 860px) { .topbar { grid-template-columns: minmax(0, 1fr) auto auto; } }
+
+/* Cards: a lime line and an arrow show they are clickable. */
+.card > a { position: relative; }
+.card > a::before { content: ""; position: absolute; top: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+.card > a::after { content: "\2192"; position: absolute; right: 20px; bottom: 18px; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity 0.25s, transform 0.25s; }
+.card > a:hover::before, .card > a:focus-visible::before { width: 100%; }
+.card > a:hover::after, .card > a:focus-visible::after { opacity: 1; transform: none; }
+
+/* Hero: faint drifting dot field behind the content. */
+.hero { position: relative; overflow: hidden; }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, rgba(201, 242, 93, 0.35) 1.2px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1.4px);
+  background-size: 220px 220px, 140px 140px;
+  background-position: 30px 40px, 90px 10px;
+}
+.hero > .body { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero::before { animation: drift 60s linear infinite; }
+  @keyframes drift { to { background-position: 250px 260px, -50px 150px; } }
+}

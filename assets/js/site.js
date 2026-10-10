@@ -175,6 +175,31 @@
     });
   }
 
+  // Stats bar: numbers count up once when they scroll into view. The final
+  // value is already in the HTML, so nothing changes without JS.
+  var counters = document.querySelectorAll('[data-count]');
+  if (counters.length && !stillMotion && 'IntersectionObserver' in window) {
+    var countIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        countIO.unobserve(entry.target);
+        var el = entry.target;
+        var to = +el.getAttribute('data-count');
+        var from = +(el.getAttribute('data-from') || 0);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var start = null;
+        var step = function (t) {
+          if (start === null) start = t;
+          var k = Math.min((t - start) / 1200, 1);
+          el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3))) + suffix;
+          if (k < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { countIO.observe(el); });
+  }
+
   // Fade sections in as they scroll into view.
   var targets = document.querySelectorAll('main > .frame:not(:first-child) .body');
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
