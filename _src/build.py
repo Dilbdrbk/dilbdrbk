@@ -54,7 +54,9 @@ PAGES = [
          description="How a page is crawled, understood and ranked, how AI search builds an answer, how an entity becomes a topical map, and how I test SEO ideas."),
     dict(path="/experience/", body="experience.html", crumb="Experience", updated="2026-10-10", kind="page",
          title="SEO Experience at One Percent Digital & RankMeTop | Dil B.K.",
-         description="Semantic SEO Specialist at One Percent Digital since July 2026, after five roles at RankMeTop from link building to SEO team lead. Plus education."),
+         description="Semantic SEO Specialist at One Percent Digital since July 2026, after five roles at RankMeTop from link building to SEO team lead. Plus education.",
+         # Site-wide files (llms.txt) name no employers; only the Experience page itself does.
+         summary="SEO career since December 2023, from link building to semantic SEO specialist, plus education."),
     dict(path="/industries/", body="industries.html", crumb="Industries", updated="2026-10-10", kind="page",
          title="Industries: 20 Local & Nationwide SEO Niches | Dil Bahadur B.K.",
          description="SEO work across 12 local service niches, from plumbing and HVAC to pest control, and 8 nationwide niches including IT, finance, real estate and SaaS."),
@@ -612,7 +614,7 @@ def build() -> None:
     for page in PAGES:
         if page["kind"] == "blog" and not posts:
             continue
-        llms.append(f"- [{page['crumb']}]({absolute(page['path'])}): {page['description']}")
+        llms.append(f"- [{page['crumb']}]({absolute(page['path'])}): {page.get('summary', page['description'])}")
     if posts:
         llms += ["", "## Blog posts", ""]
         llms += [f"- [{p['title']}]({absolute(p['path'])}): {p['description']}" for p in posts]
