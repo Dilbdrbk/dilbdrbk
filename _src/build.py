@@ -71,13 +71,8 @@ PAGES = [
          description="Reach Dil Bahadur B.K. by email, phone or LinkedIn. Based in Kathmandu, Nepal (NPT, UTC+5:45)."),
 ]
 
-MARK_SVG = (
-    '<svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">'
-    '<g stroke="currentColor" stroke-width="1.8" fill="none">'
-    '<path d="M16 16 7.5 8.5M16 16l9-6.5M16 16l-4 9"/>'
-    '<circle cx="7.5" cy="8.5" r="2.7"/><circle cx="25" cy="9.5" r="2.7"/><circle cx="12" cy="25" r="2.7"/>'
-    '</g><circle class="mark-hub" cx="16" cy="16" r="4.4"/></svg>'
-)
+# The dbk. wordmark, made by make_images.py at 3x its 24 px display height.
+LOGO_IMG = '<img class="brand-logo" src="/assets/img/logo-dbk.webp" width="63" height="24" alt="Dil Bahadur B.K., home">'
 
 
 def esc(text: str) -> str:
@@ -266,7 +261,6 @@ def head(page: dict, schema: dict, noindex: bool = False) -> str:
 <meta name="twitter:image" content="{absolute(OG_IMAGE)}">
 <meta name="twitter:image:alt" content="{esc(SITE["name"])}, {esc(SITE["jobTitle"])}">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="icon" href="/icon.png" type="image/png" sizes="96x96">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <meta name="theme-color" content="#262626">
@@ -290,7 +284,7 @@ def header(current: str) -> str:
     return f"""<body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
-  <a class="brand" href="/" aria-label="{esc(SITE["name"])}, home">{MARK_SVG}<span>{esc(SITE["shortName"])}</span></a>
+  <a class="brand" href="/">{LOGO_IMG}</a>
   <nav class="nav" aria-label="Main">
     <ul id="nav-list">
 {items}
