@@ -129,6 +129,13 @@ dl, dd { margin: 0; }
 .prose h2, .role h2 { font-size: clamp(1.9rem, 1rem + 2.2vw, 3rem); line-height: 0.95; }
 .footer-big { font-size: clamp(2rem, 0.8rem + 6vw, 7rem); line-height: 0.92; }
 
+/* Industries: three groups on the home page, typed rows on the industries page. */
+.split-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.niche-grid-typed li { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; gap: 4px 12px; }
+.niche-type { grid-column: 2; color: var(--muted); font-family: var(--mono); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.02em; }
+@media (max-width: 1100px) { .split-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 860px) { .split-3 { grid-template-columns: minmax(0, 1fr); } }
+
 /* Hero availability pill. */
 .status-pill {
   display: inline-flex;

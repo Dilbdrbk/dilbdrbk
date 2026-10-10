@@ -59,8 +59,8 @@ PAGES = [
          # Site-wide files (llms.txt) name no employers; only the Experience page itself does.
          summary="SEO career since December 2023, from link building to semantic SEO specialist, plus education."),
     dict(path="/industries/", body="industries.html", crumb="Industries", updated="2026-10-10", kind="page",
-         title="Industries: 20 Local & Nationwide SEO Niches | Dil Bahadur B.K.",
-         description="SEO work across 12 local service niches, from plumbing and HVAC to pest control, and 8 nationwide niches including IT, finance, real estate and SaaS."),
+         title="Industries: Local, Nationwide & E-commerce SEO | Dil Bahadur B.K.",
+         description="SEO across 25+ industries: current e-commerce and B2B projects, local services such as plumbing and HVAC, and nationwide niches such as SaaS and finance."),
     dict(path="/blog/", body="blog.html", crumb="Blog", updated="2026-10-10", kind="blog",
          title="SEO Blog | Dil Bahadur B.K.",
          description="Notes on semantic SEO, topical authority, local SEO and AI search by Dil Bahadur B.K., semantic SEO specialist from Kathmandu, Nepal."),
