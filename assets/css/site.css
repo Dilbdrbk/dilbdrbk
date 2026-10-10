@@ -225,9 +225,6 @@ h3, .ch-title {
 .orbit-node::before { content: ""; width: 7px; height: 7px; border: 1px solid var(--muted); border-radius: 50%; transition: background-color 0.2s, border-color 0.2s; }
 .orbit-node:hover, .orbit-node:focus-visible, .orbit-node.is-active { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 4px rgba(201, 242, 93, 0.08); }
 .orbit-node:hover::before, .orbit-node:focus-visible::before, .orbit-node.is-active::before { border-color: var(--accent); background: var(--accent); }
-.orbit-caption { width: min(100%, 460px); min-height: 70px; padding: 12px 16px; border-left: 2px solid var(--accent); background: var(--bg-raise); font-size: 0.875rem; line-height: 1.45; }
-.orbit-caption-title { display: block; margin-bottom: 2px; font-weight: 700; }
-.orbit-caption-text { color: var(--ink-2); }
 @media (prefers-reduced-motion: no-preference) {
   .orbit-pulse { opacity: 1; animation: pulse-travel 3.6s linear infinite; }
   @keyframes pulse-travel { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
