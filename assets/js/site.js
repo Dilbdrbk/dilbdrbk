@@ -58,6 +58,55 @@
     });
   });
 
+  // Home hero: entity orbit. Nodes light up on hover or focus and cycle on
+  // their own while idle; the orbit tilts slightly with the pointer.
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-orbit]').forEach(function (orbit) {
+    var nodes = Array.prototype.slice.call(orbit.querySelectorAll('.orbit-node'));
+    var edges = orbit.querySelectorAll('.orbit-edge');
+    var caption = document.querySelector('[data-orbit-caption]');
+    var title = caption && caption.querySelector('.orbit-caption-title');
+    var text = caption && caption.querySelector('.orbit-caption-text');
+    var initial = caption ? [title.textContent, text.textContent] : null;
+    var current = -1;
+    var timer = null;
+
+    var show = function (i) {
+      current = i;
+      nodes.forEach(function (n, k) { n.classList.toggle('is-active', k === i); });
+      Array.prototype.forEach.call(edges, function (e, k) { e.classList.toggle('is-active', k === i); });
+      if (!caption) return;
+      title.textContent = i > -1 ? nodes[i].textContent : initial[0];
+      text.textContent = i > -1 ? nodes[i].getAttribute('data-desc') : initial[1];
+    };
+    var cycle = function () {
+      if (calm || timer) return;
+      timer = setInterval(function () { show((current + 1) % nodes.length); }, 2800);
+    };
+    var stop = function () { clearInterval(timer); timer = null; };
+
+    nodes.forEach(function (n, i) {
+      n.addEventListener('mouseenter', function () { stop(); show(i); });
+      n.addEventListener('focus', function () { stop(); show(i); });
+      n.addEventListener('blur', function () { show(-1); cycle(); });
+    });
+    orbit.addEventListener('mouseleave', function () { show(-1); cycle(); });
+    cycle();
+
+    if (!calm && matchMedia('(pointer: fine)').matches) {
+      var wrap = orbit.parentElement;
+      wrap.addEventListener('pointermove', function (e) {
+        var r = wrap.getBoundingClientRect();
+        orbit.style.setProperty('--ry', (((e.clientX - r.left) / r.width - 0.5) * 10).toFixed(2) + 'deg');
+        orbit.style.setProperty('--rx', ((0.5 - (e.clientY - r.top) / r.height) * 10).toFixed(2) + 'deg');
+      });
+      wrap.addEventListener('pointerleave', function () {
+        orbit.style.setProperty('--rx', '0deg');
+        orbit.style.setProperty('--ry', '0deg');
+      });
+    }
+  });
+
   // Fade sections in as they scroll into view.
   var targets = document.querySelectorAll('main > .frame:not(:first-child) .body');
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
