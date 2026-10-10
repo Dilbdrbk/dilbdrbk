@@ -1,0 +1,75 @@
+{
+  "url": "https://dilbdrbk.com.np",
+  "name": "Dil Bahadur B.K.",
+  "shortName": "Dil B.K.",
+  "alternateNames": ["Dil Bahadur BK", "Dil B.K.", "Dil Bahadur B K"],
+  "givenName": "Dil Bahadur",
+  "familyName": "B.K.",
+  "jobTitle": "SEO Team Lead",
+  "employer": { "name": "RankMeTop", "url": "https://rankmetop.net/" },
+  "careerStart": "2023-12",
+  "email": "dilbdrbk2050@gmail.com",
+  "phone": "+977 9810234765",
+  "phoneHref": "+9779810234765",
+  "locality": "Kathmandu",
+  "region": "Bagmati",
+  "country": "NP",
+  "countryName": "Nepal",
+  "timezone": "Asia/Kathmandu",
+  "googleSiteVerification": "",
+  "linkedin": "https://www.linkedin.com/in/dil-bahadur-b-k-3927642ab/",
+  "linkedinActivity": "https://www.linkedin.com/in/dil-bahadur-b-k-3927642ab/recent-activity/all/",
+  "profiles": [
+    {
+      "platform": "LinkedIn",
+      "handle": "dil-bahadur-b-k-3927642ab",
+      "url": "https://www.linkedin.com/in/dil-bahadur-b-k-3927642ab/",
+      "note": "Career history, recommendations and SEO posts."
+    },
+    {
+      "platform": "GitHub",
+      "handle": "Dilbdrbk",
+      "url": "https://github.com/Dilbdrbk",
+      "note": "Code, including the source of this website."
+    },
+    {
+      "platform": "Gravatar",
+      "handle": "dilbahadurbk",
+      "url": "https://gravatar.com/dilbahadurbk",
+      "note": "Profile card used across WordPress and other sites."
+    },
+    {
+      "platform": "Pinterest",
+      "handle": "dilbdrbk2050",
+      "url": "https://www.pinterest.com/dilbdrbk2050/",
+      "note": "Boards and pins."
+    }
+  ],
+  "knowsAbout": [
+    "Search engine optimization",
+    "Semantic SEO",
+    "Entity-based SEO",
+    "Topical authority",
+    "Topical maps",
+    "Technical SEO",
+    "Local SEO",
+    "On-page SEO",
+    "Off-page SEO",
+    "Link building",
+    "Keyword research",
+    "Content strategy",
+    "Programmatic SEO",
+    "Generative Engine Optimization",
+    "Answer Engine Optimization",
+    "Reddit SEO",
+    "Google Business Profile",
+    "E-commerce SEO"
+  ],
+  "education": [
+    { "name": "Nepal Banepa Polytechnic Institute", "credential": "Diploma in Information Technology" },
+    { "name": "Broadway Infosys", "credential": "React & Django Framework Training" }
+  ],
+  "certifications": [
+    { "name": "Topical Authority", "issuer": "Koray Tugberk Gubur" }
+  ]
+}
