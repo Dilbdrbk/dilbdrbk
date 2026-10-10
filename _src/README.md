@@ -11,6 +11,10 @@ Everything that makes dilbdrbk.com.np lives in this folder. GitHub Pages does no
 | `build.py` | Builds every page, `404.html`, `sitemap.xml`, `robots.txt` and `llms.txt`. Each page's title and meta description are set in its `PAGES` list. |
 | `make_images.py` | Rebuilds the portrait, the social share card and the favicons from `photo-source.png`. |
 
+## Files outside the build
+
+`googled975238710041a7d.html` in the repo root verifies the site in Google Search Console. The build never touches it. Don't delete it, or Search Console loses verification.
+
 ## Rebuild after a change
 
 ```bash
