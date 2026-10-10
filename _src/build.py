@@ -298,7 +298,7 @@ def header(current: str) -> str:
       <li class="nav-contact"><a href="/contact/"{contact_current}>Contact</a></li>
     </ul>
   </nav>
-  <a class="topbar-cta" href="/contact/"{contact_current}>Contact</a>
+  <a class="hire-btn" href="/contact/"{contact_current}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg><span>Hire Me</span></a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
 </header>
 <main id="main">"""

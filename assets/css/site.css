@@ -185,11 +185,23 @@ h3, .ch-title {
 .nav a[aria-current="page"] { text-decoration: underline; }
 .nav-contact { display: none; }
 
-.topbar-cta {
-  padding-inline: var(--gutter);
-  font-weight: 600;
-  text-decoration: underline;
+.hire-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: var(--gutter);
+  padding: 7px 16px 7px 13px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(201, 242, 93, 0.18);
+  transition: transform 0.15s, box-shadow 0.2s, background-color 0.2s;
 }
+.hire-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.hire-btn:hover { color: var(--accent-ink); background: #d8f884; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(201, 242, 93, 0.3); }
 
 .menu-btn {
   display: none;
@@ -605,8 +617,8 @@ a.contact-value:hover { text-decoration: underline; }
 }
 
 @media (max-width: 860px) {
-  .topbar { grid-template-columns: 1fr auto; }
-  .topbar-cta { display: none; }
+  .topbar { grid-template-columns: 1fr auto auto; }
+  .hire-btn { margin-right: 8px; padding: 6px 12px 6px 10px; font-size: 0.8125rem; }
   .menu-btn { display: inline-flex; }
   .nav { position: absolute; top: var(--topbar); left: 0; right: 0; display: none; }
   .nav.is-open { display: block; }
