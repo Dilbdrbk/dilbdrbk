@@ -352,6 +352,14 @@ html:has(.lead[open]) { overflow: hidden; }
   .lead-inner { padding: 30px 18px 22px; }
 }
 
+/* About: habits as a plain numbered list, no boxes. */
+.habits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 4vw, 56px); list-style: none; border-top: 1px solid var(--line); }
+.habits li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px 12px; padding: 18px 0 20px; border-bottom: 1px solid var(--line); }
+.habits .idx { grid-row: span 2; padding-top: 5px; color: var(--accent); }
+.habits h3 { font-size: 1.125rem; }
+.habits p { color: var(--ink-2); font-size: 0.9375rem; }
+@media (max-width: 860px) { .habits { grid-template-columns: minmax(0, 1fr); } }
+
 /* Hero availability pill. */
 .status-pill {
   display: inline-flex;
