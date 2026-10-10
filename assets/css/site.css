@@ -1203,3 +1203,51 @@ html:not(.js) .un-text mark { background: rgba(201, 242, 93, 0.18); color: var(-
 @media (max-width: 560px) {
   .fanout, .tree-top, .tree-attrs, .skills, .where { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ------------------------------------------------------------ layout without the side rail
+   Sections are one column: the old rail becomes a small label row above the
+   content. Page headers keep it as a details column on the right. */
+.frame { grid-template-columns: minmax(0, 1fr); }
+.rail {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 24px;
+  padding: clamp(28px, 3.5vw, 48px) var(--gutter) 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.rail .rail-note { max-width: 60ch; }
+.frame > .body { padding-top: 14px; }
+.page-head { grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); }
+.page-head > .body { order: 1; padding-top: clamp(28px, 3.5vw, 48px); }
+.page-head > .rail { order: 2; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: 18px; padding: clamp(28px, 3.5vw, 48px) var(--gutter); }
+@media (max-width: 860px) {
+  .page-head { grid-template-columns: minmax(0, 1fr); }
+  .page-head > .rail { order: 0; padding-bottom: 0; }
+  .page-head > .body { padding-top: 14px; }
+}
+
+/* ------------------------------------------------------------ type system, one set of rules sitewide
+   Big headings: condensed Archivo 800, one tracking. Small headings: Archivo 82% 700.
+   Small labels: one uppercase eyebrow style. Body text: Archivo at normal width. */
+body :is(h1, h2, .display, .page-title, .section-title, .web-strip-title, .lead-title, .stage-copy h3,
+.stats dd, .stat-row dd, .footer-big, .contact-value, .profile-platform, .post-title, .empty-title) {
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  word-spacing: 0.1em;
+}
+body :is(h3, .ch-title):not(.stage-copy h3) { font-family: var(--font-display); font-stretch: 82%; font-weight: 700; letter-spacing: 0; }
+.web-strip-title { font-size: clamp(2rem, 1rem + 2.6vw, 3.6rem); }
+.label, .kicker, .stage-step, .art-label, .tools-label, .stat-row dt, .stats dt, .hero-facts dt,
+.lead-kicker, .an-label, .tree-attr, .fan-label, .markets-label {
+  font-family: var(--font);
+  font-stretch: 100%;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.list-title { font-family: var(--font); font-stretch: 100%; font-size: 0.875rem; font-weight: 600; letter-spacing: 0; color: var(--muted); }
