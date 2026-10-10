@@ -158,8 +158,13 @@ h3, .ch-title {
 }
 @media (max-width: 560px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* Home hero: copy on the left, interactive entity orbit on the right. */
+/* Home hero: full width (no rail), sized to its content, copy left and orbit right. */
+.hero.hero-full { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+.hero-full .hero-body { padding-top: clamp(36px, 5vw, 72px); padding-bottom: clamp(36px, 5vw, 64px); }
 .hero-body { justify-content: center; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 14px 36px; margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); }
+.hero-facts dt { margin-bottom: 4px; color: var(--muted); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.hero-facts dd { font-size: 0.9375rem; font-weight: 500; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
 .display.hero-title { text-indent: 0; max-width: none; font-size: clamp(2.7rem, 1rem + 4.2vw, 5.6rem); line-height: 0.92; }
 .hero-title .hl { display: block; color: var(--accent); }
