@@ -118,51 +118,112 @@
 <section class="frame" aria-labelledby="hsw-title">
   <div class="rail">
     <p class="label"><span class="idx">02</span> How search works</p>
-    <p class="rail-note">Five diagrams that show how I think about ranking and AI answers.</p>
-    <a class="arrow-link" href="/how-search-works/">Read all five</a>
+    <p class="rail-note">Pick a stage to see what happens there and which kind of SEO fixes it.</p>
+    <a class="arrow-link" href="/how-search-works/">Read all five diagrams</a>
   </div>
   <div class="body">
-    <h2 id="hsw-title" class="section-title">How search works, in five diagrams</h2>
-    <div class="stages" data-stages>
-      <div class="stage-tabs" role="tablist" aria-label="Stages from a search to a ranked page">
-        <button class="stage-tab" type="button" role="tab" id="tab-query" aria-controls="stage-query" aria-selected="true" tabindex="0">Query</button>
-        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
-        <button class="stage-tab" type="button" role="tab" id="tab-crawl" aria-controls="stage-crawl" aria-selected="false" tabindex="-1">Crawl</button>
-        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
-        <button class="stage-tab" type="button" role="tab" id="tab-understand" aria-controls="stage-understand" aria-selected="false" tabindex="-1">Understand</button>
-        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
-        <button class="stage-tab" type="button" role="tab" id="tab-rank" aria-controls="stage-rank" aria-selected="false" tabindex="-1">Rank</button>
-        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
-        <button class="stage-tab" type="button" role="tab" id="tab-answer" aria-controls="stage-answer" aria-selected="false" tabindex="-1">Answer</button>
+    <h2 id="hsw-title" class="section-title">How search works, from query to answer</h2>
+    <div class="pipeline-wrap" data-stages data-autoplay>
+      <div class="pipeline">
+        <div class="pipe-track" aria-hidden="true"><span class="pipe-fill"></span><span class="pipe-signal"></span></div>
+        <div class="pipe-stages" role="tablist" aria-label="Stages from a search to an answer">
+        <button class="pipe-stage" type="button" role="tab" id="tab-query" aria-controls="stage-query" aria-selected="true" tabindex="0"><span class="pipe-dot">01</span><span class="pipe-name">Query</span></button>
+        <button class="pipe-stage" type="button" role="tab" id="tab-crawl" aria-controls="stage-crawl" aria-selected="false" tabindex="-1"><span class="pipe-dot">02</span><span class="pipe-name">Crawl</span></button>
+        <button class="pipe-stage" type="button" role="tab" id="tab-understand" aria-controls="stage-understand" aria-selected="false" tabindex="-1"><span class="pipe-dot">03</span><span class="pipe-name">Understand</span></button>
+        <button class="pipe-stage" type="button" role="tab" id="tab-rank" aria-controls="stage-rank" aria-selected="false" tabindex="-1"><span class="pipe-dot">04</span><span class="pipe-name">Rank</span></button>
+        <button class="pipe-stage" type="button" role="tab" id="tab-answer" aria-controls="stage-answer" aria-selected="false" tabindex="-1"><span class="pipe-dot">05</span><span class="pipe-name">Answer</span></button>
+        </div>
       </div>
-      <div class="stage-panels">
-        <div class="stage-panel is-active" id="stage-query" role="tabpanel" aria-labelledby="tab-query">
-          <p class="stage-name"><span class="idx">01</span> Query</p>
-          <p class="stage-text">The engine works out the entity, the intent and the kind of result the searcher expects.</p>
+      <div class="stage-view is-active" id="stage-query" role="tabpanel" aria-labelledby="tab-query">
+        <div class="stage-copy">
+          <p class="stage-step">Stage 01 of 05</p>
+          <h3>Query</h3>
+          <p class="stage-desc">The search engine works out the entity, the intent and the kind of result the searcher expects.</p>
           <p class="stage-fix">Fixed by <strong>keyword research &amp; query networks</strong></p>
         </div>
-        <div class="stage-panel" id="stage-crawl" role="tabpanel" aria-labelledby="tab-crawl">
-          <p class="stage-name"><span class="idx">02</span> Crawl</p>
-          <p class="stage-text">The page is found through links and sitemaps, then fetched. Blocked, slow or orphaned pages may never be read.</p>
+        <div class="stage-art" aria-hidden="true">
+          <div class="art art-query">
+            <div class="q-box"><span class="q-icon"></span><span class="q-text">ac repair near me</span><span class="q-caret"></span></div>
+            <p class="art-label">Parsed into</p>
+            <div class="q-parse">
+              <span class="q-chip" style="--d:1.7s"><b>Entity</b>Air conditioner</span>
+              <span class="q-chip" style="--d:2s"><b>Intent</b>Repair service</span>
+              <span class="q-chip" style="--d:2.3s"><b>Location</b>Near the searcher</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stage-view" id="stage-crawl" role="tabpanel" aria-labelledby="tab-crawl">
+        <div class="stage-copy">
+          <p class="stage-step">Stage 02 of 05</p>
+          <h3>Crawl</h3>
+          <p class="stage-desc">Pages are found through links and sitemaps, then fetched. Blocked, slow or orphaned pages may never be read.</p>
           <p class="stage-fix">Fixed by <strong>technical SEO</strong></p>
         </div>
-        <div class="stage-panel" id="stage-understand" role="tabpanel" aria-labelledby="tab-understand">
-          <p class="stage-name"><span class="idx">03</span> Understand</p>
-          <p class="stage-text">Entities, attributes and their relations are pulled out, and the page is filed under what it really covers.</p>
+        <div class="stage-art" aria-hidden="true">
+          <div class="art art-crawl">
+            <div class="cr-level"><span class="cr-node cr-ok" style="--d:.2s">Home</span></div>
+            <div class="cr-level"><span class="cr-node cr-ok" style="--d:.6s">Services</span><span class="cr-node cr-ok" style="--d:.9s">AC repair</span><span class="cr-node cr-bad" style="--d:1.2s">Blocked page</span></div>
+            <div class="cr-level"><span class="cr-node cr-ok" style="--d:1.5s">Heat pumps</span><span class="cr-node cr-bad" style="--d:1.8s">Orphan page</span></div>
+            <p class="art-legend"><span class="lg-ok">Fetched</span><span class="lg-bad">Never read</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="stage-view" id="stage-understand" role="tabpanel" aria-labelledby="tab-understand">
+        <div class="stage-copy">
+          <p class="stage-step">Stage 03 of 05</p>
+          <h3>Understand</h3>
+          <p class="stage-desc">Entities, attributes and their relations are pulled out, and the page is filed under what it really covers.</p>
           <p class="stage-fix">Fixed by <strong>semantic SEO</strong></p>
         </div>
-        <div class="stage-panel" id="stage-rank" role="tabpanel" aria-labelledby="tab-rank">
-          <p class="stage-name"><span class="idx">04</span> Rank</p>
-          <p class="stage-text">Candidate pages are compared on relevance, quality and trust, including how much the whole site knows about the topic.</p>
+        <div class="stage-art" aria-hidden="true">
+          <div class="art art-understand">
+            <p class="un-text">We repair <mark style="--d:.3s">central AC</mark> and <mark style="--d:.6s">heat pumps</mark> across <mark style="--d:.9s">Springfield</mark> within <mark style="--d:1.2s">24 hours</mark>.</p>
+            <p class="art-label">Filed as</p>
+            <div class="un-graph">
+              <span class="un-entity" style="--d:1.5s">Air conditioning</span>
+              <span class="un-attr" style="--d:1.8s"><b>Type</b>Central AC, heat pump</span>
+              <span class="un-attr" style="--d:2.1s"><b>Service area</b>Springfield</span>
+              <span class="un-attr" style="--d:2.4s"><b>Response time</b>24 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stage-view" id="stage-rank" role="tabpanel" aria-labelledby="tab-rank">
+        <div class="stage-copy">
+          <p class="stage-step">Stage 04 of 05</p>
+          <h3>Rank</h3>
+          <p class="stage-desc">Candidate pages are compared on relevance, quality and trust, including how much the whole site knows about the topic.</p>
           <p class="stage-fix">Fixed by <strong>topical authority &amp; links</strong></p>
         </div>
-        <div class="stage-panel" id="stage-answer" role="tabpanel" aria-labelledby="tab-answer">
-          <p class="stage-name"><span class="idx">05</span> Answer</p>
-          <p class="stage-text">The winner shows as a blue link, a map pack listing, a featured snippet or a cited source in an AI answer.</p>
+        <div class="stage-art" aria-hidden="true">
+          <div class="art art-rank">
+            <ol class="rk-list">
+              <li style="--w:92%;--d:.2s"><span class="rk-name">Your page</span><span class="rk-bar"><i></i></span><span class="rk-score">1</span></li>
+              <li style="--w:74%;--d:.45s"><span class="rk-name">Competitor</span><span class="rk-bar"><i></i></span><span class="rk-score">2</span></li>
+              <li style="--w:55%;--d:.7s"><span class="rk-name">Directory</span><span class="rk-bar"><i></i></span><span class="rk-score">3</span></li>
+            </ol>
+            <p class="art-legend">Example: relevance, quality, trust and topical authority combined</p>
+          </div>
+        </div>
+      </div>
+      <div class="stage-view" id="stage-answer" role="tabpanel" aria-labelledby="tab-answer">
+        <div class="stage-copy">
+          <p class="stage-step">Stage 05 of 05</p>
+          <h3>Answer</h3>
+          <p class="stage-desc">The winner appears as a blue link, a map pack listing, a featured snippet or a cited source in an AI answer.</p>
           <p class="stage-fix">Fixed by <strong>GEO &amp; AEO</strong></p>
+        </div>
+        <div class="stage-art" aria-hidden="true">
+          <div class="art art-answer">
+            <div class="an-block an-ai" style="--d:.2s"><span class="an-label">AI answer</span><span class="an-line"></span><span class="an-line an-short"></span><span class="an-cite">Source: yoursite.com</span></div>
+            <div class="an-block an-map" style="--d:.6s"><span class="an-label">Map pack</span><span class="an-pins"><i></i><i class="you"></i><i></i></span></div>
+            <div class="an-block an-link" style="--d:1s"><span class="an-label">Top result</span><span class="an-url">yoursite.com &rsaquo; ac-repair</span><span class="an-line"></span></div>
+          </div>
         </div>
       </div>
     </div>
+    <h3 class="list-title chapters-title">The five diagrams</h3>
     <ol class="chapters" role="list">
       <li><a href="/how-search-works/#ranking"><span class="idx">01</span><span class="ch-title">From a search to a ranked page</span><span class="ch-note">Five stages, and which kind of SEO fixes each one.</span></a></li>
       <li><a href="/how-search-works/#ai-answers"><span class="idx">02</span><span class="ch-title">Inside an AI-generated answer</span><span class="ch-note">How one question becomes many searches and a few cited sources.</span></a></li>

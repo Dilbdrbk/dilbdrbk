@@ -33,29 +33,56 @@
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
 
-  // Home: search stages as tabs (arrow keys, Home and End move between them).
+  // Home: search pipeline as tabs (arrow keys, Home and End move between them).
+  // Earlier stages show as done and the track fills to the open stage. With
+  // data-autoplay it advances on its own once in view, until the visitor hovers
+  // or picks a stage.
+  var stillMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-stages]').forEach(function (box) {
     var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
+    var timer = null;
+    var current = 0;
     var select = function (tab, focus) {
-      tabs.forEach(function (t) {
-        var on = t === tab;
+      current = tabs.indexOf(tab);
+      tabs.forEach(function (t, k) {
+        var on = k === current;
         t.setAttribute('aria-selected', String(on));
         t.tabIndex = on ? 0 : -1;
+        t.classList.toggle('is-done', k < current);
         document.getElementById(t.getAttribute('aria-controls')).classList.toggle('is-active', on);
       });
+      box.style.setProperty('--progress', tabs.length > 1 ? current / (tabs.length - 1) : 0);
       if (focus) tab.focus();
     };
+    var stop = function () { clearInterval(timer); timer = null; box.removeAttribute('data-autoplay'); };
     tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () { select(tab); });
+      tab.addEventListener('click', function () { stop(); select(tab); });
       tab.addEventListener('keydown', function (e) {
         var next = { ArrowRight: tabs[(i + 1) % tabs.length], ArrowLeft: tabs[(i - 1 + tabs.length) % tabs.length],
                      Home: tabs[0], End: tabs[tabs.length - 1] }[e.key];
         if (next) {
           e.preventDefault();
+          stop();
           select(next, true);
         }
       });
     });
+    select(tabs[0]);
+
+    if (stillMotion || !box.hasAttribute('data-autoplay') || !('IntersectionObserver' in window)) return;
+    box.addEventListener('mouseenter', stop);
+    box.addEventListener('focusin', stop);
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!box.hasAttribute('data-autoplay')) return;
+        if (entry.isIntersecting && !timer) {
+          timer = setInterval(function () { select(tabs[(current + 1) % tabs.length]); }, 5000);
+        } else if (!entry.isIntersecting && timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      });
+    }, { threshold: 0.35 }).observe(box);
   });
 
   // Home hero: entity orbit. Nodes light up on hover or focus and cycle on
