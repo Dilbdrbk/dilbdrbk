@@ -1,0 +1,17 @@
+[
+  { "term": "Central entity", "definition": "The main subject a website is about. Every page should connect back to it, so search engines can tell what the site is an authority on." },
+  { "term": "Source context", "definition": "Why the website exists and how it earns. It decides which attributes of the central entity matter most and how deep each one should go." },
+  { "term": "Attribute", "definition": "A property of an entity, such as its types, cost, problems, location or brands. Attributes become the sections and pages of a topical map." },
+  { "term": "Topical map", "definition": "A planned structure of every topic and subtopic a site should cover, which of them deserve their own page, and how the pages link to each other." },
+  { "term": "Topical authority", "definition": "The trust a search engine gives a site on a topic after the site covers that topic in depth, accurately and consistently over time." },
+  { "term": "Core and outer section", "definition": "The core section holds the topics closest to how the business earns. The outer section holds related topics that build relevance and link back to the core." },
+  { "term": "Macro and micro context", "definition": "The macro context is the one main topic of a page. Micro contexts are the supporting subtopics inside it. A page should keep a single macro context." },
+  { "term": "Contextual coverage", "definition": "How completely a page or site answers the questions that belong to its topic, including the questions people ask next." },
+  { "term": "Query network", "definition": "The group of related searches around one need: the main query, its variations, and the questions people ask before and after it." },
+  { "term": "Cost of retrieval", "definition": "The effort a search engine spends to crawl, understand and rank a page. Clean structure, clear answers and less wasted content lower it." },
+  { "term": "Query fan-out", "definition": "How AI search splits one question into several smaller searches, reads the results, and combines them into a single answer." },
+  { "term": "Generative Engine Optimization (GEO)", "definition": "Optimizing content and entities so a brand is used and cited in AI-generated answers on ChatGPT, Gemini, Perplexity and Google's AI Overviews." },
+  { "term": "Answer Engine Optimization (AEO)", "definition": "Structuring content so a passage can be lifted as a direct answer in featured snippets, voice results or AI answers." },
+  { "term": "Exact match domain (EMD)", "definition": "A domain name that matches a target search query word for word. How much it still helps is one of the variables I test." },
+  { "term": "Google stacking", "definition": "Building a set of interlinked Google properties, such as Sites, Docs, Sheets and Drive files, around a business to support its brand and local signals." }
+]

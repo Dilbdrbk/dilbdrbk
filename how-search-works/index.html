@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Search Works: 5 Diagrams on Ranking &amp; AI Answers | Dil B.K.</title>
+<meta name="description" content="How a page is crawled, understood and ranked, how AI search builds an answer, how an entity becomes a topical map, and how I test SEO ideas.">
+<link rel="author" href="https://dilbdrbk.com.np/about/">
+<meta name="author" content="Dil Bahadur B.K.">
+<meta name="keywords" content="Dil Bahadur B.K., Semantic SEO Specialist, SEO Specialist, Semantic SEO, Entity SEO, Topical Authority, Technical SEO, Local SEO, Nepal">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://dilbdrbk.com.np/how-search-works/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dil Bahadur B.K.">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="How Search Works: 5 Diagrams on Ranking &amp; AI Answers | Dil B.K.">
+<meta property="og:description" content="How a page is crawled, understood and ranked, how AI search builds an answer, how an entity becomes a topical map, and how I test SEO ideas.">
+<meta property="og:url" content="https://dilbdrbk.com.np/how-search-works/">
+<meta property="og:image" content="https://dilbdrbk.com.np/assets/img/og-dil-bahadur-bk.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dil Bahadur B.K., Semantic SEO Specialist">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Search Works: 5 Diagrams on Ranking &amp; AI Answers | Dil B.K.">
+<meta name="twitter:description" content="How a page is crawled, understood and ranked, how AI search builds an answer, how an entity becomes a topical map, and how I test SEO ideas.">
+<meta name="twitter:image" content="https://dilbdrbk.com.np/assets/img/og-dil-bahadur-bk.jpg">
+<meta name="twitter:image:alt" content="Dil Bahadur B.K., Semantic SEO Specialist">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="icon" href="/icon.png" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<meta name="theme-color" content="#262626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://dilbdrbk.com.np/#website",
+   "url": "https://dilbdrbk.com.np/",
+   "name": "Dil Bahadur B.K.",
+   "alternateName": "dilbdrbk.com.np",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://dilbdrbk.com.np/#person"
+   },
+   "author": {
+    "@id": "https://dilbdrbk.com.np/#person"
+   }
+  },
+  {
+   "@type": "Person",
+   "@id": "https://dilbdrbk.com.np/#person",
+   "name": "Dil Bahadur B.K.",
+   "alternateName": [
+    "Dil Bahadur BK",
+    "Dil B.K.",
+    "Dil Bahadur B K"
+   ],
+   "givenName": "Dil Bahadur",
+   "familyName": "B.K.",
+   "jobTitle": "Semantic SEO Specialist",
+   "description": "Semantic SEO specialist in Kathmandu, Nepal. I build topical authority with entity-first, technical and local SEO for local service and e-commerce websites.",
+   "url": "https://dilbdrbk.com.np/",
+   "mainEntityOfPage": "https://dilbdrbk.com.np/about/",
+   "image": {
+    "@type": "ImageObject",
+    "url": "https://dilbdrbk.com.np/assets/img/dil-bahadur-bk.jpg",
+    "width": 480,
+    "height": 480
+   },
+   "email": "mailto:dilbdrbk2050@gmail.com",
+   "telephone": "+9779810234765",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kathmandu",
+    "addressRegion": "Bagmati",
+    "addressCountry": "NP"
+   },
+   "nationality": {
+    "@type": "Country",
+    "name": "Nepal"
+   },
+   "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Semantic SEO Specialist",
+    "occupationLocation": {
+     "@type": "City",
+     "name": "Kathmandu"
+    },
+    "skills": "Search engine optimization, Semantic SEO, Entity-based SEO, Topical authority, Topical maps, Technical SEO, Local SEO, On-page SEO, Off-page SEO, Link building, Keyword research, Content strategy, Programmatic SEO, Generative Engine Optimization, Answer Engine Optimization, Reddit SEO, Google Business Profile, E-commerce SEO"
+   },
+   "alumniOf": [
+    {
+     "@type": "EducationalOrganization",
+     "name": "Nepal Banepa Polytechnic Institute"
+    },
+    {
+     "@type": "EducationalOrganization",
+     "name": "Broadway Infosys"
+    }
+   ],
+   "hasCredential": [
+    {
+     "@type": "EducationalOccupationalCredential",
+     "name": "Topical Authority",
+     "credentialCategory": "certificate",
+     "recognizedBy": {
+      "@type": "Person",
+      "name": "Koray Tugberk Gubur"
+     }
+    },
+    {
+     "@type": "EducationalOccupationalCredential",
+     "name": "Diploma in Information Technology",
+     "credentialCategory": "diploma",
+     "recognizedBy": {
+      "@type": "EducationalOrganization",
+      "name": "Nepal Banepa Polytechnic Institute"
+     }
+    },
+    {
+     "@type": "EducationalOccupationalCredential",
+     "name": "React & Django Framework Training",
+     "credentialCategory": "certificate",
+     "recognizedBy": {
+      "@type": "EducationalOrganization",
+      "name": "Broadway Infosys"
+     }
+    }
+   ],
+   "knowsAbout": [
+    "Search engine optimization",
+    "Semantic SEO",
+    "Entity-based SEO",
+    "Topical authority",
+    "Topical maps",
+    "Technical SEO",
+    "Local SEO",
+    "On-page SEO",
+    "Off-page SEO",
+    "Link building",
+    "Keyword research",
+    "Content strategy",
+    "Programmatic SEO",
+    "Generative Engine Optimization",
+    "Answer Engine Optimization",
+    "Reddit SEO",
+    "Google Business Profile",
+    "E-commerce SEO"
+   ],
+   "sameAs": [
+    "https://www.linkedin.com/in/dil-bahadur-b-k-3927642ab/",
+    "https://github.com/Dilbdrbk",
+    "https://gravatar.com/dilbahadurbk",
+    "https://www.pinterest.com/dilbdrbk2050/"
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://dilbdrbk.com.np/how-search-works/#webpage",
+   "url": "https://dilbdrbk.com.np/how-search-works/",
+   "name": "How Search Works: 5 Diagrams on Ranking & AI Answers | Dil B.K.",
+   "description": "How a page is crawled, understood and ranked, how AI search builds an answer, how an entity becomes a topical map, and how I test SEO ideas.",
+   "inLanguage": "en",
+   "isPartOf": {
+    "@id": "https://dilbdrbk.com.np/#website"
+   },
+   "about": {
+    "@id": "https://dilbdrbk.com.np/#person"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://dilbdrbk.com.np/assets/img/og-dil-bahadur-bk.jpg"
+   },
+   "dateModified": "2026-10-10",
+   "breadcrumb": {
+    "@id": "https://dilbdrbk.com.np/how-search-works/#breadcrumb"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://dilbdrbk.com.np/how-search-works/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://dilbdrbk.com.np/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "How Search Works",
+     "item": "https://dilbdrbk.com.np/how-search-works/"
+    }
+   ]
+  },
+  {
+   "@type": "TechArticle",
+   "@id": "https://dilbdrbk.com.np/how-search-works/#article",
+   "headline": "How Search Works: 5 Diagrams on Ranking & AI Answers",
+   "description": "How a page is crawled, understood and ranked, how AI search builds an answer, how an entity becomes a topical map, and how I test SEO ideas.",
+   "url": "https://dilbdrbk.com.np/how-search-works/",
+   "datePublished": "2026-10-10",
+   "dateModified": "2026-10-10",
+   "author": {
+    "@id": "https://dilbdrbk.com.np/#person"
+   },
+   "publisher": {
+    "@id": "https://dilbdrbk.com.np/#person"
+   },
+   "mainEntityOfPage": {
+    "@id": "https://dilbdrbk.com.np/how-search-works/#webpage"
+   },
+   "image": "https://dilbdrbk.com.np/assets/img/og-dil-bahadur-bk.jpg",
+   "inLanguage": "en",
+   "about": [
+    "Search engine optimization",
+    "Semantic SEO",
+    "Generative Engine Optimization",
+    "Topical map"
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="Dil Bahadur B.K., home"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="1.8" fill="none"><path d="M16 16 7.5 8.5M16 16l9-6.5M16 16l-4 9"/><circle cx="7.5" cy="8.5" r="2.7"/><circle cx="25" cy="9.5" r="2.7"/><circle cx="12" cy="25" r="2.7"/></g><circle class="mark-hub" cx="16" cy="16" r="4.4"/></svg><span>Dil B.K.</span></a>
+  <nav class="nav" aria-label="Main">
+    <ul id="nav-list">
+      <li><a href="/expertise/">Expertise</a></li>
+      <li><a href="/how-search-works/" aria-current="page">How Search Works</a></li>
+      <li><a href="/experience/">Experience</a></li>
+      <li><a href="/industries/">Industries</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li class="nav-contact"><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="topbar-cta" href="/contact/">Contact</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+</header>
+<main id="main">
+<section class="frame page-head">
+  <div class="rail">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">How Search Works</span></nav>
+    <p class="label">Chapters</p>
+    <ol class="toc">
+      <li><a href="#ranking">From a search to a ranked page</a></li>
+      <li><a href="#ai-answers">Inside an AI-generated answer</a></li>
+      <li><a href="#topical-map">From an entity to a topical map</a></li>
+      <li><a href="#page-anatomy">What a semantic page contains</a></li>
+      <li><a href="#testing">How I test an SEO idea</a></li>
+    </ol>
+  </div>
+  <div class="body">
+    <p class="kicker"><span class="dot" aria-hidden="true"></span>How search works</p>
+    <h1 class="page-title">How search works, from a query to an AI answer</h1>
+    <p class="lede">Five diagrams that explain how I think about search: how a page gets ranked, how AI builds an answer, how an entity becomes a topical map, what a strong page contains, and how I test ideas before trusting them.</p>
+  </div>
+</section>
+
+<section class="frame" id="ranking" aria-labelledby="ranking-title">
+  <div class="rail">
+    <p class="label"><span class="idx">01</span> Chapter</p>
+    <p class="rail-note">Each stage can fail on its own. Knowing which one is broken decides the fix.</p>
+  </div>
+  <div class="body">
+    <h2 id="ranking-title" class="section-title">From a search to a ranked page</h2>
+    <ol class="flow" role="list">
+      <li class="flow-step"><span class="idx">01</span><h3>The query</h3><p>Someone types or speaks a search. The engine first works out the entity, the intent and the kind of result they expect.</p></li>
+      <li class="flow-step"><span class="idx">02</span><h3>The crawl</h3><p>The page is found through links and sitemaps, then fetched. Pages that are hard to reach, slow or blocked may never be read.</p></li>
+      <li class="flow-step"><span class="idx">03</span><h3>The understanding</h3><p>The page is rendered and read. Entities, attributes and their relations are pulled out, and the page is filed under what it really covers.</p></li>
+      <li class="flow-step"><span class="idx">04</span><h3>The ranking</h3><p>Candidate pages are compared on relevance, quality and trust, including how much the whole site knows about the topic.</p></li>
+      <li class="flow-step"><span class="idx">05</span><h3>The result</h3><p>The winner appears as a blue link, a map pack listing, a featured snippet or a source inside an AI answer.</p></li>
+    </ol>
+    <dl class="where">
+      <div><dt>Crawl problems</dt><dd>Technical SEO</dd></div>
+      <div><dt>Understanding problems</dt><dd>Semantic SEO</dd></div>
+      <div><dt>Ranking problems</dt><dd>Topical authority &amp; links</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="frame" id="ai-answers" aria-labelledby="ai-title">
+  <div class="rail">
+    <p class="label"><span class="idx">02</span> Chapter</p>
+    <p class="rail-note">This is the stage GEO and AEO work on: being one of the sources an AI answer quotes.</p>
+  </div>
+  <div class="body">
+    <h2 id="ai-title" class="section-title">Inside an AI-generated answer</h2>
+    <div class="fanout">
+      <div class="fan-col">
+        <p class="fan-label"><span class="idx">01</span> One question</p>
+        <div class="fan-box">How often should I service my air conditioner?</div>
+      </div>
+      <div class="fan-col">
+        <p class="fan-label"><span class="idx">02</span> Split into smaller searches</p>
+        <ul class="fan-list" role="list">
+          <li>AC service frequency</li>
+          <li>AC maintenance checklist</li>
+          <li>How often to change an AC filter</li>
+          <li>Signs an AC needs service</li>
+          <li>AC tune-up cost</li>
+        </ul>
+      </div>
+      <div class="fan-col">
+        <p class="fan-label"><span class="idx">03</span> Passages read and judged</p>
+        <ul class="fan-list fan-sources" role="list">
+          <li class="is-kept">HVAC company maintenance guide</li>
+          <li class="is-kept">Manufacturer care manual</li>
+          <li class="is-kept">Discussion thread on Reddit</li>
+          <li class="is-dropped">Page with no clear answer</li>
+          <li class="is-dropped">Outdated forum post</li>
+        </ul>
+      </div>
+      <div class="fan-col">
+        <p class="fan-label"><span class="idx">04</span> One answer, a few sources</p>
+        <div class="fan-box fan-answer">Once a year, ideally before summer, with filter checks every one to three months. <span class="cite">1</span><span class="cite">2</span><span class="cite">3</span></div>
+      </div>
+    </div>
+    <ul class="takeaways" role="list">
+      <li><strong>Answer in quotable sentences.</strong> AI reads passages, not whole pages, so each section should answer its question on its own.</li>
+      <li><strong>Cover the follow-up questions.</strong> The smaller searches are the questions your page should already answer.</li>
+      <li><strong>Be consistent everywhere.</strong> The same facts about the brand on the site, profiles and communities like Reddit make it a safer source to cite.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="frame" id="topical-map" aria-labelledby="map-title">
+  <div class="rail">
+    <p class="label"><span class="idx">03</span> Chapter</p>
+    <p class="rail-note">An attribute earns its own page when it has its own demand, its own intent and enough unique substance. Otherwise it becomes a section.</p>
+  </div>
+  <div class="body">
+    <h2 id="map-title" class="section-title">From an entity to a topical map</h2>
+    <div class="tree">
+      <div class="tree-top">
+        <div class="tree-node"><span class="label">Source context</span><p>A local HVAC company that earns from repairs and installations</p></div>
+        <div class="tree-node tree-entity"><span class="label">Central entity</span><p>Air conditioning</p></div>
+      </div>
+      <ul class="tree-attrs" role="list">
+        <li><p class="tree-attr">Types</p><ul role="list"><li class="pg">Central AC</li><li class="pg">Ductless mini-split</li><li class="pg">Heat pump</li></ul></li>
+        <li><p class="tree-attr">Problems</p><ul role="list"><li class="pg">AC not cooling</li><li class="pg">AC leaking water</li><li class="sec">Strange noises</li></ul></li>
+        <li><p class="tree-attr">Cost</p><ul role="list"><li class="pg">Installation cost</li><li class="sec">Repair cost</li></ul></li>
+        <li><p class="tree-attr">Maintenance</p><ul role="list"><li class="pg">AC tune-up</li><li class="sec">Filter changes</li></ul></li>
+        <li><p class="tree-attr">Service area</p><ul role="list"><li class="pg">Main city page</li><li class="sec">Nearby towns, until each has unique substance</li></ul></li>
+        <li><p class="tree-attr">Brands</p><ul role="list"><li class="sec">Brands installed</li></ul></li>
+      </ul>
+      <p class="tree-key"><span class="pg">Own page</span><span class="sec">Section on its parent page</span></p>
+    </div>
+    <ul class="takeaways" role="list">
+      <li><strong>The source context decides the weight.</strong> A repair company and a review site can share an entity but need different pages.</li>
+      <li><strong>Core first, outer second.</strong> Money pages form the core section. Supporting guides form the outer section and link up to the core.</li>
+      <li><strong>No page without a job.</strong> Pages that split the same intent compete with each other, so they get merged into one.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="frame" id="page-anatomy" aria-labelledby="anatomy-title">
+  <div class="rail">
+    <p class="label"><span class="idx">04</span> Chapter</p>
+    <p class="rail-note">One page, one main question. Everything on it either answers that question or leads to the next one.</p>
+  </div>
+  <div class="body">
+    <h2 id="anatomy-title" class="section-title">What a semantic page contains</h2>
+    <div class="anatomy">
+      <div class="wire" aria-hidden="true">
+        <div class="w-row w-h1"><span class="w-pin">1</span></div>
+        <div class="w-row w-lead"><span class="w-pin">2</span><i></i><i></i></div>
+        <div class="w-row w-table"><span class="w-pin">3</span><b></b><b></b><b></b><b></b><b></b><b></b></div>
+        <div class="w-row w-h2"><span class="w-pin">4</span><i></i></div>
+        <div class="w-row w-faq"><span class="w-pin">5</span><i></i><i></i><i></i></div>
+        <div class="w-row w-links"><span class="w-pin">6</span><u></u><u></u><u></u></div>
+        <div class="w-row w-schema"><span class="w-pin">7</span><code>{ }</code></div>
+        <div class="w-row w-cta"><span class="w-pin">8</span><s></s></div>
+      </div>
+      <ol class="anatomy-list">
+        <li><h3>Title and H1 that match the query</h3><p>They name the page's single main topic, in the words people search with.</p></li>
+        <li><h3>The answer first</h3><p>The opening lines answer the main question directly, before any background.</p></li>
+        <li><h3>Entity facts a machine can read</h3><p>Attributes such as types, prices, steps and service areas, stated plainly in lists or tables.</p></li>
+        <li><h3>Subheadings in the order people ask</h3><p>Each H2 answers the next question in the query network.</p></li>
+        <li><h3>The follow-up questions</h3><p>A short FAQ for what people ask after the main answer.</p></li>
+        <li><h3>Internal links with a purpose</h3><p>Up to the parent topic, across to siblings, and on to the page that earns.</p></li>
+        <li><h3>Structured data</h3><p>Schema that names the entity, the business and the type of page.</p></li>
+        <li><h3>One clear next step</h3><p>A single call to action that fits the intent of the search.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="frame" id="testing" aria-labelledby="testing-title">
+  <div class="rail">
+    <p class="label"><span class="idx">05</span> Chapter</p>
+    <p class="rail-note">Much of what I know comes from tests like this, not from rules repeated online.</p>
+  </div>
+  <div class="body">
+    <h2 id="testing-title" class="section-title">How I test an SEO idea</h2>
+    <ol class="flow flow-loop" role="list">
+      <li class="flow-step"><span class="idx">01</span><h3>Write the hypothesis</h3><p>State the idea as a claim that can fail: this change will lift this metric on these pages.</p></li>
+      <li class="flow-step"><span class="idx">02</span><h3>Pick test and control</h3><p>Choose pages to change and similar pages that stay untouched for comparison.</p></li>
+      <li class="flow-step"><span class="idx">03</span><h3>Change one variable</h3><p>Only one change at a time, so the result can be traced back to it.</p></li>
+      <li class="flow-step"><span class="idx">04</span><h3>Measure long enough</h3><p>Track impressions, clicks and positions until the difference rises above normal movement.</p></li>
+      <li class="flow-step"><span class="idx">05</span><h3>Decide and record</h3><p>Roll it out, refine it or drop it, and write the result down either way.</p></li>
+    </ol>
+    <p class="list-title">Variables I've tested</p>
+    <ul class="tags" role="list"><li>AI-generated content</li><li>Exact match domains (EMDs)</li><li>Technical variables</li></ul>
+  </div>
+</section>
+
+<section class="frame cta">
+  <div class="rail"><p class="label"><span class="idx">06</span> Next</p></div>
+  <div class="body">
+    <h2 class="display display-sm">Want to talk through your site?</h2>
+    <div class="actions">
+      <a class="btn" href="/contact/">Get in touch</a>
+      <a class="btn btn-ghost" href="/expertise/">See my expertise</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="footer-cta">
+    <p class="label">Get in touch</p>
+    <p class="footer-big"><a href="mailto:dilbdrbk2050@gmail.com">dilbdrbk2050@gmail.com</a></p>
+  </div>
+  <div class="footer-cols">
+    <div>
+      <p class="label">Navigate</p>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/expertise/">Expertise</a></li>
+        <li><a href="/how-search-works/">How Search Works</a></li>
+        <li><a href="/experience/">Experience</a></li>
+        <li><a href="/industries/">Industries</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/profiles/">Profiles</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="label">Profiles</p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/dil-bahadur-b-k-3927642ab/" rel="me noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/Dilbdrbk" rel="me noopener" target="_blank">GitHub</a></li>
+        <li><a href="https://gravatar.com/dilbahadurbk" rel="me noopener" target="_blank">Gravatar</a></li>
+        <li><a href="https://www.pinterest.com/dilbdrbk2050/" rel="me noopener" target="_blank">Pinterest</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="label">Contact</p>
+      <ul>
+        <li><a href="mailto:dilbdrbk2050@gmail.com">Email</a></li>
+        <li><a href="tel:+9779810234765">+977 9810234765</a></li>
+        <li>Kathmandu, Nepal</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>&copy; <span data-year>2026</span> Dil Bahadur B.K.</span>
+    <span>Kathmandu <time data-clock>--:--</time> NPT</span>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

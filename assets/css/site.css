@@ -580,3 +580,171 @@ a.contact-value:hover { text-decoration: underline; }
   .timeline-compact li { flex-direction: column; gap: 2px; }
   .tl-date { white-space: normal; }
 }
+
+.tl-org { margin-left: 8px; color: var(--muted); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0; }
+
+/* ------------------------------------------------------------ knowledge: shared */
+
+.tags-sm li { padding: 4px 10px; font-size: 0.8125rem; color: var(--ink-2); }
+.covers { margin-top: 22px; }
+
+.takeaways { display: grid; gap: 12px; margin-top: 28px; max-width: 72ch; list-style: none; }
+.takeaways li { padding-left: 18px; border-left: 2px solid var(--accent); color: var(--ink-2); }
+.takeaways strong { color: var(--ink); }
+
+/* Step flow: horizontal on wide screens, vertical below. */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  list-style: none;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.flow-step { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px 18px 24px; background: var(--bg); }
+.flow-step h3 { font-size: 1.0625rem; letter-spacing: -0.015em; }
+.flow-step p { color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+.flow-step:not(:last-child)::after {
+  content: "\2192";
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: -11px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--accent);
+  font-size: 0.75rem;
+  line-height: 20px;
+  text-align: center;
+}
+.flow-loop .flow-step:last-child::after {
+  content: "\21BB";
+  position: absolute;
+  top: 20px;
+  right: 14px;
+  color: var(--accent);
+}
+.flow-loop + .list-title { margin-top: 28px; }
+
+.where { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; font-size: 0.875rem; }
+.where dt { color: var(--muted); }
+.where dd { font-weight: 600; }
+
+/* AI answer: question, searches, sources, answer. */
+.fanout { display: grid; grid-template-columns: 1fr 1.1fr 1.1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.fan-col { display: flex; flex-direction: column; gap: 14px; padding: 20px 18px 22px; background: var(--bg); }
+.fan-label { color: var(--muted); font-size: 0.75rem; }
+.fan-box { padding: 14px; border: 1px solid var(--line-strong); font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; }
+.fan-answer { border-color: var(--accent); font-weight: 500; color: var(--ink-2); }
+.cite {
+  display: inline-block;
+  min-width: 18px;
+  margin-left: 4px;
+  padding: 0 5px;
+  border-radius: 3px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-align: center;
+}
+.fan-list { display: grid; gap: 6px; list-style: none; font-size: 0.8125rem; }
+.fan-list li { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; }
+.fan-sources .is-kept { border-color: var(--line-strong); }
+.fan-sources .is-kept::before { content: "\2713\00a0\00a0"; color: var(--accent); }
+.fan-sources .is-dropped { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(255, 255, 255, 0.35); }
+
+/* Entity, attributes, then page or section. */
+.tree { border: 1px solid var(--line); }
+.tree-top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-bottom: 1px solid var(--line); }
+.tree-node { display: flex; flex-direction: column; gap: 6px; padding: 18px; background: var(--bg); }
+.tree-node p { font-weight: 600; letter-spacing: -0.01em; }
+.tree-entity p { font-size: 1.375rem; letter-spacing: -0.025em; }
+.tree-entity .label::after { content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 8px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+.tree-attrs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; list-style: none; background: var(--line); }
+.tree-attrs > li { padding: 16px 18px 20px; background: var(--bg); }
+.tree-attr { margin-bottom: 10px; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+.tree-attrs ul { display: grid; gap: 6px; list-style: none; }
+.pg, .sec { font-size: 0.875rem; }
+.pg::before, .sec::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 8px; }
+.pg::before { background: var(--accent); }
+.sec { color: var(--muted); }
+.sec::before { border: 1px solid var(--muted); }
+.tree-key { display: flex; flex-wrap: wrap; gap: 20px; padding: 12px 18px; border-top: 1px solid var(--line); }
+
+/* Page anatomy: wireframe with numbered pins next to the matching list. */
+.anatomy { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.wire { position: sticky; top: calc(var(--topbar) + 20px); display: grid; gap: 12px; padding: 22px 22px 22px 40px; border: 1px solid var(--line-strong); background: var(--bg-raise); }
+.w-row { position: relative; display: flex; flex-wrap: wrap; gap: 6px; }
+.w-pin, .anatomy-list li::before {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+.w-pin { position: absolute; left: -28px; top: -2px; }
+.w-row i { display: block; height: 7px; width: 100%; background: rgba(255, 255, 255, 0.14); border-radius: 2px; }
+.w-lead i:last-child { width: 70%; }
+.w-h1::after { content: ""; display: block; height: 16px; width: 80%; background: var(--ink); border-radius: 2px; }
+.w-h2 i { height: 11px; width: 55%; background: rgba(255, 255, 255, 0.5); }
+.w-table { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.w-table b { height: 14px; border: 1px solid var(--line-strong); }
+.w-faq i { height: 10px; border: 1px solid var(--line-strong); background: transparent; }
+.w-links u { display: block; height: 14px; width: 64px; border: 1px solid var(--accent); border-radius: 999px; }
+.w-schema code { padding: 2px 8px; border: 1px dashed var(--muted); color: var(--muted); font-family: var(--mono); font-size: 0.75rem; }
+.w-cta s { display: block; height: 22px; width: 120px; border-radius: 999px; background: var(--ink); }
+.anatomy-list { list-style: none; counter-reset: part; border-top: 1px solid var(--line); }
+.anatomy-list li { position: relative; counter-increment: part; padding: 14px 0 14px 34px; border-bottom: 1px solid var(--line); }
+.anatomy-list li::before { content: counter(part); position: absolute; left: 0; top: 16px; }
+.anatomy-list h3 { font-size: 1.0625rem; letter-spacing: -0.015em; margin-bottom: 4px; }
+.anatomy-list p { color: var(--muted); font-size: 0.9rem; }
+
+/* Home: compact pipeline and chapter rows. */
+.mini-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 28px; list-style: none; font-family: var(--mono); font-size: 0.8125rem; }
+.mini-flow li { padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 999px; }
+.mini-flow li:last-child { border-color: var(--accent); color: var(--accent); }
+.chapters { list-style: none; border-top: 1px solid var(--line); }
+.chapters a { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.ch-title { font-size: clamp(1.0625rem, 1rem + 0.5vw, 1.375rem); font-weight: 700; letter-spacing: -0.02em; }
+.ch-note { color: var(--muted); font-size: 0.9rem; }
+.chapters a:hover .ch-title { color: var(--accent); }
+
+/* Expertise glossary and About skills. */
+.glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.glossary div { padding: 18px 20px 20px; background: var(--bg); scroll-margin-top: calc(var(--topbar) + 12px); }
+.glossary dt { font-weight: 700; letter-spacing: -0.015em; margin-bottom: 6px; }
+.glossary dd { color: var(--ink-2); font-size: 0.9375rem; line-height: 1.55; }
+.glossary div:target { outline: 1px solid var(--accent); outline-offset: -1px; }
+
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
+.skills .list-title { margin-bottom: 12px; }
+
+@media (max-width: 1100px) {
+  .flow { grid-template-columns: minmax(0, 1fr); }
+  .flow-step:not(:last-child)::after { content: "\2193"; top: auto; bottom: -11px; right: auto; left: 18px; }
+  .fanout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tree-attrs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .anatomy { grid-template-columns: minmax(0, 1fr); }
+  .wire { position: static; max-width: 360px; }
+  .glossary { grid-template-columns: minmax(0, 1fr); }
+  .chapters a { grid-template-columns: 32px minmax(0, 1fr); }
+  .ch-note { grid-column: 2; }
+}
+
+@media (max-width: 560px) {
+  .fanout, .tree-top, .tree-attrs, .skills, .where { grid-template-columns: minmax(0, 1fr); }
+}

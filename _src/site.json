@@ -2,12 +2,14 @@
   "url": "https://dilbdrbk.com.np",
   "name": "Dil Bahadur B.K.",
   "shortName": "Dil B.K.",
-  "alternateNames": ["Dil Bahadur BK", "Dil B.K.", "Dil Bahadur B K"],
+  "alternateNames": [
+    "Dil Bahadur BK",
+    "Dil B.K.",
+    "Dil Bahadur B K"
+  ],
   "givenName": "Dil Bahadur",
   "familyName": "B.K.",
-  "jobTitle": "SEO Team Lead",
-  "employer": { "name": "RankMeTop", "url": "https://rankmetop.net/" },
-  "careerStart": "2023-12",
+  "jobTitle": "Semantic SEO Specialist",
   "email": "dilbdrbk2050@gmail.com",
   "phone": "+977 9810234765",
   "phoneHref": "+9779810234765",
@@ -66,10 +68,19 @@
     "E-commerce SEO"
   ],
   "education": [
-    { "name": "Nepal Banepa Polytechnic Institute", "credential": "Diploma in Information Technology" },
-    { "name": "Broadway Infosys", "credential": "React & Django Framework Training" }
+    {
+      "name": "Nepal Banepa Polytechnic Institute",
+      "credential": "Diploma in Information Technology"
+    },
+    {
+      "name": "Broadway Infosys",
+      "credential": "React & Django Framework Training"
+    }
   ],
   "certifications": [
-    { "name": "Topical Authority", "issuer": "Koray Tugberk Gubur" }
+    {
+      "name": "Topical Authority",
+      "issuer": "Koray Tugberk Gubur"
+    }
   ]
 }

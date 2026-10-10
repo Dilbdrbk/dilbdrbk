@@ -87,8 +87,8 @@ def og_card(face):
     d.text((60, 22), "dilbdrbk.com.np", font=mono, fill=INK)
     d.text((W - 60, 22), "Kathmandu, Nepal", font=small, fill=MUTED, anchor="ra")
     d.ellipse((60, 420, 74, 434), fill=ACCENT)
-    d.text((86, 416), "SEO Team Lead", font=small, fill=INK)
-    d.text((60, 452), "RankMeTop", font=small, fill=MUTED)
+    d.text((86, 416), "Semantic SEO Specialist", font=small, fill=INK)
+    d.text((60, 452), "In SEO since 2023", font=small, fill=MUTED)
 
     big = font("arialbd.ttf", 84)
     d.text((440, 104), "Dil Bahadur B.K.", font=big, fill=INK)

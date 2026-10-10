@@ -20,48 +20,52 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "_src"
 SITE = json.loads((SRC / "site.json").read_text(encoding="utf-8"))
 FAQ = json.loads((SRC / "faq.json").read_text(encoding="utf-8"))
+GLOSSARY = json.loads((SRC / "glossary.json").read_text(encoding="utf-8"))
 BASE = SITE["url"].rstrip("/")
 PERSON_ID = f"{BASE}/#person"
 WEBSITE_ID = f"{BASE}/#website"
 PORTRAIT = "/assets/img/dil-bahadur-bk.jpg"
 OG_IMAGE = "/assets/img/og-dil-bahadur-bk.jpg"
-KEYWORDS = "Dil Bahadur B.K., SEO Team Lead, SEO Specialist, Semantic SEO, Entity SEO, Topical Authority, Technical SEO, Local SEO, Nepal"
+KEYWORDS = "Dil Bahadur B.K., Semantic SEO Specialist, SEO Specialist, Semantic SEO, Entity SEO, Topical Authority, Technical SEO, Local SEO, Nepal"
 
 NAV = [
     ("/expertise/", "Expertise"),
+    ("/how-search-works/", "How Search Works"),
     ("/experience/", "Experience"),
     ("/industries/", "Industries"),
     ("/about/", "About"),
     ("/blog/", "Blog"),
-    ("/profiles/", "Profiles"),
 ]
 
 # Every page: where it lives, its body file and its search snippet.
 # `updated` feeds sitemap lastmod; bump it when a page's content changes.
 PAGES = [
     dict(path="/", body="home.html", crumb="Home", updated="2026-10-10", kind="home",
-         title="Dil Bahadur B.K. | SEO Team Lead & Semantic SEO Specialist",
-         description="SEO Team Lead at RankMeTop in Kathmandu, Nepal. I build topical authority with semantic, technical and local SEO for local service and e-commerce websites."),
+         title="Dil Bahadur B.K. | Semantic SEO Specialist in Kathmandu, Nepal",
+         description="Semantic SEO specialist in Kathmandu, Nepal. I build topical authority with entity-first, technical and local SEO for local service and e-commerce websites."),
     dict(path="/about/", body="about.html", crumb="About", updated="2026-10-10", kind="profile",
          title="About Dil Bahadur B.K. | Semantic SEO Specialist From Nepal",
-         description="Who Dil Bahadur B.K. is: an SEO Team Lead at RankMeTop who moved from link building to leading the SEO team, focused on semantic and entity-based SEO."),
+         description="Who Dil Bahadur B.K. is: a semantic SEO specialist from Kathmandu who grew from link building into entity-based SEO, topical authority and AI search."),
     dict(path="/expertise/", body="expertise.html", crumb="Expertise", updated="2026-10-10", kind="page",
          title="SEO Expertise: Semantic, Technical, Local & AI Search | Dil B.K.",
          description="Twelve areas of SEO expertise: semantic and entity SEO, topical maps, technical, on-page, local and off-page SEO, programmatic SEO, GEO, AEO and Reddit SEO."),
+    dict(path="/how-search-works/", body="how-search-works.html", crumb="How Search Works", updated="2026-10-10", kind="guide",
+         title="How Search Works: 5 Diagrams on Ranking & AI Answers | Dil B.K.",
+         description="How a page is crawled, understood and ranked, how AI search builds an answer, how an entity becomes a topical map, and how I test SEO ideas."),
     dict(path="/experience/", body="experience.html", crumb="Experience", updated="2026-10-10", kind="page",
-         title="SEO Experience at RankMeTop, Intern to Team Lead | Dil B.K.",
-         description="Dil Bahadur B.K.'s SEO career at RankMeTop since December 2023: link building, SEO intern, executive, specialist and SEO Team Lead, plus education."),
+         title="SEO Experience at One Percent Digital & RankMeTop | Dil B.K.",
+         description="Semantic SEO Specialist at One Percent Digital since July 2026, after five roles at RankMeTop from link building to SEO team lead. Plus education."),
     dict(path="/industries/", body="industries.html", crumb="Industries", updated="2026-10-10", kind="page",
          title="Industries: 20 Local & Nationwide SEO Niches | Dil Bahadur B.K.",
          description="SEO work across 12 local service niches, from plumbing and HVAC to pest control, and 8 nationwide niches including IT, finance, real estate and SaaS."),
     dict(path="/blog/", body="blog.html", crumb="Blog", updated="2026-10-10", kind="blog",
          title="SEO Blog | Dil Bahadur B.K.",
-         description="Notes on semantic SEO, topical authority, local SEO and AI search by Dil Bahadur B.K., SEO Team Lead at RankMeTop."),
+         description="Notes on semantic SEO, topical authority, local SEO and AI search by Dil Bahadur B.K., semantic SEO specialist from Kathmandu, Nepal."),
     dict(path="/profiles/", body="profiles.html", crumb="Profiles", updated="2026-10-10", kind="page",
          title="Dil Bahadur B.K. Online: LinkedIn, GitHub & Other Profiles",
-         description="Every official profile of Dil Bahadur B.K., SEO Team Lead from Kathmandu, Nepal, in one place: LinkedIn, GitHub and more."),
+         description="Every official profile of Dil Bahadur B.K., semantic SEO specialist from Kathmandu, Nepal, in one place: LinkedIn, GitHub and more."),
     dict(path="/contact/", body="contact.html", crumb="Contact", updated="2026-10-10", kind="contact",
-         title="Contact Dil Bahadur B.K. | SEO Team Lead in Kathmandu",
+         title="Contact Dil Bahadur B.K. | Semantic SEO Specialist, Kathmandu",
          description="Reach Dil Bahadur B.K. by email, phone or LinkedIn. Based in Kathmandu, Nepal (NPT, UTC+5:45)."),
 ]
 
@@ -106,7 +110,6 @@ def person_node() -> dict:
             "addressCountry": SITE["country"],
         },
         "nationality": {"@type": "Country", "name": SITE["countryName"]},
-        "worksFor": {"@type": "Organization", "name": SITE["employer"]["name"], "url": SITE["employer"]["url"]},
         "hasOccupation": {
             "@type": "Occupation",
             "name": SITE["jobTitle"],
@@ -216,7 +219,7 @@ def json_ld(data: dict) -> str:
 
 def head(page: dict, schema: dict, noindex: bool = False) -> str:
     url = absolute(page["path"])
-    og_type = {"home": "profile", "profile": "profile", "post": "article"}.get(page["kind"], "website")
+    og_type = {"home": "profile", "profile": "profile", "post": "article", "guide": "article"}.get(page["kind"], "website")
     robots = "noindex, follow" if noindex else "index, follow, max-image-preview:large, max-snippet:-1"
     canonical = "" if page["path"] == "/404" else f'\n<link rel="canonical" href="{url}">'
     verification = (
@@ -299,7 +302,7 @@ def header(current: str) -> str:
 
 
 def footer() -> str:
-    nav = "\n".join(f'        <li><a href="{h}">{l}</a></li>' for h, l in [("/", "Home")] + NAV + [("/contact/", "Contact")])
+    nav = "\n".join(f'        <li><a href="{h}">{l}</a></li>' for h, l in [("/", "Home")] + NAV + [("/profiles/", "Profiles"), ("/contact/", "Contact")])
     profiles = "\n".join(
         f'        <li><a href="{esc(p["url"])}" rel="me noopener" target="_blank">{esc(p["platform"])}</a></li>'
         for p in SITE["profiles"]
@@ -361,6 +364,56 @@ def faq_html() -> str:
         f'<details class="faq-item"><summary><span>{esc(q["q"])}</span></summary><p>{esc(q["a"])}</p></details>'
         for q in FAQ
     )
+
+
+def slug(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def glossary_html() -> str:
+    return "\n".join(
+        f'      <div id="term-{slug(g["term"])}"><dt>{esc(g["term"])}</dt><dd>{esc(g["definition"])}</dd></div>'
+        for g in GLOSSARY
+    )
+
+
+def glossary_node() -> dict:
+    url = absolute("/expertise/")
+    return {
+        "@type": "DefinedTermSet",
+        "@id": url + "#glossary",
+        "name": "SEO glossary",
+        "url": url + "#glossary",
+        "hasDefinedTerm": [
+            {
+                "@type": "DefinedTerm",
+                "@id": url + "#term-" + slug(g["term"]),
+                "name": g["term"],
+                "description": g["definition"],
+                "inDefinedTermSet": {"@id": url + "#glossary"},
+            }
+            for g in GLOSSARY
+        ],
+    }
+
+
+def guide_node(page: dict) -> dict:
+    url = absolute(page["path"])
+    return {
+        "@type": "TechArticle",
+        "@id": url + "#article",
+        "headline": page["title"].split(" | ")[0],
+        "description": page["description"],
+        "url": url,
+        "datePublished": page["updated"],
+        "dateModified": page["updated"],
+        "author": {"@id": PERSON_ID},
+        "publisher": {"@id": PERSON_ID},
+        "mainEntityOfPage": {"@id": url + "#webpage"},
+        "image": absolute(OG_IMAGE),
+        "inLanguage": "en",
+        "about": ["Search engine optimization", "Semantic SEO", "Generative Engine Optimization", "Topical map"],
+    }
 
 
 def profiles_html() -> str:
@@ -469,6 +522,7 @@ def build() -> None:
     posts = load_posts()
     tokens = {
         "faq": faq_html(),
+        "glossary": glossary_html(),
         "profiles": profiles_html(),
         "posts": posts_list_html(posts),
         "email": SITE["email"],
@@ -486,6 +540,10 @@ def build() -> None:
         extra = []
         if page["kind"] == "home":
             extra.append(faq_node())
+        if page["path"] == "/expertise/":
+            extra.append(glossary_node())
+        if page["kind"] == "guide":
+            extra.append(guide_node(page))
         if page["kind"] == "blog" and posts:
             extra.append({
                 "@type": "Blog",
@@ -544,7 +602,7 @@ def build() -> None:
     llms = [
         f"# {SITE['name']}",
         "",
-        f"> {SITE['jobTitle']} at {SITE['employer']['name']} in {SITE['locality']}, {SITE['countryName']}. "
+        f"> {SITE['jobTitle']} in {SITE['locality']}, {SITE['countryName']}. "
         "Specializes in semantic and entity-based SEO, topical authority, technical SEO, local SEO, "
         "programmatic SEO and optimization for AI search (GEO and AEO).",
         "",
