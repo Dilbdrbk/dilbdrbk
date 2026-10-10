@@ -1289,3 +1289,43 @@ body :is(h3, .ch-title):not(.stage-copy h3) { font-family: var(--font-display); 
   .hero::before { animation: drift 60s linear infinite; }
   @keyframes drift { to { background-position: 250px 260px, -50px 150px; } }
 }
+
+/* ------------------------------------------------------------ centered layout (the hero keeps its split)
+   Labels, headings and short intros are centered. Text blocks are centered on
+   the page but read left-aligned. Grids keep the full content width. */
+.frame:not(.hero) > .rail { justify-content: center; text-align: center; }
+.frame:not(.hero) > .body > .section-title,
+.frame:not(.hero) .prose > h2,
+.cta .display,
+.chapters-title { margin-inline: auto; text-align: center; }
+.section-note { max-width: 60ch; margin: 0 auto 30px; color: var(--muted); font-size: 1rem; line-height: 1.55; text-align: center; }
+.prose .section-note { color: var(--muted); font-size: 1rem; text-align: center; }
+.section-note:has(+ .section-link) { margin-bottom: 10px; }
+.section-title:has(+ .section-note), .prose h2:has(+ .section-note) { margin-bottom: 12px; }
+.section-link { margin: 0 0 30px; text-align: center; }
+.frame:not(.hero) > .body > :is(.prose, .faq, .takeaways, .lede, .empty, .rail-note) { margin-inline: auto; }
+.frame:not(.hero) > .body > .rail-note { text-align: center; }
+.frame:not(.hero) > .body > .actions, .cta .actions { justify-content: center; }
+.cta .body { text-align: center; }
+.empty { text-align: center; }
+.split > div, .skills > div { text-align: center; }
+.split .tags, .skills .tags { justify-content: center; }
+.stats div { align-items: center; text-align: center; }
+
+/* Page headers: one centered column; extras (facts, on-this-page links) sit under the intro. */
+.page-head { grid-template-columns: minmax(0, 1fr); }
+.page-head > .body { order: 1; padding-bottom: 14px; text-align: center; }
+.page-head > .body:last-child { padding-bottom: clamp(28px, 3.5vw, 48px); }
+.page-head > .rail { order: 2; flex-direction: column; flex-wrap: nowrap; align-items: center; gap: 12px; padding: 0 var(--gutter) clamp(28px, 3.5vw, 48px); text-align: center; }
+.page-head > .rail:has(> .label:only-child) { order: 0; padding: clamp(28px, 3.5vw, 48px) var(--gutter) 0; }
+.page-head .crumbs { justify-content: center; margin-bottom: 18px; }
+.page-head .portrait { width: 128px; margin: 0 auto 22px; border-radius: 50%; }
+.page-head .kicker { justify-content: center; }
+.page-head :is(.page-title, .lede) { margin-inline: auto; }
+.page-head .meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; }
+.page-head .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; padding-left: 0; list-style: none; }
+
+/* Profiles strip and footer. */
+.web-strip-title, .web-strip-note { text-align: center; }
+.footer-cta { text-align: center; }
+.footer-base { justify-content: center; gap: 28px; }

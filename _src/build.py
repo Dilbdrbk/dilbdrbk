@@ -518,11 +518,11 @@ def post_body(post: dict) -> str:
         )
     return f"""<section class="frame page-head">
   <div class="rail">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog/">Blog</a></nav>
     <p class="label">Published</p>
     <p class="value"><time datetime="{post["date"]}">{post["date"]}</time></p>
   </div>
   <div class="body">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog/">Blog</a></nav>
     <h1 class="page-title">{esc(post["title"])}</h1>
     <p class="lede">{esc(post["description"])}</p>
   </div>
