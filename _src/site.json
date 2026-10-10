@@ -25,26 +25,63 @@
     {
       "platform": "LinkedIn",
       "handle": "dil-bahadur-b-k-3927642ab",
-      "url": "https://www.linkedin.com/in/dil-bahadur-b-k-3927642ab/",
-      "note": "Career history, recommendations and SEO posts."
+      "url": "https://www.linkedin.com/in/dil-bahadur-b-k-3927642ab/"
     },
     {
       "platform": "GitHub",
       "handle": "Dilbdrbk",
-      "url": "https://github.com/Dilbdrbk",
-      "note": "Code, including the source of this website."
+      "url": "https://github.com/Dilbdrbk"
+    },
+    {
+      "platform": "Quora",
+      "handle": "DIL-BDR-B-K",
+      "url": "https://www.quora.com/profile/DIL-BDR-B-K"
+    },
+    {
+      "platform": "Crunchbase",
+      "handle": "dil-bahadur-b-k",
+      "url": "https://www.crunchbase.com/person/dil-bahadur-b-k"
+    },
+    {
+      "platform": "Hugging Face",
+      "handle": "dilbahadurbk",
+      "url": "https://huggingface.co/dilbahadurbk"
+    },
+    {
+      "platform": "Academia.edu",
+      "handle": "DilBahadurBK",
+      "url": "https://independent.academia.edu/DilBahadurBK"
+    },
+    {
+      "platform": "About.me",
+      "handle": "bahadurb.k",
+      "url": "https://about.me/bahadurb.k"
     },
     {
       "platform": "Gravatar",
       "handle": "dilbahadurbk",
-      "url": "https://gravatar.com/dilbahadurbk",
-      "note": "Profile card used across WordPress and other sites."
+      "url": "https://gravatar.com/dilbahadurbk"
+    },
+    {
+      "platform": "Himalayas",
+      "handle": "@dilbahadurbk",
+      "url": "https://himalayas.app/@dilbahadurbk"
+    },
+    {
+      "platform": "Acadium",
+      "handle": "Profile",
+      "url": "https://app.acadium.com/p/12k1sg4v5"
     },
     {
       "platform": "Pinterest",
       "handle": "dilbdrbk2050",
-      "url": "https://www.pinterest.com/dilbdrbk2050/",
-      "note": "Boards and pins."
+      "url": "https://www.pinterest.com/dilbdrbk2050/"
+    },
+    {
+      "platform": "BizDire Nepal",
+      "handle": "Business listing",
+      "url": "https://bizdirenepal.com/semantic-seo-topical-authority-ai-search-optimization",
+      "listing": true
     }
   ],
   "knowsAbout": [

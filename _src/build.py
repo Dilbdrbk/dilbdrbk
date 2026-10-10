@@ -139,7 +139,7 @@ def person_node() -> dict:
             for e in SITE["education"]
         ],
         "knowsAbout": SITE["knowsAbout"],
-        "sameAs": [p["url"] for p in SITE["profiles"]],
+        "sameAs": [p["url"] for p in SITE["profiles"] if not p.get("listing")],
     }
     return node
 
@@ -298,18 +298,46 @@ def header(current: str) -> str:
       <li class="nav-contact"><a href="/contact/"{contact_current}>Contact</a></li>
     </ul>
   </nav>
-  <a class="hire-btn" href="/contact/"{contact_current}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg><span>Hire Me</span></a>
+  <a class="hire-btn" href="/contact/" data-open-form{contact_current}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg><span>Hire Me</span></a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
 </header>
 <main id="main">"""
+
+
+def lead_dialog() -> str:
+    """'Hire me' pop-up. Without a formEndpoint in site.json it opens the visitor's
+    email app with the message filled in; with one, it posts there directly."""
+    endpoint = esc(SITE.get("formEndpoint", ""))
+    key = SITE.get("formAccessKey", "")
+    key_input = f'\n      <input type="hidden" name="access_key" value="{esc(key)}">' if key else ""
+    return f"""<dialog class="lead" id="lead-dialog" aria-labelledby="lead-title">
+  <div class="lead-inner">
+    <button class="lead-close" type="button" data-close-form aria-label="Close">&times;</button>
+    <p class="lead-kicker">Request a review</p>
+    <h2 class="lead-title" id="lead-title">Tell me about your site</h2>
+    <p class="lead-sub">Share where your site is now and what you want from search. I read every message and reply myself.</p>
+    <form class="lead-form" data-endpoint="{endpoint}" data-email="{SITE["email"]}">{key_input}
+      <input class="lead-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="lead-row">
+        <label>Name <span aria-hidden="true">*</span><input name="name" type="text" autocomplete="name" required placeholder="Your name"></label>
+        <label>Email <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
+      </div>
+      <label>Website<input name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourbusiness.com"></label>
+      <label>What do you want to improve? <span aria-hidden="true">*</span><textarea name="message" rows="4" required placeholder="Where traffic is now, your goals, what seems stuck"></textarea></label>
+      <button class="btn btn-arrow lead-submit" type="submit">Send request</button>
+      <p class="lead-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="lead-alt">Prefer email? <a href="mailto:{SITE["email"]}">{SITE["email"]}</a><br>I only use your details to reply.</p>
+  </div>
+</dialog>"""
 
 
 def footer() -> str:
     nav = "\n".join(f'        <li><a href="{h}">{l}</a></li>' for h, l in [("/", "Home")] + NAV + [("/profiles/", "Profiles"), ("/contact/", "Contact")])
     profiles = "\n".join(
         f'        <li><a href="{esc(p["url"])}" rel="me noopener" target="_blank">{esc(p["platform"])}</a></li>'
-        for p in SITE["profiles"]
-    )
+        for p in SITE["profiles"][:4]
+    ) + '\n        <li><a href="/profiles/">All profiles</a></li>'
     return f"""</main>
 <footer class="footer">
   <div class="footer-cta">
@@ -343,6 +371,7 @@ def footer() -> str:
     <span>{SITE["locality"]} <time data-clock>--:--</time> NPT</span>
   </div>
 </footer>
+{lead_dialog()}
 <script src="{asset("/assets/js/site.js")}" defer></script>
 </body>
 </html>
@@ -419,17 +448,16 @@ def guide_node(page: dict) -> dict:
     }
 
 
-def profiles_html() -> str:
+def profiles_html(detailed: bool) -> str:
+    """Profile tiles: platform + arrow; the Profiles page also shows each handle."""
     rows = []
-    for i, p in enumerate(SITE["profiles"], start=1):
+    for p in SITE["profiles"]:
+        rel = "noopener" if p.get("listing") else "me noopener"
+        handle = f'<span class="web-tile-handle">{esc(p["handle"])}</span>' if detailed else ""
         rows.append(
-            f'<li class="profile">'
-            f'<span class="idx">{i:02d}</span>'
-            f'<a class="profile-link" href="{esc(p["url"])}" rel="me noopener" target="_blank">'
-            f'<span class="profile-platform">{esc(p["platform"])}</span>'
-            f'<span class="profile-handle">{esc(p["handle"])}</span></a>'
-            f'<span class="profile-note">{esc(p["note"])}</span>'
-            f'</li>'
+            f'      <li><a class="web-tile" href="{esc(p["url"])}" rel="{rel}" target="_blank">'
+            f'<span class="web-tile-name">{esc(p["platform"])}{handle}</span>'
+            f'<span class="web-tile-arrow" aria-hidden="true">&rarr;</span></a></li>'
         )
     return "\n".join(rows)
 
@@ -526,7 +554,8 @@ def build() -> None:
     tokens = {
         "faq": faq_html(),
         "glossary": glossary_html(),
-        "profiles": profiles_html(),
+        "profiles": profiles_html(True),
+        "profileTiles": profiles_html(False),
         "posts": posts_list_html(posts),
         "email": SITE["email"],
         "phone": SITE["phone"],

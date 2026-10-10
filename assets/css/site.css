@@ -265,6 +265,93 @@ h3, .ch-title {
   .stat-row div:nth-child(n + 3) { border-top: 1px solid var(--line); }
 }
 
+/* Profile tiles ("Find me across the web"). */
+.web-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; list-style: none; }
+.web-tiles-detailed { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.web-tile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 54px;
+  height: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+.web-tile:hover, .web-tile:focus-visible { border-color: var(--accent); color: var(--accent); background: rgba(201, 242, 93, 0.04); }
+.web-tile-name { display: grid; gap: 3px; min-width: 0; }
+.web-tile-handle { color: var(--muted); font-size: 0.75rem; overflow-wrap: anywhere; }
+.web-tile-arrow { flex: none; color: var(--muted); font-size: 0.8125rem; transition: transform 0.2s, color 0.2s; }
+.web-tile:hover .web-tile-arrow { color: var(--accent); transform: translateX(2px); }
+
+/* "Hire me" pop-up form. */
+.lead {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: var(--bg-raise);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.lead::backdrop { background: rgba(10, 10, 10, 0.72); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+html:has(.lead[open]) { overflow: hidden; }
+.lead-inner { position: relative; padding: 34px 32px 26px; text-align: center; }
+.lead-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.lead-close:hover { border-color: var(--accent); color: var(--accent); }
+.lead-kicker { color: var(--accent); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+.lead-title { margin: 10px 0 8px; font-family: var(--font-display); font-stretch: var(--display-stretch); font-weight: 800; font-size: clamp(2rem, 1.2rem + 2vw, 2.7rem); line-height: 0.95; }
+.lead-sub { max-width: 44ch; margin: 0 auto 22px; color: var(--ink-2); font-size: 0.9375rem; }
+.lead-form { display: grid; gap: 14px; text-align: left; }
+.lead-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.lead-form label { display: grid; gap: 6px; font-size: 0.8125rem; font-weight: 600; }
+.lead-form label > span { color: var(--accent); }
+.lead-form input, .lead-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+.lead-form textarea { min-height: 110px; resize: vertical; }
+.lead-form input::placeholder, .lead-form textarea::placeholder { color: #7a7878; }
+.lead-form input:focus, .lead-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201, 242, 93, 0.15); }
+.btn.lead-submit { justify-content: center; width: 100%; margin-top: 4px; border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.btn.lead-submit:hover { background: #d8f884; }
+.lead-status { min-height: 1.2em; color: var(--accent); font-size: 0.875rem; text-align: center; }
+.lead-status:empty { display: none; }
+.lead-alt { margin-top: 12px; color: var(--muted); font-size: 0.8125rem; line-height: 1.5; text-align: center; }
+.lead-alt a { color: var(--ink); }
+.lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+@media (max-width: 560px) {
+  .lead-row { grid-template-columns: minmax(0, 1fr); }
+  .lead-inner { padding: 30px 18px 22px; }
+}
+
 /* Hero availability pill. */
 .status-pill {
   display: inline-flex;

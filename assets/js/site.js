@@ -107,6 +107,47 @@
     }
   });
 
+  // "Hire me" pop-up form. Trigger links keep their normal href as the no-JS
+  // fallback. With no endpoint configured, submit opens the visitor's email app.
+  var dialog = document.getElementById('lead-dialog');
+  if (dialog && typeof dialog.showModal === 'function') {
+    var form = dialog.querySelector('form');
+    var status = dialog.querySelector('.lead-status');
+    document.querySelectorAll('[data-open-form]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        status.textContent = '';
+        dialog.showModal();
+        form.querySelector('[name="name"]').focus();
+      });
+    });
+    dialog.querySelector('[data-close-form]').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      if (data.get('_gotcha')) return;
+      var to = form.getAttribute('data-email');
+      var endpoint = form.getAttribute('data-endpoint');
+      if (endpoint) {
+        status.textContent = 'Sending…';
+        fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data })
+          .then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            form.reset();
+            status.textContent = 'Thanks, your request is on its way. I’ll reply personally.';
+          })
+          .catch(function () { status.textContent = 'Sending failed. Please email me at ' + to + '.'; });
+        return;
+      }
+      var body = ['Name: ' + data.get('name'), 'Email: ' + data.get('email'), 'Website: ' + (data.get('website') || '-'), '', data.get('message')].join('\n');
+      location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Website review request from ' + data.get('name')) +
+        '&body=' + encodeURIComponent(body);
+      status.textContent = 'Your email app should open with your request ready to send.';
+    });
+  }
+
   // Fade sections in as they scroll into view.
   var targets = document.querySelectorAll('main > .frame:not(:first-child) .body');
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
