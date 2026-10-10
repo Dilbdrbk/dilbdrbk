@@ -16,12 +16,13 @@
   --topbar: 48px;
   --radius: 2px;
 
-  --font: "Geist", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
-  /* Headings: condensed grotesk. Free stand-in for Roc Grotesk Condensed;
-     to switch, load that font and change this one line. */
+  /* One family sitewide: Archivo. Headings use it condensed, text at normal
+     width. Free stand-in for Roc Grotesk; to switch, change these lines. */
+  --font: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono: var(--font);
   --font-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --display-stretch: 72%;
+  --text-stretch: 100%;
 
   color-scheme: dark;
 }
@@ -113,7 +114,15 @@ dl, dd { margin: 0; }
 .brand:hover { color: var(--ink); }
 .brand-logo { display: block; width: auto; height: 24px; }
 
-/* Condensed display face for headings; body text stays in Geist. */
+/* Condensed Archivo for headings and big text; everything else is Archivo at normal width. */
+body { font-stretch: var(--text-stretch); }
+.idx, .stage-tab, .status-pill, .cite, time { font-variant-numeric: tabular-nums; }
+h3, .ch-title {
+  font-family: var(--font-display);
+  font-stretch: 82%;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
 .display, .page-title, .section-title, .prose h2, .role h2,
 .footer-big, .contact-value, .profile-platform, .post-title, .empty-title {
   font-family: var(--font-display);
