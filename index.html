@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,600..900&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v=17ce0022">
+<link rel="stylesheet" href="/assets/css/site.css?v=b18c98d1">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {
@@ -328,9 +328,46 @@
   </div>
   <div class="body">
     <h2 id="hsw-title" class="section-title">How search works, in five diagrams</h2>
-    <ol class="mini-flow" role="list" aria-label="From a search to a ranked page">
-      <li>Query</li><li>Crawl</li><li>Understand</li><li>Rank</li><li>Answer</li>
-    </ol>
+    <div class="stages" data-stages>
+      <div class="stage-tabs" role="tablist" aria-label="Stages from a search to a ranked page">
+        <button class="stage-tab" type="button" role="tab" id="tab-query" aria-controls="stage-query" aria-selected="true" tabindex="0">Query</button>
+        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
+        <button class="stage-tab" type="button" role="tab" id="tab-crawl" aria-controls="stage-crawl" aria-selected="false" tabindex="-1">Crawl</button>
+        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
+        <button class="stage-tab" type="button" role="tab" id="tab-understand" aria-controls="stage-understand" aria-selected="false" tabindex="-1">Understand</button>
+        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
+        <button class="stage-tab" type="button" role="tab" id="tab-rank" aria-controls="stage-rank" aria-selected="false" tabindex="-1">Rank</button>
+        <span class="stage-arrow" aria-hidden="true">&rarr;</span>
+        <button class="stage-tab" type="button" role="tab" id="tab-answer" aria-controls="stage-answer" aria-selected="false" tabindex="-1">Answer</button>
+      </div>
+      <div class="stage-panels">
+        <div class="stage-panel is-active" id="stage-query" role="tabpanel" aria-labelledby="tab-query">
+          <p class="stage-name"><span class="idx">01</span> Query</p>
+          <p class="stage-text">The engine works out the entity, the intent and the kind of result the searcher expects.</p>
+          <p class="stage-fix">Fixed by <strong>keyword research &amp; query networks</strong></p>
+        </div>
+        <div class="stage-panel" id="stage-crawl" role="tabpanel" aria-labelledby="tab-crawl">
+          <p class="stage-name"><span class="idx">02</span> Crawl</p>
+          <p class="stage-text">The page is found through links and sitemaps, then fetched. Blocked, slow or orphaned pages may never be read.</p>
+          <p class="stage-fix">Fixed by <strong>technical SEO</strong></p>
+        </div>
+        <div class="stage-panel" id="stage-understand" role="tabpanel" aria-labelledby="tab-understand">
+          <p class="stage-name"><span class="idx">03</span> Understand</p>
+          <p class="stage-text">Entities, attributes and their relations are pulled out, and the page is filed under what it really covers.</p>
+          <p class="stage-fix">Fixed by <strong>semantic SEO</strong></p>
+        </div>
+        <div class="stage-panel" id="stage-rank" role="tabpanel" aria-labelledby="tab-rank">
+          <p class="stage-name"><span class="idx">04</span> Rank</p>
+          <p class="stage-text">Candidate pages are compared on relevance, quality and trust, including how much the whole site knows about the topic.</p>
+          <p class="stage-fix">Fixed by <strong>topical authority &amp; links</strong></p>
+        </div>
+        <div class="stage-panel" id="stage-answer" role="tabpanel" aria-labelledby="tab-answer">
+          <p class="stage-name"><span class="idx">05</span> Answer</p>
+          <p class="stage-text">The winner shows as a blue link, a map pack listing, a featured snippet or a cited source in an AI answer.</p>
+          <p class="stage-fix">Fixed by <strong>GEO &amp; AEO</strong></p>
+        </div>
+      </div>
+    </div>
     <ol class="chapters" role="list">
       <li><a href="/how-search-works/#ranking"><span class="idx">01</span><span class="ch-title">From a search to a ranked page</span><span class="ch-note">Five stages, and which kind of SEO fixes each one.</span></a></li>
       <li><a href="/how-search-works/#ai-answers"><span class="idx">02</span><span class="ch-title">Inside an AI-generated answer</span><span class="ch-note">How one question becomes many searches and a few cited sources.</span></a></li>
@@ -490,6 +527,6 @@
     <span>Kathmandu <time data-clock>--:--</time> NPT</span>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=873c3e08" defer></script>
+<script src="/assets/js/site.js?v=955979df" defer></script>
 </body>
 </html>

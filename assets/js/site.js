@@ -33,6 +33,31 @@
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
 
+  // Home: search stages as tabs (arrow keys, Home and End move between them).
+  document.querySelectorAll('[data-stages]').forEach(function (box) {
+    var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
+    var select = function (tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).classList.toggle('is-active', on);
+      });
+      if (focus) tab.focus();
+    };
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab); });
+      tab.addEventListener('keydown', function (e) {
+        var next = { ArrowRight: tabs[(i + 1) % tabs.length], ArrowLeft: tabs[(i - 1 + tabs.length) % tabs.length],
+                     Home: tabs[0], End: tabs[tabs.length - 1] }[e.key];
+        if (next) {
+          e.preventDefault();
+          select(next, true);
+        }
+      });
+    });
+  });
+
   // Fade sections in as they scroll into view.
   var targets = document.querySelectorAll('main > .frame:not(:first-child) .body');
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {

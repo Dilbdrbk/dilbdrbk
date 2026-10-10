@@ -763,9 +763,45 @@ a.contact-value:hover { text-decoration: underline; }
 .anatomy-list p { color: var(--muted); font-size: 0.9rem; }
 
 /* Home: compact pipeline and chapter rows. */
-.mini-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 28px; list-style: none; font-family: var(--mono); font-size: 0.8125rem; }
-.mini-flow li { padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 999px; }
-.mini-flow li:last-child { border-color: var(--accent); color: var(--accent); }
+/* Home: clickable search stages. Without JS every panel shows as a list. */
+.stages { margin-bottom: 28px; }
+.stage-tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+.stage-tab {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+.stage-tab:hover { border-color: var(--ink); }
+.stage-tab[aria-selected="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.stage-arrow { color: var(--muted); font-size: 0.8125rem; }
+.stage-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 6px 24px;
+  padding: 16px 18px;
+  border-left: 2px solid var(--accent);
+  background: var(--bg-raise);
+}
+.stage-name { grid-column: 1 / -1; font-size: 0.8125rem; font-weight: 600; color: var(--muted); }
+.stage-text { color: var(--ink-2); max-width: 62ch; }
+.stage-fix { color: var(--muted); font-size: 0.8125rem; white-space: nowrap; }
+.stage-fix strong { color: var(--accent); font-weight: 600; }
+.js .stage-panel:not(.is-active) { display: none; }
+html:not(.js) .stage-tabs { display: none; }
+html:not(.js) .stage-panel + .stage-panel { margin-top: 8px; }
+@media (max-width: 560px) {
+  .stage-arrow { display: none; }
+  .stage-panel { grid-template-columns: minmax(0, 1fr); }
+  .stage-fix { white-space: normal; }
+}
 .chapters { list-style: none; border-top: 1px solid var(--line); }
 .chapters a { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
 .ch-title { font-size: clamp(1.0625rem, 1rem + 0.5vw, 1.375rem); font-weight: 700; letter-spacing: -0.02em; }
