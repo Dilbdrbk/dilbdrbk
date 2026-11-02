@@ -95,3 +95,4 @@ Profile logos in `assets/img/logos/` (hero "Find me on" row, shown as white silh
 | truelancer.png | https://static.truelancer.com/truelancer-logo-dark-background_small.png (Truelancer site header) |
 | contra.svg | Header logo of https://contra.com/ |
 | wellfound.svg | https://wellfound.com/assets/logo/rebrand/ (Wellfound site header) |
+| peerlist.svg | https://dqy38fnwh4fqs.cloudfront.net/website/peerlist-logo-full-dark.svg (Peerlist site header asset, found through a Wayback snapshot because peerlist.io blocks scripted fetches) |
