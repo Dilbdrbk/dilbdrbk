@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v=0fa12777">
+<link rel="stylesheet" href="/assets/css/site.css?v=bb5bc0d4">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {
@@ -198,7 +198,7 @@
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
 </header>
 <main id="main">
-<section class="frame page-head">
+<section class="frame page-head is-compact">
   <div class="body">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/tools/">Tools</a><span>/</span><span aria-current="page">SERP Snippet Preview</span></nav>
     <p class="kicker"><span class="dot" aria-hidden="true"></span>Free tool</p>
@@ -208,17 +208,11 @@
   </div>
 </section>
 
-<section class="frame post-main">
-  <div class="body post-layout is-single">
-    <div class="post-content">
-    <div class="prose post-body">
-
+<section class="frame tool-stage" aria-label="SERP snippet preview tool">
+  <div class="body post-body">
 <div class="post-tool serp-tool" data-serp-tool>
-  <div class="tool-head">
-    <p class="tool-kicker">Free tool</p>
-    <p class="tool-title">Preview your Google snippet</p>
-    <p class="tool-note">Type or paste your page details. The preview, the pixel meters and the tips update as you type, and nothing you enter leaves your browser.</p>
-  </div>
+  <div class="serp-in">
+    <p class="serp-lead">Type or paste your page details. The preview updates as you type, and nothing you enter leaves your browser.</p>
   <div class="serp-form">
     <label class="serp-field serp-wide">Title tag
       <input type="text" data-s="title" value="SERP Snippet Preview Tool: Check Titles and Meta Descriptions" autocomplete="off">
@@ -241,6 +235,8 @@
       <input type="date" data-s="date" value="2026-11-03">
     </label>
   </div>
+  </div>
+  <div class="serp-out">
   <div class="serp-device js-only" role="group" aria-label="Device">
     <button class="qa-pick" type="button" data-device="desktop" aria-pressed="true">Desktop</button>
     <button class="qa-pick" type="button" data-device="mobile" aria-pressed="false">Mobile</button>
@@ -261,7 +257,15 @@
   </div>
   <p class="qa-note nojs-only">Turn on JavaScript to see the live preview and the pixel meters.</p>
   <p class="qa-note">Pixel limits are estimates: about 600 pixels for a desktop title and 990 for a desktop description, and about 920 and 1,300 pixels on mobile. Google sets no fixed limit and cuts text to fit the screen, so treat a near-limit result as a warning, not a rule.</p>
+  </div>
 </div>
+  </div>
+</section>
+
+<section class="frame post-main">
+  <div class="body post-layout is-single">
+    <div class="post-content">
+    <div class="prose post-body">
 
 <h2 id="how-to-use">How to use the SERP snippet preview tool</h2>
 <p>The SERP snippet preview tool needs 4 inputs and returns a live Google-style result with a pixel check for each line. Follow the steps below for each page you publish or update.</p>
@@ -273,8 +277,8 @@
 <li><strong>Switch between desktop and mobile.</strong> Each device uses its own width, so a title that fits on mobile can still get cut on desktop.</li>
 <li><strong>Copy the tags.</strong> The copy button gives you the finished title and meta description as HTML, ready for your page or CMS.</li>
 </ol>
-<figure class="post-figure"><img src="/assets/img/tools/serp-preview-desktop.webp" width="774" height="1021" alt="SERP snippet preview tool showing a desktop Google result with the title, URL breadcrumb, bolded keyword and two pixel meters that fit the limits" loading="lazy" decoding="async"><figcaption>Desktop preview: both meters stay within the estimated limits, so Google is likely to show the full title and description.</figcaption></figure>
-<figure class="post-figure"><img src="/assets/img/tools/serp-preview-long.webp" width="774" height="1079" alt="SERP snippet preview tool showing a title and description that run past the pixel limits, with the cut-off marked by an ellipsis and warnings in the tips list" loading="lazy" decoding="async"><figcaption>Too long: the preview cuts the title and the description where Google is likely to, and the tips explain what to shorten.</figcaption></figure>
+<figure class="post-figure"><img src="/assets/img/tools/serp-preview-desktop.webp" width="1112" height="541" alt="SERP snippet preview tool showing a desktop Google result with the title, URL breadcrumb, bolded keyword and two pixel meters that fit the limits" loading="lazy" decoding="async"><figcaption>Desktop preview: both meters stay within the estimated limits, so Google is likely to show the full title and description.</figcaption></figure>
+<figure class="post-figure"><img src="/assets/img/tools/serp-preview-long.webp" width="1112" height="588" alt="SERP snippet preview tool showing a title and description that run past the pixel limits, with the cut-off marked by an ellipsis and warnings in the tips list" loading="lazy" decoding="async"><figcaption>Too long: the preview cuts the title and the description where Google is likely to, and the tips explain what to shorten.</figcaption></figure>
 
 <h2 id="title-tag-length">How long should a title tag be?</h2>
 <p>A title tag should fit within about 600 pixels to show in full on desktop, which is roughly 50 to 60 characters of normal text. Google states that there is no limit on how long a title element can be, but that the title link is truncated as needed to fit the device width.</p>

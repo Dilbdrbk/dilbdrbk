@@ -2050,3 +2050,24 @@ html.js .nojs-only { display: none; }
 .serp-copied { color: var(--accent); font-size: 0.8125rem; }
 @media (max-width: 640px) { .serp-form { grid-template-columns: minmax(0, 1fr); } }
 .post-layout.is-single { grid-template-columns: minmax(0, 820px); justify-content: center; }
+
+/* Tool pages: compact header and a wide tool stage, so the tool shows on first load. */
+.page-head.is-compact > .body { padding-top: clamp(16px, 2.2vw, 26px); padding-bottom: clamp(14px, 2vw, 22px); }
+.page-head.is-compact .page-title { font-size: clamp(2rem, 1.1rem + 2.4vw, 3.2rem); }
+.page-head.is-compact .lede { margin-top: 10px; font-size: 1rem; }
+.page-head.is-compact .policy-date { margin-top: 8px; }
+.tool-stage > .body { max-width: 1160px; margin-inline: auto; padding-top: clamp(14px, 2vw, 22px); padding-bottom: clamp(28px, 4vw, 48px); }
+.serp-lead { color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+.serp-in .serp-form { margin-top: 12px; }
+@media (min-width: 980px) {
+  .serp-tool { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .serp-out { position: sticky; top: calc(var(--topbar) + 16px); }
+  .serp-out .serp-device { margin-top: 0; }
+}
+.page-head.is-compact .page-title { max-width: none; }
+.page-head.is-compact .lede { max-width: 82ch; }
+.page-head.is-compact .crumbs + .kicker { margin-top: 12px; }
+.page-head.is-compact .kicker + .page-title { margin-top: 10px; }
+.tool-stage > .body { padding-top: 6px; }
+.tool-stage .post-body > .post-tool, .tool-stage .post-tool { margin-top: 0; }
+.serp-result[data-device-view="desktop"] .serp-title { overflow: hidden; font-size: 19px; white-space: nowrap; text-overflow: ellipsis; }
