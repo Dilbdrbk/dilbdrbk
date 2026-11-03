@@ -508,6 +508,12 @@ def blog_images():
                              "Test page or section", "Split core and outer", "Plan internal links"], step=56)
     save_scaled(card, "topical-map-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
 
+    cover, d = feature_canvas(1200, 630, 640, ("SERP snippet", "preview tool"),
+                              "See your title and meta description as Google shows them, with pixel checks.",
+                              label="FREE TOOL")
+    steps_list(d, 712, 150, ["Title width in pixels", "Description width", "Desktop and mobile", "Keyword in bold", "Copy the HTML tags"], step=80)
+    save_scaled(cover, "serp-snippet-preview.webp", (1600, 840), "WEBP", quality=82, method=6)
+
 
 if __name__ == "__main__":
     IMG.mkdir(parents=True, exist_ok=True)

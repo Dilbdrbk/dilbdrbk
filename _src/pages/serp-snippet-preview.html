@@ -1,0 +1,147 @@
+<section class="frame page-head">
+  <div class="body">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/tools/">Tools</a><span>/</span><span aria-current="page">SERP Snippet Preview</span></nav>
+    <p class="kicker"><span class="dot" aria-hidden="true"></span>Free tool</p>
+    <h1 class="page-title">SERP snippet preview tool</h1>
+    <p class="lede">The SERP snippet preview tool shows how a title tag and meta description appear in Google results on desktop and mobile, measures both in pixels, and marks the point where Google is likely to cut the text.</p>
+    <p class="policy-date">By <a href="/about/">Dil Bahadur B.K.</a> &middot; Updated <time datetime="2026-11-03">3 November 2026</time></p>
+  </div>
+</section>
+
+<section class="frame post-main">
+  <div class="body post-layout is-single">
+    <div class="post-content">
+    <div class="prose post-body">
+
+<div class="post-tool serp-tool" data-serp-tool>
+  <div class="tool-head">
+    <p class="tool-kicker">Free tool</p>
+    <p class="tool-title">Preview your Google snippet</p>
+    <p class="tool-note">Type or paste your page details. The preview, the pixel meters and the tips update as you type, and nothing you enter leaves your browser.</p>
+  </div>
+  <div class="serp-form">
+    <label class="serp-field serp-wide">Title tag
+      <input type="text" data-s="title" value="SERP Snippet Preview Tool: Check Titles and Meta Descriptions" autocomplete="off">
+      <span class="serp-meter js-only"><span class="snip-bar"><span data-s="title-bar"></span></span><span class="serp-count" data-s="title-count"></span></span>
+    </label>
+    <label class="serp-field serp-wide">Meta description
+      <textarea rows="3" data-s="desc">The SERP snippet preview tool shows your title and meta description as Google displays them, with pixel meters that mark where text gets cut.</textarea>
+      <span class="serp-meter js-only"><span class="snip-bar"><span data-s="desc-bar"></span></span><span class="serp-count" data-s="desc-count"></span></span>
+    </label>
+    <label class="serp-field">Page URL
+      <input type="url" data-s="url" value="https://dilbdrbk.com.np/tools/serp-snippet-preview/" autocomplete="off">
+    </label>
+    <label class="serp-field">Site name
+      <input type="text" data-s="site" value="Dil Bahadur B.K." autocomplete="off">
+    </label>
+    <label class="serp-field"><span>Focus keyword <span class="serp-opt">(optional)</span></span>
+      <input type="text" data-s="kw" value="serp snippet preview" autocomplete="off">
+    </label>
+    <label class="serp-field serp-check"><input type="checkbox" data-s="date-on"> Show a publish date
+      <input type="date" data-s="date" value="2026-11-03">
+    </label>
+  </div>
+  <div class="serp-device js-only" role="group" aria-label="Device">
+    <button class="qa-pick" type="button" data-device="desktop" aria-pressed="true">Desktop</button>
+    <button class="qa-pick" type="button" data-device="mobile" aria-pressed="false">Mobile</button>
+  </div>
+  <div class="serp-result js-only" data-s="card" data-device-view="desktop" aria-live="polite">
+    <div class="serp-site">
+      <span class="serp-favicon" data-s="favicon" aria-hidden="true">D</span>
+      <span class="serp-site-text"><span class="serp-site-name" data-s="site-out"></span><span class="serp-crumb" data-s="crumb"></span></span>
+    </div>
+    <p class="serp-title" data-s="title-out"></p>
+    <p class="serp-desc"><span class="serp-date" data-s="date-out"></span><span data-s="desc-out"></span></p>
+  </div>
+  <ul class="serp-tips js-only" data-s="tips" aria-live="polite"></ul>
+  <div class="serp-actions js-only">
+    <button class="btn btn-ghost chk-btn" type="button" data-s="copy-tags">Copy HTML tags</button>
+    <button class="btn btn-ghost chk-btn" type="button" data-s="copy-link">Copy share link</button>
+    <span class="serp-copied" data-s="copied" role="status"></span>
+  </div>
+  <p class="qa-note nojs-only">Turn on JavaScript to see the live preview and the pixel meters.</p>
+  <p class="qa-note">Pixel limits are estimates: about 600 pixels for a desktop title and 990 for a desktop description, and about 920 and 1,300 pixels on mobile. Google sets no fixed limit and cuts text to fit the screen, so treat a near-limit result as a warning, not a rule.</p>
+</div>
+
+<h2 id="how-to-use">How to use the SERP snippet preview tool</h2>
+<p>The SERP snippet preview tool needs 4 inputs and returns a live Google-style result with a pixel check for each line. Follow the steps below for each page you publish or update.</p>
+<ol>
+<li><strong>Enter the title tag.</strong> Paste the exact text of the page's title element, and watch the title meter while you edit.</li>
+<li><strong>Enter the meta description.</strong> Paste the description and check that the answer to the page's main question comes first.</li>
+<li><strong>Add the URL and site name.</strong> The tool turns the URL into the breadcrumb Google shows, such as dilbdrbk.com.np › tools.</li>
+<li><strong>Add a focus keyword.</strong> The preview bolds the keyword in the description the way Google bolds matching search terms, and the tips confirm it appears in both lines.</li>
+<li><strong>Switch between desktop and mobile.</strong> Each device uses its own width, so a title that fits on mobile can still get cut on desktop.</li>
+<li><strong>Copy the tags.</strong> The copy button gives you the finished title and meta description as HTML, ready for your page or CMS.</li>
+</ol>
+<figure class="post-figure"><img src="/assets/img/tools/serp-preview-desktop.webp" width="774" height="1006" alt="SERP snippet preview tool showing a desktop Google result with the title, URL breadcrumb, bolded keyword and two pixel meters that fit the limits" loading="lazy" decoding="async"><figcaption>Desktop preview: both meters stay within the estimated limits, so Google is likely to show the full title and description.</figcaption></figure>
+<figure class="post-figure"><img src="/assets/img/tools/serp-preview-long.webp" width="774" height="1064" alt="SERP snippet preview tool showing a title and description that run past the pixel limits, with the cut-off marked by an ellipsis and warnings in the tips list" loading="lazy" decoding="async"><figcaption>Too long: the preview cuts the title and the description where Google is likely to, and the tips explain what to shorten.</figcaption></figure>
+
+<h2 id="title-tag-length">How long should a title tag be?</h2>
+<p>A title tag should fit within about 600 pixels to show in full on desktop, which is roughly 50 to 60 characters of normal text. Google states that there is no limit on how long a title element can be, but that the title link is truncated as needed to fit the device width.</p>
+<p>Pixels matter more than characters because letters differ in width. A title full of wide letters, such as W and M, gets cut sooner than a title of narrow letters, such as i and l, at the same character count.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th scope="col">Snippet line</th><th scope="col">Desktop estimate</th><th scope="col">Mobile estimate</th><th scope="col">Rough character count</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td>About 600 px</td><td>About 920 px</td><td>50 to 60 characters</td></tr>
+<tr><td>Meta description</td><td>About 990 px</td><td>About 1,300 px</td><td>140 to 160 characters</td></tr>
+</tbody>
+</table>
+</div>
+<p>The estimates come from the limits that common preview tools use, measured in the Arial font Google uses for results. Google does not publish fixed numbers, so check important pages against a live search after publishing.</p>
+
+<h2 id="meta-description-length">How long should a meta description be?</h2>
+<p>A meta description should fit within about 990 pixels on desktop, roughly 140 to 160 characters, so the full answer shows in results. Google states that there is no limit on how long a meta description can be, but that the snippet is truncated to fit the device width.</p>
+<p>A visible date takes part of that space. When Google shows a publish date before the description, the date and its separator use pixels the description would otherwise fill, so the tool adds the date to the measurement when you switch it on.</p>
+
+<h2 id="why-google-rewrites">Why does Google rewrite titles and meta descriptions?</h2>
+<p>Google rewrites a title or a description when it finds a better summary of the page elsewhere. Google states that snippets are primarily created from the page content itself, and that it uses the meta description when that gives a more accurate summary than the on-page text.</p>
+<p>For title links, Google lists the sources it uses, such as the title element, the main visible heading, og:title tags, anchor text in links to the page and WebSite structured data. A title that matches the H1 and describes the page accurately is the one Google is most likely to keep.</p>
+
+<h2 id="write-better-snippets">How to write a title and meta description that earn clicks</h2>
+<p>A title and description earn clicks when they answer the search directly and specifically. The list covers 6 practices, drawn from Google's own guidance on snippets and title links.</p>
+<ol>
+<li><strong>Answer first in the description.</strong> Open with the direct answer to the page's question, not the question repeated.</li>
+<li><strong>Put the topic first in the title.</strong> Lead with the main topic, then add the qualifier, such as the year, the location or the brand.</li>
+<li><strong>Write a unique pair for every page.</strong> Google warns that repeated descriptions across pages are less useful in results.</li>
+<li><strong>Add concrete details.</strong> Google suggests details such as the price, the author, the date or key specifications.</li>
+<li><strong>Avoid keyword lists.</strong> Google states that descriptions made of long keyword strings explain little and are less likely to appear.</li>
+<li><strong>Keep the title and the H1 consistent.</strong> Matching wording makes it more likely that Google shows your title as written.</li>
+</ol>
+
+<h2 id="what-to-check">What should a SERP snippet preview tool check?</h2>
+<p>A SERP snippet preview tool should check pixel width, device differences and the content of each line, not only the character count. The table lists the checks this tool runs and why each one matters.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th scope="col">Check</th><th scope="col">Why it matters</th></tr></thead>
+<tbody>
+<tr><td>Pixel width of each line</td><td>Google cuts text by display width, so a character count alone misjudges wide and narrow letters</td></tr>
+<tr><td>Desktop and mobile views</td><td>Each device has its own width, so a snippet can fit on one and get cut on the other</td></tr>
+<tr><td>Keyword bolding</td><td>Bold matching terms draw the eye, so the keyword should appear in both lines</td></tr>
+<tr><td>URL breadcrumb and site name</td><td>Google shows the site name and a breadcrumb above the title, which frame the click</td></tr>
+<tr><td>Publish date</td><td>A visible date uses part of the description's space</td></tr>
+<tr><td>Answer-first description</td><td>A description that opens with the answer tells searchers the page solves their question</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="faq">SERP snippet preview FAQ</h2>
+<h3>Is the SERP snippet preview tool free?</h3>
+<p>Yes. The tool is free, needs no sign-up and runs entirely in your browser, so the titles and descriptions you enter are never sent to a server.</p>
+<h3>Does Google always show my title and meta description?</h3>
+<p>No. Google may rewrite either one when it finds a more accurate summary of the page, such as the main heading or text from the page itself.</p>
+<h3>Why does the preview cut my title before 60 characters?</h3>
+<p>The preview measures pixels, not characters. Wide letters and capital letters fill the roughly 600-pixel desktop width faster, so a title of 55 wide characters can still get cut.</p>
+<h3>Should every page have a meta description?</h3>
+<p>Yes. A unique description gives Google a summary it can show, and Google recommends page-specific descriptions instead of one shared text across pages.</p>
+<h3>Does a better snippet improve rankings?</h3>
+<p>A snippet does not raise rankings directly. A clear title and an answer-first description can raise the share of searchers who click, which is the traffic the ranking earns.</p>
+
+<h2 id="related">Related tools and guides</h2>
+<p>The <a href="/tools/">free SEO tools</a> page lists every standalone tool on this site, and the <a href="/blog/">blog</a> carries more interactive checkers inside its guides. The <a href="/seo-audit-checklist/">SEO audit checklist</a> covers title tags and meta descriptions alongside 54 other checks.</p>
+<p class="audit-cta"><a class="btn btn-audit" href="/contact/" data-open-form data-form-title="Get a free SEO audit" data-form-sub="Share your website and what you want from search. I review the site and reply myself." data-form-subject="Free SEO audit request">Get a Free SEO Audit</a></p>
+
+    </div>
+    </div>
+  </div>
+</section>

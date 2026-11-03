@@ -50,6 +50,7 @@ NAV = [
     ("/industries/", "Industries"),
     ("/about/", "About"),
     ("/blog/", "Blog"),
+    ("/tools/", "Tools"),
     ("/checklists/", "Checklists"),
 ]
 
@@ -90,6 +91,12 @@ PAGES = [
     dict(path="/contact/", body="contact.html", crumb="Contact", updated="2026-10-25", kind="contact",
          title="Contact Dil Bahadur B.K. | Semantic SEO Specialist, Kathmandu",
          description="Reach Dil Bahadur B.K. by email, phone or LinkedIn. Based in Kathmandu, Nepal (NPT, UTC+5:45)."),
+    dict(path="/tools/", body="tools.html", crumb="Tools", updated="2026-11-03", kind="page",
+         title="Free SEO Tools | Dil Bahadur B.K.",
+         description="Free SEO tools run in your browser with no sign-up and no data sent, starting with a SERP snippet preview that checks titles and meta descriptions."),
+    dict(path="/tools/serp-snippet-preview/", body="serp-snippet-preview.html", crumb="SERP Snippet Preview", updated="2026-11-03", kind="page",
+         title="SERP Snippet Preview Tool: Title & Meta Checker | Dil B.K.",
+         description="The SERP snippet preview tool shows your title and meta description as Google displays them on desktop and mobile, with pixel meters and cut-off marks."),
     dict(path="/checklists/", body="checklists.html", crumb="Checklists", updated="2026-11-01", kind="page",
          title="Free SEO Checklists | Dil Bahadur B.K.",
          description="Free SEO checklists turn audits into tickable steps, starting with a 56-point SEO audit checklist for technical, on-page, local and AI search."),
@@ -719,6 +726,36 @@ CHECKLISTS = [
 ]
 
 
+# Free standalone tools, newest first. Tools that live inside blog posts stay with their posts.
+TOOLS = [
+    dict(path="/tools/serp-snippet-preview/", image="serp-snippet-preview", label="Tool page",
+         title="SERP Snippet Preview Tool",
+         description="Preview a title and meta description as Google shows them on desktop and mobile, with pixel meters and cut-off marks."),
+]
+
+
+def tool_cards_html(wide: bool = False, limit: int | None = None) -> str:
+    """Tool cards: the Tools page uses a grid, the home Resources tab the wide blog-card layout."""
+    cards = []
+    for t in TOOLS[:limit]:
+        src = asset(f'{BLOG_IMG}/{t["image"]}.webp')
+        img = f'<img src="{src}" width="1600" height="840" alt="" loading="lazy" decoding="async">'
+        meta = f'<span class="feature-meta"><span>{esc(t["label"])}</span><span>Free, runs in your browser</span></span>'
+        more = "Open the tool"
+        if wide:
+            cards.append(f'<li class="feature-card"><a href="{t["path"]}">{img}<span class="feature-text">'
+                         f'<span class="feature-tags"><span>Free tool</span></span>{meta}'
+                         f'<span class="feature-title">{esc(t["title"])}</span>'
+                         f'<span class="feature-desc">{esc(t["description"])}</span>'
+                         f'<span class="feature-more">{more}</span></span></a></li>')
+        else:
+            cards.append(f'<li class="chk-card"><a href="{t["path"]}">{img}<span class="chk-card-text">{meta}'
+                         f'<span class="chk-card-title">{esc(t["title"])} <span aria-hidden="true">&#8599;</span></span>'
+                         f'<span class="chk-card-desc">{esc(t["description"])}</span></span></a></li>')
+    cls = "feature-posts" if wide else "chk-cards"
+    return f'<ul class="{cls}" role="list">\n' + "\n".join(cards) + "\n</ul>"
+
+
 def checklist_cards_html(wide: bool = False) -> str:
     """Checklist cards: the hub page uses a grid, the home Resources tab the wide blog-card layout."""
     cards = []
@@ -970,6 +1007,8 @@ def build() -> None:
         "posts": posts_list_html(posts),
         "featuredPosts": featured_posts_html(posts),
         "checklistCards": checklist_cards_html(),
+        "toolCards": tool_cards_html(),
+        "toolFeature": tool_cards_html(wide=True, limit=3),
         "checklistFeature": checklist_cards_html(wide=True),
         "email": SITE["email"],
         "phone": SITE["phone"],

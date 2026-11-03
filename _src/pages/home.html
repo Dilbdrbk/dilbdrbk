@@ -482,10 +482,11 @@
 <section class="frame" id="resources" aria-labelledby="resources-title">
   <div class="body">
     <h2 id="resources-title" class="section-title">Resources on semantic SEO</h2>
-    <p class="section-note">The blog shares semantic SEO guides, the checklists turn audits into tickable steps, and the FAQ answers the questions people ask me most.</p>
+    <p class="section-note">The blog shares semantic SEO guides, the free tools check your pages in the browser, the checklists turn audits into tickable steps, and the FAQ answers the questions people ask me most.</p>
     <div class="res-tabs" data-tabs>
       <div class="res-tablist js-only" role="tablist" aria-label="Resources">
         <button class="res-tab" type="button" role="tab" id="res-tab-blog" aria-controls="blog-posts" aria-selected="true">Blog</button>
+        <button class="res-tab" type="button" role="tab" id="res-tab-tools" aria-controls="tools" aria-selected="false" tabindex="-1">Tools</button>
         <button class="res-tab" type="button" role="tab" id="res-tab-checklists" aria-controls="checklists" aria-selected="false" tabindex="-1">Checklists</button>
         <button class="res-tab" type="button" role="tab" id="res-tab-faq" aria-controls="faq" aria-selected="false" tabindex="-1">FAQ</button>
       </div>
@@ -493,6 +494,11 @@
         <p class="label res-nojs">Blog</p>
 {{featuredPosts}}
         <p class="section-link"><a class="arrow-link" href="/blog/">All posts on the blog</a></p>
+      </div>
+      <div class="res-panel" id="tools" role="tabpanel" aria-labelledby="res-tab-tools">
+        <p class="label res-nojs">Tools</p>
+{{toolFeature}}
+        <p class="section-link"><a class="arrow-link" href="/tools/">All free tools</a></p>
       </div>
       <div class="res-panel" id="checklists" role="tabpanel" aria-labelledby="res-tab-checklists">
         <p class="label res-nojs">Checklists</p>

@@ -545,6 +545,123 @@
   });
 
   // Topical coverage checker: ticked subtopics give a core, outer and total count, plus the open gaps.
+  // SERP snippet preview: pixel widths measured in Arial on a canvas, cut at the last whole word.
+  document.querySelectorAll('[data-serp-tool]').forEach(function (tool) {
+    var el = function (name) { return tool.querySelector('[data-s="' + name + '"]'); };
+    var LIMITS = { desktop: { title: 600, desc: 990 }, mobile: { title: 920, desc: 1300 } };
+    var FONT = { title: '20px Arial', desc: '14px Arial' };
+    var ctx = document.createElement('canvas').getContext('2d');
+    var device = 'desktop';
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var px = function (text, font) { ctx.font = font; return Math.round(ctx.measureText(text).width); };
+    var fit = function (text, font, limit) {
+      if (px(text, font) <= limit) return { text: text, cut: false };
+      var words = text.split(/\s+/), out = '';
+      for (var i = 0; i < words.length; i++) {
+        var next = out ? out + ' ' + words[i] : words[i];
+        if (px(next + ' ...', font) > limit) break;
+        out = next;
+      }
+      return { text: (out || text.slice(0, 20)) + ' ...', cut: true };
+    };
+    var bold = function (node, text, kw) {
+      node.textContent = '';
+      var terms = kw.toLowerCase().split(/\s+/).filter(function (w) { return w.length > 2; });
+      if (!terms.length) { node.textContent = text; return; }
+      var re = new RegExp('(' + terms.map(function (w) { return w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }).join('|') + ')', 'gi');
+      text.split(re).forEach(function (part, i) {
+        if (i % 2) { var b = document.createElement('b'); b.textContent = part; node.appendChild(b); }
+        else if (part) node.appendChild(document.createTextNode(part));
+      });
+    };
+    var crumb = function (raw) {
+      try {
+        var u = new URL(/^https?:\/\//i.test(raw) ? raw : 'https://' + raw);
+        var parts = u.pathname.split('/').filter(Boolean).map(function (p) { return decodeURIComponent(p).replace(/[-_]+/g, ' '); });
+        return { host: u.hostname.replace(/^www\./, ''), text: [u.protocol + '//' + u.hostname].concat(parts).join(' \u203a ') };
+      } catch (e) { return { host: '', text: raw }; }
+    };
+    var meter = function (name, width, limit, chars) {
+      var bar = el(name + '-bar'), ratio = width / limit;
+      bar.style.width = Math.min(100, Math.round(ratio * 100)) + '%';
+      bar.className = ratio > 1 ? 'is-over' : ratio > 0.9 ? 'is-near' : '';
+      el(name + '-count').textContent = width + ' / ' + limit + ' px \u00b7 ' + chars + ' characters';
+    };
+    var tip = function (list, cls, text) { var li = document.createElement('li'); if (cls) li.className = cls; li.textContent = text; list.appendChild(li); };
+    var update = function () {
+      var title = el('title').value.trim(), desc = el('desc').value.trim(), kw = el('kw').value.trim();
+      var site = el('site').value.trim(), c = crumb(el('url').value.trim());
+      var lim = LIMITS[device];
+      var dateText = '';
+      if (el('date-on').checked && el('date').value) {
+        var d = new Date(el('date').value + 'T00:00:00');
+        if (!isNaN(d)) dateText = MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + ' - ';
+      }
+      var tW = px(title, FONT.title), dW = px(dateText + desc, FONT.desc);
+      meter('title', tW, lim.title, title.length);
+      meter('desc', dW, lim.desc, desc.length);
+      var t = fit(title || 'Your title tag appears here', FONT.title, lim.title);
+      var dFit = fit(dateText + (desc || 'Your meta description appears here.'), FONT.desc, lim.desc);
+      el('site-out').textContent = site || c.host || 'Site name';
+      el('favicon').textContent = (site || c.host || 'S').charAt(0).toUpperCase();
+      el('crumb').textContent = c.text;
+      el('title-out').textContent = t.text;
+      el('date-out').textContent = dateText;
+      bold(el('desc-out'), dFit.text.slice(dateText.length), kw);
+      el('card').setAttribute('data-device-view', device);
+      var list = el('tips'); list.textContent = '';
+      if (!title) tip(list, 'is-bad', 'Add a title tag: Google builds a title link from other page text when the title is missing.');
+      else if (t.cut) tip(list, 'is-bad', 'The title is about ' + (tW - lim.title) + ' px too wide for ' + device + ', so Google is likely to cut it. Shorten the end or move the key words forward.');
+      else if (title.length < 30) tip(list, 'is-warn', 'The title is short. Add a qualifier, such as the location, the year or the brand.');
+      else tip(list, '', 'The title fits the ' + device + ' width.');
+      if (!desc) tip(list, 'is-bad', 'Add a meta description: without one, Google picks text from the page for the snippet.');
+      else if (dFit.cut) tip(list, 'is-bad', 'The description runs past the ' + device + ' width, so the end will likely be cut. Keep the answer in the first sentence.');
+      else if (desc.length < 70) tip(list, 'is-warn', 'The description is short. Add a concrete detail, such as a price, a number or a date.');
+      else tip(list, '', 'The description fits the ' + device + ' width.');
+      if (desc && (/^[^.!]*\?/.test(desc) || /^(what|how|why|when|where|which|who|is|are|can|do|does)\b/i.test(desc)))
+        tip(list, 'is-warn', 'The description opens with a question. Lead with the direct answer instead.');
+      if (el('url').value.trim() && !c.host) tip(list, 'is-warn', 'Check the URL: it does not read as a valid web address, so the breadcrumb cannot be built.');
+      if (title && desc && title.toLowerCase() === desc.toLowerCase()) tip(list, 'is-warn', 'The title and the description are identical. Use the description to add the answer and a detail.');
+      if (kw) {
+        var k = kw.toLowerCase();
+        if (title && title.toLowerCase().indexOf(k) < 0) tip(list, 'is-warn', 'The focus keyword is missing from the title.');
+        else if (title && title.toLowerCase().indexOf(k) > title.length * 0.5) tip(list, 'is-warn', 'The focus keyword sits in the second half of the title. Move it closer to the start.');
+        if (desc && desc.toLowerCase().indexOf(k) < 0) tip(list, 'is-warn', 'The focus keyword is missing from the description, so Google has no matching words to bold.');
+      }
+    };
+    var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+    var copy = function (text) {
+      var done = function () { el('copied').textContent = 'Copied'; setTimeout(function () { el('copied').textContent = ''; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { window.prompt('Copy this text:', text); });
+      else window.prompt('Copy this text:', text);
+    };
+    el('copy-tags').addEventListener('click', function () {
+      copy('<title>' + esc(el('title').value.trim()) + '</title>\n<meta name="description" content="' + esc(el('desc').value.trim()) + '">');
+    });
+    el('copy-link').addEventListener('click', function () {
+      var p = new URLSearchParams();
+      ['title', 'desc', 'url', 'site', 'kw'].forEach(function (n) { if (el(n).value.trim()) p.set(n, el(n).value.trim()); });
+      if (device !== 'desktop') p.set('device', device);
+      copy(location.origin + location.pathname + '?' + p.toString());
+    });
+    var q = new URLSearchParams(location.search);
+    ['title', 'desc', 'url', 'site', 'kw'].forEach(function (n) { if (q.has(n)) el(n).value = q.get(n); });
+    if (q.get('device') === 'mobile') device = 'mobile';
+    if (q.has('date')) { el('date-on').checked = true; if (/^\d{4}-\d{2}-\d{2}$/.test(q.get('date'))) el('date').value = q.get('date'); }
+    var devBtns = tool.querySelectorAll('[data-device]');
+    Array.prototype.forEach.call(devBtns, function (btn) {
+      btn.setAttribute('aria-pressed', String(btn.getAttribute('data-device') === device));
+      btn.addEventListener('click', function () {
+        device = btn.getAttribute('data-device');
+        Array.prototype.forEach.call(devBtns, function (x) { x.setAttribute('aria-pressed', String(x === btn)); });
+        update();
+      });
+    });
+    tool.addEventListener('input', update);
+    tool.addEventListener('change', update);
+    update();
+  });
+
   // Page or section checker: 4 page rules plus the top-3 search results give a topical map decision.
   document.querySelectorAll('[data-tool="qdp"]').forEach(function (tool) {
     var rule = function (name) { return tool.querySelector('[data-rule="' + name + '"]').checked; };

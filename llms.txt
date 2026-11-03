@@ -13,6 +13,8 @@
 - [Blog](https://dilbdrbk.com.np/blog/): Notes on semantic SEO, topical authority, local SEO and AI search by Dil Bahadur B.K., semantic SEO specialist from Kathmandu, Nepal.
 - [Profiles](https://dilbdrbk.com.np/profiles/): Every official profile of Dil Bahadur B.K., semantic SEO specialist from Kathmandu, Nepal, in one place: LinkedIn, GitHub and more.
 - [Contact](https://dilbdrbk.com.np/contact/): Reach Dil Bahadur B.K. by email, phone or LinkedIn. Based in Kathmandu, Nepal (NPT, UTC+5:45).
+- [Tools](https://dilbdrbk.com.np/tools/): Free SEO tools run in your browser with no sign-up and no data sent, starting with a SERP snippet preview that checks titles and meta descriptions.
+- [SERP Snippet Preview](https://dilbdrbk.com.np/tools/serp-snippet-preview/): The SERP snippet preview tool shows your title and meta description as Google displays them on desktop and mobile, with pixel meters and cut-off marks.
 - [Checklists](https://dilbdrbk.com.np/checklists/): Free SEO checklists turn audits into tickable steps, starting with a 56-point SEO audit checklist for technical, on-page, local and AI search.
 - [SEO Audit Checklist](https://dilbdrbk.com.np/seo-audit-checklist/): An SEO audit checklist of 56 checks covers technical SEO, on-page, content, local, off-page and AI search, so you find and fix what blocks rankings.
 - [Editorial Policy](https://dilbdrbk.com.np/editorial-policy/): How Dil Bahadur B.K. researches, fact-checks and updates every SEO guide: a six-tier source hierarchy, claim-by-claim checks, AI use and corrections.
