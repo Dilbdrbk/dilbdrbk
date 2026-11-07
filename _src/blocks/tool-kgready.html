@@ -1,0 +1,53 @@
+<div class="post-tool" data-tool="kgready" data-unit="entity signals" data-a="owned" data-b="third-party"
+  data-why=" Google reads these on sources you control, so they are the quickest to fix."
+  data-done="Every sample signal is in place. Check the Knowledge Graph Search API and a name search for the result.">
+  <div class="tool-head">
+    <p class="tool-kicker">Free tool</p>
+    <p class="tool-title">Knowledge Graph readiness checker</p>
+    <p class="tool-note">Pick an entity type and tick each signal you already have. The checker counts owned and third-party signals and lists the next gaps. It counts your preparation only: it is not a Google score, and no list guarantees an entry.</p>
+  </div>
+  <div class="qa-picks js-only" role="group" aria-label="Entity types">
+    <button class="qa-pick" type="button" aria-pressed="true"
+      data-core="An About page that names one person|One full name spelled the same everywhere|Job title and location in plain text|Person schema on the About page|sameAs links to official profiles|A clear photo on the About page"
+      data-outer="LinkedIn profile with the same facts|Author pages on other sites|Interviews or quotes that name you|Professional directory listings|Talks, books or papers that credit you|A Wikidata item, if you meet its notability policy">Person</button>
+    <button class="qa-pick" type="button" aria-pressed="false"
+      data-core="A home page that names the business|Name, address and phone in plain text|Services and areas served listed|LocalBusiness or Organization schema|sameAs links to official profiles|A logo that matches your profiles"
+      data-outer="Complete Google Business Profile|Matching details in major directories|Reviews on third-party sites|Local news or association mentions|Supplier or partner pages that name you|Social profiles with the same details">Local business</button>
+    <button class="qa-pick" type="button" aria-pressed="false"
+      data-core="An About page with founders and founding date|One official company name used consistently|Organization schema on the home page|A logo set in the Organization schema|sameAs links to official profiles|Leadership and contact pages"
+      data-outer="A company profile, such as Crunchbase|A LinkedIn company page|Press coverage that names the company|Industry association listings|Partner pages that name the company|A Wikidata item, if you meet its notability policy">Company or brand</button>
+  </div>
+  <div class="cov-view">
+    <p class="qa-search"><span>Entity type</span><strong data-f="topic">Person</strong></p>
+    <div class="qa-cols">
+      <fieldset class="qa-col qa-col-entity cov-group">
+        <legend class="qa-col-title">Owned signals: on sources you control</legend>
+        <ul class="cov-list" data-f="core">
+          <li><label><input type="checkbox"> An About page that names one person</label></li>
+          <li><label><input type="checkbox"> One full name spelled the same everywhere</label></li>
+          <li><label><input type="checkbox"> Job title and location in plain text</label></li>
+          <li><label><input type="checkbox"> Person schema on the About page</label></li>
+          <li><label><input type="checkbox"> sameAs links to official profiles</label></li>
+          <li><label><input type="checkbox"> A clear photo on the About page</label></li>
+        </ul>
+      </fieldset>
+      <fieldset class="qa-col cov-group">
+        <legend class="qa-col-title">Third-party signals: confirmed elsewhere</legend>
+        <ul class="cov-list" data-f="outer">
+          <li><label><input type="checkbox"> LinkedIn profile with the same facts</label></li>
+          <li><label><input type="checkbox"> Author pages on other sites</label></li>
+          <li><label><input type="checkbox"> Interviews or quotes that name you</label></li>
+          <li><label><input type="checkbox"> Professional directory listings</label></li>
+          <li><label><input type="checkbox"> Talks, books or papers that credit you</label></li>
+          <li><label><input type="checkbox"> A Wikidata item, if you meet its notability policy</label></li>
+        </ul>
+      </fieldset>
+    </div>
+    <div class="cov-result js-only" aria-live="polite">
+      <div class="cov-bar"><span data-f="bar" style="width:0%"></span></div>
+      <p class="cov-score"><strong data-f="score">0 of 12 entity signals covered (0%)</strong> <span data-f="split">Owned 0 of 6, third-party 0 of 6.</span></p>
+      <p class="qa-note" data-f="advice">Start with the owned signals: they sit on sources you control.</p>
+    </div>
+    <p class="qa-note">The lists are samples based on the steps in this guide. Google does not publish a checklist for entering the Knowledge Graph.</p>
+  </div>
+</div>

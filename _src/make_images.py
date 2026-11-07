@@ -514,6 +514,20 @@ def blog_images():
     steps_list(d, 712, 150, ["Title width in pixels", "Description width", "Desktop and mobile", "Keyword in bold", "Copy the HTML tags"], step=80)
     save_scaled(cover, "serp-snippet-preview.webp", (1600, 840), "WEBP", quality=82, method=6)
 
+    cover, d = feature_canvas(1200, 630, 870, ("What is the Google", "Knowledge Graph?"),
+                              "Google's database of facts about entities. It feeds knowledge panels and entity matching, and it shapes SEO indirectly.",
+                              label="ENTITY SEO GUIDE", divider=False)
+    save_scaled(cover, "what-is-the-google-knowledge-graph.jpg", (1200, 630), "JPEG", quality=88, optimize=True, progressive=True)
+    save_scaled(cover, "what-is-the-google-knowledge-graph.webp", (1600, 840), "WEBP", quality=82, method=6)
+    save_scaled(cover, "what-is-the-google-knowledge-graph-thumb.webp", (640, 336), "WEBP", quality=80, method=6)
+
+    card, d = feature_canvas(1200, 675, 640, ("Knowledge Graph", "in 7 steps"),
+                             "One clear source of facts on your site, then matching facts across the web.",
+                             label="ENTITY SEO GUIDE")
+    steps_list(d, 712, 130, ["Choose one entity home", "State the core facts", "Add schema markup", "Link official profiles",
+                             "Match third-party facts", "Earn independent references", "Check and claim"], step=72)
+    save_scaled(card, "knowledge-graph-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
+
 
 if __name__ == "__main__":
     IMG.mkdir(parents=True, exist_ok=True)

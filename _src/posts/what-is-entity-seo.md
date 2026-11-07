@@ -1,7 +1,7 @@
 <!--
 {
   "date": "2026-10-14",
-  "updated": "2026-10-19",
+  "updated": "2026-11-07",
   "image": "what-is-entity-seo",
   "imageAlt": "What is entity SEO? Optimizing a website so search engines identify its entities, their attributes and their relations.",
   "section": "Entity SEO",
@@ -137,7 +137,7 @@ The [How Search Works guide](/how-search-works/) on this website shows these sta
 
 Google's Knowledge Graph is a knowledge base of entities and the facts that connect them. According to Google, the graph held more than 500 million objects and more than 3.5 billion facts at its launch in May 2012, rooted in public sources such as Freebase, Wikipedia and the CIA World Factbook. By December 2012, Google reported 570 million entities and 18 billion facts, as listed in the 2014 Knowledge Vault paper by Dong and colleagues at Google.
 
-Google reported in 2020 that the graph held over 500 billion facts about five billion entities. According to a 2023 Dagstuhl manifesto on knowledge representation, Microsoft's Bing graph held over one billion entities and more than 21 billion facts in 2015.
+Google reported in 2020 that the graph held over 500 billion facts about five billion entities. The [guide to the Google Knowledge Graph](/blog/what-is-the-google-knowledge-graph/) covers how it works and how it affects SEO. According to a 2023 Dagstuhl manifesto on knowledge representation, Microsoft's Bing graph held over one billion entities and more than 21 billion facts in 2015.
 
 [[chart:timeline]]
 

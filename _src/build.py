@@ -678,7 +678,7 @@ def load_posts() -> list[dict]:
             crumb=meta["title"],
             kind="post",
             updated=meta.get("updated", meta["date"]),
-            title_tag=f'{meta["title"]} | {SITE["name"]}',
+            title_tag=f'{meta.get("seoTitle", meta["title"])} | {SITE["name"]}',
             body_html=body_html,
             headings=headings,
             words=words,
