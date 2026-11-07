@@ -96,3 +96,4 @@ Profile logos in `assets/img/logos/` (hero "Find me on" row, shown as white silh
 | contra.svg | Header logo of https://contra.com/ |
 | wellfound.svg | https://wellfound.com/assets/logo/rebrand/ (Wellfound site header) |
 | peerlist.svg | https://dqy38fnwh4fqs.cloudfront.net/website/peerlist-logo-full-dark.svg (Peerlist site header asset, found through a Wayback snapshot because peerlist.io blocks scripted fetches) |
+| qwoted.png | https://dws6t8fj7t9hf.cloudfront.net/packs/static/qwoted-logo-06d9e0dd0c015dc5d083.png (Qwoted site header asset) |
