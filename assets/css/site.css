@@ -2008,6 +2008,7 @@ ol.policy-list { list-style: decimal; }
 .hero-badges img[src$="wellfound.svg"] { height: 18px; }
 .hero-badges img[src$="peerlist.svg"] { height: 24px; filter: grayscale(1) brightness(1.2); opacity: 0.72; }
 .hero-badges a:hover img[src$="peerlist.svg"] { opacity: 1; }
+.hero-badges img[src$="producthunt.png"] { height: 28px; }
 .hero-badges ul { max-width: 820px; row-gap: 16px; }
 
 /* SERP snippet preview tool. The result card mimics a Google result on a light background. */
