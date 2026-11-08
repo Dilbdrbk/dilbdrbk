@@ -1726,6 +1726,12 @@ html:not(.js) .js-only { display: none !important; }
 @media (max-width: 760px) {
   .feature-card a { grid-template-columns: minmax(0, 1fr); gap: 18px; }
 }
+/* Home Blog tab slider: one guide per view, with the next card peeking in. */
+.post-slider { margin-top: 0; }
+/* Phones: the four Resources tabs fit one row instead of clipping "Blog" off the left edge. */
+@media (max-width: 480px) { .res-tablist { gap: 6px; } .res-tab { min-width: 0; padding: 9px 14px; } }
+.post-slider .feature-card { flex: 0 0 92%; scroll-snap-align: start; }
+@media (max-width: 760px) { .post-slider .feature-card { flex-basis: 88%; } }
 
 /* ------------------------------------------------------------ resume
    Centered header with photo, contact list and PDF download; a career path

@@ -740,7 +740,7 @@
     var btns = box.querySelectorAll('.edge-btn');
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var step = function () {
-      var card = track.querySelector('.edge-card');
+      var card = track.firstElementChild;
       return card ? card.getBoundingClientRect().width + 16 : track.clientWidth;
     };
     var sync = function () {
@@ -755,6 +755,8 @@
     });
     track.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
+    // A slider inside a hidden tab measures 0 wide until shown, so re-check whenever its size changes.
+    if ('ResizeObserver' in window) new ResizeObserver(sync).observe(track);
     sync();
   });
 

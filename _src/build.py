@@ -778,8 +778,8 @@ def checklist_cards_html(wide: bool = False) -> str:
     return f'<ul class="{cls}" role="list">\n' + "\n".join(cards) + "\n</ul>"
 
 
-def featured_posts_html(posts: list[dict], limit: int = 3) -> str:
-    """Home page Resources tab: every post as the same wide card (image left, text right)."""
+def featured_posts_html(posts: list[dict], limit: int | None = None) -> str:
+    """Home page Resources tab: every post as the same wide card (image left, text right), in a slider."""
     if not posts:
         return '<p class="section-note">The first guides are on their way.</p>'
     cards = []
@@ -798,7 +798,15 @@ def featured_posts_html(posts: list[dict], limit: int = 3) -> str:
             f'<span class="feature-desc">{esc(p["description"])}</span>'
             f'<span class="feature-more">Read the guide</span></span></a></li>'
         )
-    return '<ul class="feature-posts">\n' + "\n".join(cards) + "\n</ul>"
+    prev = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>'
+    nxt = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+    return ('<div class="edge post-slider" data-carousel>\n'
+            '<ul class="edge-track feature-posts" role="list" tabindex="0" aria-label="Semantic SEO guides, newest first">\n'
+            + "\n".join(cards) + "\n</ul>\n"
+            '<div class="edge-nav js-only">'
+            f'<button class="edge-btn" type="button" data-dir="-1" aria-label="Previous guide">{prev}</button>'
+            f'<button class="edge-btn" type="button" data-dir="1" aria-label="Next guide">{nxt}</button>'
+            '</div>\n</div>')
 
 
 def byline(post: dict) -> str:
