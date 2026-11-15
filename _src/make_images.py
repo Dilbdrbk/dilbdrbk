@@ -528,6 +528,21 @@ def blog_images():
                              "Match third-party facts", "Earn independent references", "Check and claim"], step=72)
     save_scaled(card, "knowledge-graph-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
 
+    cover, d = feature_canvas(1200, 630, 870, ("What is a Google", "core update?"),
+                              "A broad change to Google's ranking systems that reassesses every site. Recovery depends on lasting content improvements.",
+                              label="GOOGLE UPDATES GUIDE", divider=False)
+    save_scaled(cover, "what-is-a-google-core-update.jpg", (1200, 630), "JPEG", quality=88, optimize=True, progressive=True)
+    save_scaled(cover, "what-is-a-google-core-update.webp", (1600, 840), "WEBP", quality=82, method=6)
+    save_scaled(cover, "what-is-a-google-core-update-thumb.webp", (640, 336), "WEBP", quality=80, method=6)
+
+    card, d = feature_canvas(1200, 675, 640, ("Core update", "recovery in 7 steps"),
+                             "Measure the drop with Google's dates, then make lasting content improvements.",
+                             label="GOOGLE UPDATES GUIDE")
+    steps_list(d, 712, 130, ["Wait for the rollout to finish", "Measure with the right dates", "Find the biggest losses",
+                             "Self-assess the content", "Close topical gaps", "Make who, how and why clear",
+                             "Improve and give it time"], step=72)
+    save_scaled(card, "core-update-recovery-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
+
 
 if __name__ == "__main__":
     IMG.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,50 @@
+<div class="post-tool" data-tool="corecheck" data-unit="recovery checks" data-a="diagnosis" data-b="content"
+  data-why=" Diagnosis comes first, because Google advises against changes before the drop is measured."
+  data-done="Every check is done. Give Google time: some changes show in days, others take months or the next core update.">
+  <div class="tool-head">
+    <p class="tool-kicker">Free tool</p>
+    <p class="tool-title">Core update recovery checker</p>
+    <p class="tool-note">Pick the size of your drop and tick each check you have done. The checker counts diagnosis and content checks and lists the next ones. It tracks your process only: it is not a Google score, and no checklist guarantees a recovery.</p>
+  </div>
+  <div class="qa-picks js-only" role="group" aria-label="Drop size">
+    <button class="qa-pick" type="button" aria-pressed="true"
+      data-core="Wait for the rollout to finish|Confirm the end date on the Search Status Dashboard|Wait a full week after completion|Compare a week after with a week before|Split data by Web, Images, Video and News|Rule out technical, security and seasonal causes"
+      data-outer="Leave pages that held up unchanged|Check whether clicks, not only position, fell|Compare the page with the pages that moved above it|Confirm the page still matches the search intent|Fix factual errors and outdated figures|Recheck in a few weeks">Small drop (such as 2 to 4)</button>
+    <button class="qa-pick" type="button" aria-pressed="false"
+      data-core="Wait for the rollout to finish|Confirm the end date on the Search Status Dashboard|Wait a full week after completion|Compare a week after with a week before|Review the last 16 months for seasonality|Rule out technical, security and spam causes"
+      data-outer="List the pages and queries that lost the most|Self-assess them with Google's helpful content questions|Close topical gaps around the central entity|Show who wrote each page and how it was made|Fix factual errors and outdated figures|Avoid quick fixes and mass deletion">Large drop (such as 4 to 29)</button>
+  </div>
+  <div class="cov-view">
+    <p class="qa-search"><span>Drop size</span><strong data-f="topic">Small drop (such as 2 to 4)</strong></p>
+    <div class="qa-cols">
+      <fieldset class="qa-col qa-col-entity cov-group">
+        <legend class="qa-col-title">Diagnosis checks: before any change</legend>
+        <ul class="cov-list" data-f="core">
+          <li><label><input type="checkbox"> Wait for the rollout to finish</label></li>
+          <li><label><input type="checkbox"> Confirm the end date on the Search Status Dashboard</label></li>
+          <li><label><input type="checkbox"> Wait a full week after completion</label></li>
+          <li><label><input type="checkbox"> Compare a week after with a week before</label></li>
+          <li><label><input type="checkbox"> Split data by Web, Images, Video and News</label></li>
+          <li><label><input type="checkbox"> Rule out technical, security and seasonal causes</label></li>
+        </ul>
+      </fieldset>
+      <fieldset class="qa-col cov-group">
+        <legend class="qa-col-title">Content checks: what to improve</legend>
+        <ul class="cov-list" data-f="outer">
+          <li><label><input type="checkbox"> Leave pages that held up unchanged</label></li>
+          <li><label><input type="checkbox"> Check whether clicks, not only position, fell</label></li>
+          <li><label><input type="checkbox"> Compare the page with the pages that moved above it</label></li>
+          <li><label><input type="checkbox"> Confirm the page still matches the search intent</label></li>
+          <li><label><input type="checkbox"> Fix factual errors and outdated figures</label></li>
+          <li><label><input type="checkbox"> Recheck in a few weeks</label></li>
+        </ul>
+      </fieldset>
+    </div>
+    <div class="cov-result js-only" aria-live="polite">
+      <div class="cov-bar"><span data-f="bar" style="width:0%"></span></div>
+      <p class="cov-score"><strong data-f="score">0 of 12 recovery checks covered (0%)</strong> <span data-f="split">Diagnosis 0 of 6, content 0 of 6.</span></p>
+      <p class="qa-note" data-f="advice">Start with the diagnosis checks: Google advises measuring the drop before changing anything.</p>
+    </div>
+    <p class="qa-note">Most checks follow Google's core update, traffic-drop and helpful content documentation, and the topical gap check is a practitioner method. Google gives the position examples as illustrations, not fixed thresholds.</p>
+  </div>
+</div>

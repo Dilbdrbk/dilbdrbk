@@ -760,9 +760,9 @@
     sync();
   });
 
-  // Coverage, fan-out and Knowledge Graph readiness checkers share one handler; a tool's data-* attributes
-  // rename the two groups and the advice text.
-  document.querySelectorAll('[data-tool="coverage"], [data-tool="fanout"], [data-tool="kgready"]').forEach(function (tool) {
+  // Coverage, fan-out, Knowledge Graph readiness and core update recovery checkers share one handler;
+  // a tool's data-* attributes rename the two groups and the advice text.
+  document.querySelectorAll('[data-tool="coverage"], [data-tool="fanout"], [data-tool="kgready"], [data-tool="corecheck"]').forEach(function (tool) {
     var picks = tool.querySelectorAll('.qa-pick');
     var cfg = {
       unit: tool.getAttribute('data-unit') || 'subtopics',

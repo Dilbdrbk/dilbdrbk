@@ -1,6 +1,7 @@
 <!--
 {
   "date": "2026-10-28",
+  "updated": "2026-11-15",
   "image": "topical-authority-vs-domain-authority",
   "imageAlt": "Topical authority vs domain authority: one website covers a single topic in depth with connected pages, while a domain score rates the whole site by its backlinks.",
   "section": "Topical Authority",
@@ -179,7 +180,7 @@ Google gives an example that fits the wider topical authority idea: after a loca
 
 Google treats topical authority as a description of relevance, not as a separate score. In November 2023, John Mueller endorsed a Reddit comment that called topical authority a new name for relevancy, and he told SEOs not to worry about the term.
 
-Google's guidance on helpful content asks related questions. Its self-assessment list asks whether a site has a primary purpose or focus, and it lists producing lots of content on many different topics, in the hope that some of it performs well, as a warning sign of search engine-first content.
+Google's guidance on helpful content asks related questions. Its self-assessment list asks whether a site has a primary purpose or focus, and it lists producing lots of content on many different topics, in the hope that some of it performs well, as a warning sign of search engine-first content. The [guide to Google core updates](/blog/what-is-a-google-core-update/) shows how these questions apply after a ranking drop.
 
 ### What the 2024 Leaked Documentation Suggests
 
