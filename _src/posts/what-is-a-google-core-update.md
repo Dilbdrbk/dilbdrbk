@@ -2,7 +2,7 @@
 {
   "date": "2026-11-15",
   "image": "what-is-a-google-core-update",
-  "imageAlt": "What is a Google core update: a broad change to Google's ranking systems that reassesses every site, with recovery that depends on lasting content improvements.",
+  "imageAlt": "What is a Google core update: the Google homepage on a screen beside a chart of rankings that dip during a core update rollout and settle after it.",
   "seoTitle": "What Is a Google Core Update?",
   "section": "Google Updates",
   "tags": ["Core updates", "Google Search", "SEO recovery"],

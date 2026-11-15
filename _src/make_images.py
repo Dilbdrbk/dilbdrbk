@@ -412,6 +412,52 @@ def authority_compare(d):
     d.text((px(cx), px(520)), "A tool score built from backlinks", font=small, fill=INK_2, anchor="mm")
 
 
+def photo_panel(im, photo, x0, top, bottom, focus=(0.5, 0.5), fade=260, dim=0.9):
+    """Place a photo on the right of a cover, from x0 to the edge and between the header and
+    footer rules, fading into the dark background on its left edge."""
+    W = im.width
+    w, h = W - px(x0), px(bottom - top)
+    src = Image.open(ROOT / "_src" / "photos" / photo).convert("RGB")
+    scale = max(w / src.width, h / src.height)
+    src = src.resize((round(src.width * scale), round(src.height * scale)), Image.LANCZOS)
+    cx = min(max(int(src.width * focus[0] - w / 2), 0), src.width - w)
+    cy = min(max(int(src.height * focus[1] - h / 2), 0), src.height - h)
+    src = src.crop((cx, cy, cx + w, cy + h))
+    src = Image.blend(Image.new("RGB", src.size, BG), src, dim)
+    ramp = [round(255 * (3 * t * t - 2 * t * t * t)) for t in (min(x / px(fade), 1) for x in range(w))]
+    mask = Image.new("L", (w, 1))
+    mask.putdata(ramp)
+    im.paste(src, (px(x0), px(top)), mask.resize((w, h)))
+
+
+def ranking_card(im, box):
+    """A small dark card over the photo: positions that hold, dip during a rollout, then settle."""
+    x0, y0, x1, y1 = box
+    layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    ld = ImageDraw.Draw(layer)
+    ld.rounded_rectangle([px(x0), px(y0), px(x1), px(y1)], radius=px(16), fill=BG + (250,),
+                         outline=LINE_STRONG + (255,), width=R)
+    im.paste(Image.alpha_composite(im.convert("RGBA"), layer).convert("RGB"))
+    d = ImageDraw.Draw(im)
+    label = bahn(13, "SemiBold")
+    tracked(d, (px(x0 + 22), px(y0 + 26)), "RANKINGS DURING A CORE UPDATE", label, MUTED, px(2.2))
+    gx0, gx1, gy0, gy1 = x0 + 26, x1 - 26, y0 + 50, y1 - 44
+    for k in range(3):
+        y = gy0 + k * (gy1 - gy0) / 2
+        d.line([(px(gx0), px(y)), (px(gx1), px(y))], fill=LINE, width=R)
+    roll = (gx0 + (gx1 - gx0) * 0.36, gx0 + (gx1 - gx0) * 0.68)
+    d.rectangle([px(roll[0]), px(gy0), px(roll[1]), px(gy1)], fill=RAISE)
+    shape = [0.30, 0.28, 0.31, 0.29, 0.62, 0.48, 0.80, 0.55, 0.40, 0.22, 0.18, 0.16]
+    pts = [(px(gx0 + (gx1 - gx0) * k / (len(shape) - 1)), px(gy0 + (gy1 - gy0) * v)) for k, v in enumerate(shape)]
+    d.line(pts, fill=ACCENT, width=px(3), joint="curve")
+    for x, y in (pts[0], pts[6], pts[-1]):
+        d.ellipse([x - px(5), y - px(5), x + px(5), y + px(5)], fill=ACCENT)
+    f = bahn(15, "SemiBold SemiCondensed")
+    for text, x in (("Before", gx0), ("Rollout", (roll[0] + roll[1]) / 2), ("After", gx1)):
+        anchor = "lm" if x == gx0 else "rm" if x == gx1 else "mm"
+        d.text((px(x), px(y1 - 22)), text, font=f, fill=INK_2 if text == "Rollout" else MUTED, anchor=anchor)
+
+
 def save_scaled(im, name, size, fmt, **opts):
     out = im.resize(size, Image.LANCZOS)
     out = grain(out)
@@ -528,9 +574,11 @@ def blog_images():
                              "Match third-party facts", "Earn independent references", "Check and claim"], step=72)
     save_scaled(card, "knowledge-graph-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
 
-    cover, d = feature_canvas(1200, 630, 870, ("What is a Google", "core update?"),
-                              "A broad change to Google's ranking systems that reassesses every site. Recovery depends on lasting content improvements.",
+    cover, d = feature_canvas(1200, 630, 650, ("What is a Google", "core update?"),
+                              "A broad change to Google's ranking systems that reassesses every site.",
                               label="GOOGLE UPDATES GUIDE", divider=False)
+    photo_panel(cover, "google-search-engine-on-screen.jpg", 560, 65, 565, focus=(0.42, 0.42))
+    ranking_card(cover, (820, 372, 1160, 540))
     save_scaled(cover, "what-is-a-google-core-update.jpg", (1200, 630), "JPEG", quality=88, optimize=True, progressive=True)
     save_scaled(cover, "what-is-a-google-core-update.webp", (1600, 840), "WEBP", quality=82, method=6)
     save_scaled(cover, "what-is-a-google-core-update-thumb.webp", (640, 336), "WEBP", quality=80, method=6)

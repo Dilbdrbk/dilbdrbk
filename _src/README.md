@@ -78,6 +78,12 @@ Photos in `assets/img/photos/` come from Pexels under the Pexels License (free t
 | notes-and-charts-on-desk.webp | Alena Darmel | https://www.pexels.com/photo/a-person-writing-on-a-notebook-with-a-pencil-7710124/ |
 | laptop-phone-coffee-desk.webp | Hatice Baran | https://www.pexels.com/photo/abstract-shot-of-sunlight-and-shadow-on-a-table-with-laptop-13027385/ |
 | book-laptop-coffee.webp | Nur Nur | https://www.pexels.com/photo/cozy-study-setup-with-book-laptop-and-coffee-30457088/ |
+
+Blog cover photos in `_src/photos/` are drawn into the covers by `make_images.py`, under the same Pexels License:
+
+| File | Photographer | Source |
+| --- | --- | --- |
+| google-search-engine-on-screen.jpg | Sarah Blocksidge | https://www.pexels.com/photo/google-search-engine-on-screen-13628541/ |
 | budget-calculator-charts.webp | Kindel Media | https://www.pexels.com/photo/monthly-budget-planning-7054399/ |
 
 Tool icons on the home page: Simple Icons 16.30.0 (CC0) for Google Search Console, Google Analytics, Looker, Google Tag Manager, Google Colab, Semrush, WordPress and Shopify; Ahrefs' own pinned-tab SVG; AccuRanker's favicon (`assets/img/tools/accuranker.png`). The logos are trademarks of their owners and are shown only to name the tools.
