@@ -110,9 +110,9 @@ PAGES = [
          crumb="Turbocharger Collection Page", updated="2026-11-18", kind="guide",
          trail=[("Case Studies", "/case-studies/")],
          og_image="/assets/img/blog/case-study-turbocharger-collection.jpg",
-         og_image_alt="Case study: a diesel turbocharger collection page rewritten with semantic triples, positive predicates and value-based facts.",
+         og_image_alt="Case study: a diesel turbocharger collection page moved from around position 20 to #1 on US Google, with AI Overview citations.",
          title="Collection Page SEO Case Study | Dil Bahadur B.K.",
-         description="A US diesel parts store's turbocharger collection page, before and after: an intro rewritten as triples, positive predicates, value ranges and hero USPs."),
+         description="A diesel parts store's turbocharger page went from position 20 to #1 on US Google, with AI Overview citations, after an intro rewritten as triples."),
     dict(path="/editorial-policy/", body="editorial-policy.html", crumb="Editorial Policy", updated="2026-10-29", kind="page",
          title="Editorial Policy: How SEO Guides Are Checked | Dil Bahadur B.K.",
          description="How Dil Bahadur B.K. researches, fact-checks and updates every SEO guide: a six-tier source hierarchy, claim-by-claim checks, AI use and corrections."),
@@ -739,9 +739,9 @@ CHECKLISTS = [
 # Case studies, newest first. Clients stay anonymous: a broad entity, never a name, logo or link.
 CASE_STUDIES = [
     dict(path="/case-studies/diesel-turbocharger-collection-page/", image="case-study-turbocharger-collection",
-         date="2026-11-18", client="US diesel parts store", status="Results being measured",
+         date="2026-11-18", client="US diesel parts store", status="#1 for 3 US searches",
          title="Turbocharger Collection Page: Before and After",
-         description="How a US diesel parts store's collection page moved from generic claims to an intro built on triples, positive predicates, value ranges and hero USPs."),
+         description="A US diesel parts store's collection page moved from around position 20 to #1 for 3 US searches, with AI Overview citations, after a semantic rewrite."),
 ]
 
 

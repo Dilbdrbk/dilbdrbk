@@ -458,6 +458,45 @@ def ranking_card(im, box):
         d.text((px(x), px(y1 - 22)), text, font=f, fill=INK_2 if text == "Rollout" else MUTED, anchor=anchor)
 
 
+def serp_card(im, box, query, rows):
+    """A redrawn Google results panel: a search bar, an AI Overview source chip and ranked rows.
+    `rows` is a list of (position, is_client). Text is drawn as grey bars, so no site is named."""
+    x0, y0, x1, y1 = box
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([px(x0), px(y0), px(x1), px(y1)], radius=px(18), fill=RAISE, outline=LINE_STRONG, width=R)
+    small = bahn(16, "SemiBold SemiCondensed")
+    label = bahn(12, "SemiBold")
+    # search bar
+    d.rounded_rectangle([px(x0 + 22), px(y0 + 20), px(x1 - 22), px(y0 + 60)], radius=px(20), fill=BG, outline=LINE_STRONG, width=R)
+    d.ellipse([px(x0 + 38), px(y0 + 33), px(x0 + 50), px(y0 + 45)], outline=MUTED, width=px(2))
+    d.line([(px(x0 + 48), px(y0 + 44)), (px(x0 + 54), px(y0 + 50))], fill=MUTED, width=px(2))
+    d.text((px(x0 + 64), px(y0 + 40)), query, font=small, fill=INK, anchor="lm")
+    tracked(d, (px(x1 - 38), px(y0 + 40)), "US", label, MUTED, px(2), anchor="rm")
+    # AI Overview strip
+    y = y0 + 78
+    d.rounded_rectangle([px(x0 + 22), px(y), px(x1 - 22), px(y + 62)], radius=px(12), fill=BG, outline=LINE, width=R)
+    tracked(d, (px(x0 + 38), px(y + 20)), "AI OVERVIEW", label, MUTED, px(2.2))
+    d.rounded_rectangle([px(x0 + 38), px(y + 36), px(x0 + 190), px(y + 44)], radius=px(4), fill=LINE_STRONG)
+    chip = "Source: client page"
+    cw = small.getlength(chip) / R + 26
+    d.rounded_rectangle([px(x1 - 38 - cw), px(y + 24), px(x1 - 38), px(y + 50)], radius=px(13), fill=ACCENT)
+    d.text((px(x1 - 38 - cw / 2), px(y + 37)), chip, font=bahn(14, "SemiBold SemiCondensed"), fill=INK_DARK, anchor="mm")
+    # ranked rows
+    y += 82
+    step = (y1 - 18 - y) / len(rows)
+    for pos, client in rows:
+        cy = y + step / 2
+        if client:
+            d.rounded_rectangle([px(x0 + 16), px(y + 4), px(x1 - 16), px(y + step - 4)], radius=px(12), outline=ACCENT, width=px(2))
+        d.text((px(x0 + 44), px(cy)), f"#{pos}", font=bahn(22, "Bold Condensed"), fill=ACCENT if client else MUTED, anchor="mm")
+        bar = ACCENT if client else LINE_STRONG
+        d.rounded_rectangle([px(x0 + 74), px(cy - 12), px(x0 + 74 + (210 if client else 170 + pos * 9)), px(cy - 3)], radius=px(4), fill=bar)
+        d.rounded_rectangle([px(x0 + 74), px(cy + 5), px(x0 + 74 + (150 if client else 120 + pos * 7)), px(cy + 11)], radius=px(3), fill=LINE_STRONG)
+        if client:
+            d.text((px(x1 - 36), px(cy)), "Client page", font=bahn(15, "SemiBold SemiCondensed"), fill=ACCENT, anchor="rm")
+        y += step
+
+
 def save_scaled(im, name, size, fmt, **opts):
     out = im.resize(size, Image.LANCZOS)
     out = grain(out)
@@ -591,11 +630,10 @@ def blog_images():
                              "Improve and give it time"], step=72)
     save_scaled(card, "core-update-recovery-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
 
-    cover, d = feature_canvas(1200, 630, 640, ("Collection page", "before & after"),
-                              "A US diesel parts store's turbocharger page, rewritten with triples and value-based facts.",
-                              label="CASE STUDY")
-    steps_list(d, 712, 132, ["Intro written as triples", "Positive predicates", "Average and range values",
-                             "Brands, engines and buyers", "Benefits as cause and effect", "USPs in the hero"], step=72)
+    cover, d = feature_canvas(1200, 630, 640, ("Position 20", "to #1 on Google"),
+                              "A turbocharger collection page after a semantic rewrite, cited in AI Overviews.",
+                              note="Checked live in US Google, 18 November 2026", label="CASE STUDY")
+    serp_card(cover, (680, 96, 1150, 538), "new rebuilt and used turbochargers", [(1, True), (2, False), (3, False), (4, False)])
     for name, size, fmt, opts in (("case-study-turbocharger-collection.jpg", (1200, 630), "JPEG", dict(quality=88, optimize=True, progressive=True)),
                                   ("case-study-turbocharger-collection.webp", (1600, 840), "WEBP", dict(quality=82, method=6)),
                                   ("case-study-turbocharger-collection-thumb.webp", (640, 336), "WEBP", dict(quality=80, method=6))):
