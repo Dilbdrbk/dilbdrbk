@@ -17,6 +17,8 @@
 - [SERP Snippet Preview](https://dilbdrbk.com.np/tools/serp-snippet-preview/): The SERP snippet preview tool shows your title and meta description as Google displays them on desktop and mobile, with pixel meters and cut-off marks.
 - [Checklists](https://dilbdrbk.com.np/checklists/): Free SEO checklists turn audits into tickable steps, starting with a 56-point SEO audit checklist for technical, on-page, local and AI search.
 - [SEO Audit Checklist](https://dilbdrbk.com.np/seo-audit-checklist/): An SEO audit checklist of 56 checks covers technical SEO, on-page, content, local, off-page and AI search, so you find and fix what blocks rankings.
+- [Case Studies](https://dilbdrbk.com.np/case-studies/): SEO case studies from real client pages, with each page shown before and after the change, the method behind it and results added once measured.
+- [Turbocharger Collection Page](https://dilbdrbk.com.np/case-studies/diesel-turbocharger-collection-page/): A US diesel parts store's turbocharger collection page, before and after: an intro rewritten as triples, positive predicates, value ranges and hero USPs.
 - [Editorial Policy](https://dilbdrbk.com.np/editorial-policy/): How Dil Bahadur B.K. researches, fact-checks and updates every SEO guide: a six-tier source hierarchy, claim-by-claim checks, AI use and corrections.
 - [Privacy Policy](https://dilbdrbk.com.np/privacy-policy/): The privacy policy of dilbdrbk.com.np: no cookies, no analytics and no stored form data, plus what Cloudflare, GitHub Pages and Google Fonts process.
 

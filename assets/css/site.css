@@ -624,8 +624,9 @@ html:has(.lead[open]) { overflow: hidden; }
 .card-static { padding: 22px 20px 24px; }
 .card > a:hover { background: var(--bg-raise); color: var(--ink); }
 .card > a:hover h3 { color: var(--accent); }
-.card h3 { font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.15; }
+.card h3, .card .card-h { font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.15; }
 .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.card .card-h { margin: 0; color: var(--ink); font-weight: 700; line-height: 1.15; text-wrap: balance; }
 
 /* ------------------------------------------------------------ approach steps */
 

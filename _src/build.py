@@ -58,7 +58,7 @@ NAV = [
 # `updated` feeds sitemap lastmod; bump it when a page's content changes.
 # The header, footer and Person schema sit on every page. Bump this when they change so the
 # sitemap lastmod stays accurate for pages whose own content did not change.
-LAYOUT_UPDATED = "2026-10-31"
+LAYOUT_UPDATED = "2026-11-18"
 
 PAGES = [
     dict(path="/", body="home.html", crumb="Home", updated="2026-10-29", kind="home",
@@ -103,6 +103,16 @@ PAGES = [
     dict(path="/seo-audit-checklist/", body="seo-audit-checklist.html", crumb="SEO Audit Checklist", updated="2026-10-31", kind="page",
          title="SEO Audit Checklist: 56 Checks | Dil Bahadur B.K.",
          description="An SEO audit checklist of 56 checks covers technical SEO, on-page, content, local, off-page and AI search, so you find and fix what blocks rankings."),
+    dict(path="/case-studies/", body="case-studies.html", crumb="Case Studies", updated="2026-11-18", kind="page",
+         title="SEO Case Studies: Before and After | Dil Bahadur B.K.",
+         description="SEO case studies from real client pages, with each page shown before and after the change, the method behind it and results added once measured."),
+    dict(path="/case-studies/diesel-turbocharger-collection-page/", body="case-study-turbocharger-collection.html",
+         crumb="Turbocharger Collection Page", updated="2026-11-18", kind="guide",
+         trail=[("Case Studies", "/case-studies/")],
+         og_image="/assets/img/blog/case-study-turbocharger-collection.jpg",
+         og_image_alt="Case study: a diesel turbocharger collection page rewritten with semantic triples, positive predicates and value-based facts.",
+         title="Collection Page SEO Case Study | Dil Bahadur B.K.",
+         description="A US diesel parts store's turbocharger collection page, before and after: an intro rewritten as triples, positive predicates, value ranges and hero USPs."),
     dict(path="/editorial-policy/", body="editorial-policy.html", crumb="Editorial Policy", updated="2026-10-29", kind="page",
          title="Editorial Policy: How SEO Guides Are Checked | Dil Bahadur B.K.",
          description="How Dil Bahadur B.K. researches, fact-checks and updates every SEO guide: a six-tier source hierarchy, claim-by-claim checks, AI use and corrections."),
@@ -389,7 +399,7 @@ FOOTER_BIO = ("I'm an entity-first semantic SEO consultant in Nepal. I design cl
 
 def footer() -> str:
     """Three columns: who (photo, role, bio, profile chips), site links, and contact rows."""
-    nav = "\n".join(f'        <li><a href="{h}">{l}</a></li>' for h, l in [("/", "Home")] + NAV + [("/profiles/", "Profiles"), ("/contact/", "Contact")])
+    nav = "\n".join(f'        <li><a href="{h}">{l}</a></li>' for h, l in [("/", "Home")] + NAV + [("/case-studies/", "Case Studies"), ("/profiles/", "Profiles"), ("/contact/", "Contact")])
     chips = "\n".join(
         f'        <li><a href="{esc(p["url"])}" rel="{"noopener" if p.get("listing") else "me noopener"}" target="_blank">{esc(p["platform"])}</a></li>'
         for p in SITE["profiles"][:4]
@@ -726,6 +736,15 @@ CHECKLISTS = [
 ]
 
 
+# Case studies, newest first. Clients stay anonymous: a broad entity, never a name, logo or link.
+CASE_STUDIES = [
+    dict(path="/case-studies/diesel-turbocharger-collection-page/", image="case-study-turbocharger-collection",
+         date="2026-11-18", client="US diesel parts store", status="Results being measured",
+         title="Turbocharger Collection Page: Before and After",
+         description="How a US diesel parts store's collection page moved from generic claims to an intro built on triples, positive predicates, value ranges and hero USPs."),
+]
+
+
 # Free standalone tools, newest first. Tools that live inside blog posts stay with their posts.
 TOOLS = [
     dict(path="/tools/serp-snippet-preview/", image="serp-snippet-preview", label="Tool page",
@@ -752,6 +771,28 @@ def tool_cards_html(wide: bool = False, limit: int | None = None) -> str:
             cards.append(f'<li class="chk-card"><a href="{t["path"]}">{img}<span class="chk-card-text">{meta}'
                          f'<span class="chk-card-title">{esc(t["title"])} <span aria-hidden="true">&#8599;</span></span>'
                          f'<span class="chk-card-desc">{esc(t["description"])}</span></span></a></li>')
+    cls = "feature-posts" if wide else "chk-cards"
+    return f'<ul class="{cls}" role="list">\n' + "\n".join(cards) + "\n</ul>"
+
+
+def case_study_cards_html(wide: bool = False) -> str:
+    """Case study cards: the hub page uses a grid, the home page the wide blog-card layout."""
+    cards = []
+    for c in CASE_STUDIES:
+        src = asset(f'{BLOG_IMG}/{c["image"]}.webp')
+        img = f'<img src="{src}" width="1600" height="840" alt="" loading="lazy" decoding="async">'
+        meta = (f'<span class="feature-meta"><time datetime="{c["date"]}">{human_date(c["date"])}</time>'
+                f'<span>{esc(c["client"])}</span><span>{esc(c["status"])}</span></span>')
+        if wide:
+            cards.append(f'<li class="feature-card"><a href="{c["path"]}">{img}<span class="feature-text">'
+                         f'<span class="feature-tags"><span>Case study</span></span>{meta}'
+                         f'<span class="feature-title">{esc(c["title"])}</span>'
+                         f'<span class="feature-desc">{esc(c["description"])}</span>'
+                         f'<span class="feature-more">Read the case study</span></span></a></li>')
+        else:
+            cards.append(f'<li class="chk-card"><a href="{c["path"]}">{img}<span class="chk-card-text">{meta}'
+                         f'<span class="chk-card-title">{esc(c["title"])} <span aria-hidden="true">&#8599;</span></span>'
+                         f'<span class="chk-card-desc">{esc(c["description"])}</span></span></a></li>')
     cls = "feature-posts" if wide else "chk-cards"
     return f'<ul class="{cls}" role="list">\n' + "\n".join(cards) + "\n</ul>"
 
@@ -1018,6 +1059,8 @@ def build() -> None:
         "toolCards": tool_cards_html(),
         "toolFeature": tool_cards_html(wide=True, limit=3),
         "checklistFeature": checklist_cards_html(wide=True),
+        "caseStudyCards": case_study_cards_html(),
+        "caseStudyFeature": case_study_cards_html(wide=True),
         "email": SITE["email"],
         "phone": SITE["phone"],
         "phoneHref": SITE["phoneHref"],
@@ -1031,7 +1074,11 @@ def build() -> None:
     for page in PAGES:
         body = fill((SRC / "pages" / page["body"]).read_text(encoding="utf-8"), tokens)
         noindex = page["kind"] == "blog" and not posts
-        write(page["path"], head(page, schema_blocks(page, body), noindex) + "\n" + header(page["path"]) + "\n" + body + "\n" + footer())
+        graph = None
+        if page.get("trail"):
+            graph = [breadcrumb_node(page, page["trail"] + [(page["crumb"], page["path"])])]
+        current = page["trail"][0][1] if page.get("trail") else page["path"]
+        write(page["path"], head(page, schema_blocks(page, body, graph), noindex) + "\n" + header(current) + "\n" + body + "\n" + footer())
         if not noindex:
             indexed.append((page["path"], max(page["updated"], LAYOUT_UPDATED)))
 

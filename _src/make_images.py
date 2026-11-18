@@ -591,6 +591,16 @@ def blog_images():
                              "Improve and give it time"], step=72)
     save_scaled(card, "core-update-recovery-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
 
+    cover, d = feature_canvas(1200, 630, 640, ("Collection page", "before & after"),
+                              "A US diesel parts store's turbocharger page, rewritten with triples and value-based facts.",
+                              label="CASE STUDY")
+    steps_list(d, 712, 132, ["Intro written as triples", "Positive predicates", "Average and range values",
+                             "Brands, engines and buyers", "Benefits as cause and effect", "USPs in the hero"], step=72)
+    for name, size, fmt, opts in (("case-study-turbocharger-collection.jpg", (1200, 630), "JPEG", dict(quality=88, optimize=True, progressive=True)),
+                                  ("case-study-turbocharger-collection.webp", (1600, 840), "WEBP", dict(quality=82, method=6)),
+                                  ("case-study-turbocharger-collection-thumb.webp", (640, 336), "WEBP", dict(quality=80, method=6))):
+        save_scaled(cover, name, size, fmt, **opts)
+
 
 if __name__ == "__main__":
     IMG.mkdir(parents=True, exist_ok=True)
