@@ -56,11 +56,10 @@ NAV = [
 
 # The header menu: three dropdown groups, then direct links. The footer keeps the flat NAV list.
 NAV_MENU = [
-    ("About", [("/about/", "About Me"), ("/resume/", "Resume"), ("/profiles/", "Profiles"),
-               ("/editorial-policy/", "Editorial Policy")]),
-    ("Services", [("/expertise/", "Expertise"), ("/industries/", "Industries"),
-                  ("/how-search-works/", "How Search Works")]),
-    ("Resources", [("/blog/", "Blog"), ("/checklists/", "Checklists"), ("/tools/", "Tools")]),
+    ("About", [("/about/", "About Me"), ("/expertise/", "Expertise"), ("/industries/", "Industries"),
+               ("/resume/", "Resume"), ("/profiles/", "Profiles"), ("/editorial-policy/", "Editorial Policy")]),
+    ("Resources", [("/blog/", "Blog"), ("/how-search-works/", "How Search Works"), ("/checklists/", "Checklists"),
+                   ("/tools/", "Tools")]),
     ("/case-studies/", "Case Studies"),
     ("/contact/", "Contact"),
 ]
