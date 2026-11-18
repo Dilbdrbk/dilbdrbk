@@ -54,6 +54,22 @@ NAV = [
     ("/checklists/", "Checklists"),
 ]
 
+# The header menu: three dropdown groups, then direct links. The footer keeps the flat NAV list.
+NAV_MENU = [
+    ("About", [("/about/", "About Me"), ("/resume/", "Resume"), ("/profiles/", "Profiles"),
+               ("/editorial-policy/", "Editorial Policy")]),
+    ("Services", [("/expertise/", "Expertise"), ("/industries/", "Industries"),
+                  ("/how-search-works/", "How Search Works")]),
+    ("Resources", [("/blog/", "Blog"), ("/checklists/", "Checklists"), ("/tools/", "Tools")]),
+    ("/case-studies/", "Case Studies"),
+    ("/contact/", "Contact"),
+]
+PHONE_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6'
+              'l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1'
+              'h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>')
+CHAT_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6'
+             'L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg>')
+
 # Every page: where it lives, its body file and its search snippet.
 # `updated` feeds sitemap lastmod; bump it when a page's content changes.
 # The header, footer and Person schema sit on every page. Bump this when they change so the
@@ -325,7 +341,19 @@ def header(current: str) -> str:
     def here(href: str) -> str:
         return ' aria-current="page"' if href == current else ""
 
-    items = "\n".join(f'      <li><a href="{href}"{here(href)}>{label}</a></li>' for href, label in NAV)
+    items = []
+    for n, (first, second) in enumerate(NAV_MENU):
+        if isinstance(second, list):
+            inside = any(href == current for href, _ in second)
+            links = "\n".join(f'          <li><a href="{href}"{here(href)}>{label}</a></li>' for href, label in second)
+            items.append(
+                f'      <li class="has-sub{" is-current" if inside else ""}">'
+                f'<button class="sub-btn" type="button" aria-expanded="false" aria-controls="sub-{n}">{first}'
+                f'<svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>\n'
+                f'        <ul class="sub" id="sub-{n}">\n{links}\n        </ul></li>')
+        else:
+            items.append(f'      <li><a href="{first}"{here(first)}>{second}</a></li>')
+    menu = "\n".join(items)
     contact_current = here("/contact/")
     return f"""<body>
 <a class="skip" href="#main">Skip to content</a>
@@ -333,13 +361,19 @@ def header(current: str) -> str:
   <a class="brand" href="/">{LOGO_IMG}</a>
   <nav class="nav" aria-label="Main">
     <ul id="nav-list">
-{items}
-      <li class="nav-contact"><a href="/contact/"{contact_current}>Contact</a></li>
+{menu}
     </ul>
   </nav>
-  <a class="hire-btn" href="/contact/" data-open-form{contact_current}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg><span>Hire Me</span></a>
-  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+  <div class="top-actions">
+    <a class="call-link" href="tel:{SITE["phoneHref"]}">{PHONE_ICON}<span>{esc(SITE["phone"])}</span></a>
+    <a class="hire-btn" href="/contact/" data-open-form{contact_current}>{CHAT_ICON}<span>Hire Me</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+  </div>
 </header>
+<div class="cta-dock" role="region" aria-label="Quick contact">
+  <a class="dock-hire" href="/contact/" data-open-form>{CHAT_ICON}<span>Hire Me</span></a>
+  <a class="dock-call" href="tel:{SITE["phoneHref"]}" aria-label="Call {esc(SITE["phone"])}">{PHONE_ICON}</a>
+</div>
 <main id="main">"""
 
 

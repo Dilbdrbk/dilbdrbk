@@ -18,6 +18,34 @@
     });
   }
 
+  // Header dropdowns: a click opens one group and closes the others; hover and focus open them on desktop.
+  var subs = document.querySelectorAll('.has-sub');
+  var closeSubs = function (except) {
+    subs.forEach(function (li) {
+      if (li === except) return;
+      li.classList.remove('is-open');
+      li.querySelector('.sub-btn').setAttribute('aria-expanded', 'false');
+    });
+  };
+  subs.forEach(function (li) {
+    var b = li.querySelector('.sub-btn');
+    b.addEventListener('click', function () {
+      var open = li.classList.toggle('is-open');
+      b.setAttribute('aria-expanded', String(open));
+      closeSubs(li);
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-sub')) closeSubs(null);
+  });
+  document.addEventListener('keydown', function (e) {
+    var open = document.querySelector('.has-sub.is-open');
+    if (e.key === 'Escape' && open) {
+      closeSubs(null);
+      open.querySelector('.sub-btn').focus();
+    }
+  });
+
   // Local time in Kathmandu.
   var clocks = document.querySelectorAll('[data-clock]');
   if (clocks.length && window.Intl) {

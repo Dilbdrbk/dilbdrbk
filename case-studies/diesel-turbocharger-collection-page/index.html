@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v=438e288b">
+<link rel="stylesheet" href="/assets/css/site.css?v=267e6551">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {
@@ -219,20 +219,39 @@
   <a class="brand" href="/"><img class="brand-logo" src="/assets/img/logo-dbk.webp?v=58bce2e6" width="63" height="24" alt="Dil Bahadur B.K., home"></a>
   <nav class="nav" aria-label="Main">
     <ul id="nav-list">
-      <li><a href="/expertise/">Expertise</a></li>
-      <li><a href="/how-search-works/">How Search Works</a></li>
-      <li><a href="/resume/">Resume</a></li>
-      <li><a href="/industries/">Industries</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/tools/">Tools</a></li>
-      <li><a href="/checklists/">Checklists</a></li>
-      <li class="nav-contact"><a href="/contact/">Contact</a></li>
+      <li class="has-sub"><button class="sub-btn" type="button" aria-expanded="false" aria-controls="sub-0">About<svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+        <ul class="sub" id="sub-0">
+          <li><a href="/about/">About Me</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li><a href="/profiles/">Profiles</a></li>
+          <li><a href="/editorial-policy/">Editorial Policy</a></li>
+        </ul></li>
+      <li class="has-sub"><button class="sub-btn" type="button" aria-expanded="false" aria-controls="sub-1">Services<svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+        <ul class="sub" id="sub-1">
+          <li><a href="/expertise/">Expertise</a></li>
+          <li><a href="/industries/">Industries</a></li>
+          <li><a href="/how-search-works/">How Search Works</a></li>
+        </ul></li>
+      <li class="has-sub"><button class="sub-btn" type="button" aria-expanded="false" aria-controls="sub-2">Resources<svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+        <ul class="sub" id="sub-2">
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/checklists/">Checklists</a></li>
+          <li><a href="/tools/">Tools</a></li>
+        </ul></li>
+      <li><a href="/case-studies/" aria-current="page">Case Studies</a></li>
+      <li><a href="/contact/">Contact</a></li>
     </ul>
   </nav>
-  <a class="hire-btn" href="/contact/" data-open-form><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg><span>Hire Me</span></a>
-  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+  <div class="top-actions">
+    <a class="call-link" href="tel:+9779810234765"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>+977 9810234765</span></a>
+    <a class="hire-btn" href="/contact/" data-open-form><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg><span>Hire Me</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+  </div>
 </header>
+<div class="cta-dock" role="region" aria-label="Quick contact">
+  <a class="dock-hire" href="/contact/" data-open-form><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-4.9A8.5 8.5 0 1 1 21 11.5Z"/></svg><span>Hire Me</span></a>
+  <a class="dock-call" href="tel:+9779810234765" aria-label="Call +977 9810234765"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+</div>
 <main id="main">
 <section class="frame page-head">
   <div class="rail">
@@ -371,7 +390,10 @@
         </tbody>
       </table>
     </div>
-    <p>Google's AI Mode also cites the page as the first source in its answer to where a buyer can order new, rebuilt or used diesel turbochargers online. The starting point of around position 20 comes from my own rank checks before the rewrite, so it is approximate.</p>
+    <figure class="post-figure"><img src="/assets/img/case-studies/google-organic-client-first.webp" width="755" height="280" alt="US Google results for new rebuilt and used turbochargers, with the client page blurred at position 1 above a competitor at position 2." loading="lazy" decoding="async"><figcaption>Organic #1 for “new rebuilt and used turbochargers” in US Google, 18 November 2026. Client details blurred.</figcaption></figure>
+    <figure class="post-figure"><img src="/assets/img/case-studies/google-ai-overview-client-source.webp" width="935" height="440" alt="Google AI Overview for new rebuilt and used turbochargers, with the client page blurred as the first source card." loading="lazy" decoding="async"><figcaption>The same search: the AI Overview lists the client page as its first source card and cites it inline.</figcaption></figure>
+    <figure class="post-figure"><img src="/assets/img/case-studies/google-ai-mode-client-first.webp" width="922" height="460" alt="Google AI Mode answer on where to buy new, rebuilt or used diesel turbochargers, with the client blurred as the first retailer and first source." loading="lazy" decoding="async"><figcaption>Google AI Mode names the client first under all conditions and shows it as the first source. Client details blurred.</figcaption></figure>
+    <p>Google's AI Mode also cites the page as the first source in its answer to where a buyer can order new, rebuilt or used diesel turbochargers online. The starting point of around position 20 comes from my own rank checks before the rewrite, so it is approximate. The screenshots come from the same live checks, with every client detail blurred.</p>
     <p>The page does not reach the first page for broad head terms, such as "turbochargers for sale", where performance turbo brands hold most positions. The searches it wins combine the three conditions the intro names: new, rebuilt and used.</p>
   </div>
 </section>
@@ -466,6 +488,6 @@
     <p class="lead-alt">Prefer email? <a href="mailto:dilbdrbk2050@gmail.com">dilbdrbk2050@gmail.com</a><br>I only use your details to reply. <a href="/privacy-policy/">Privacy policy</a></p>
   </div>
 </dialog>
-<script src="/assets/js/site.js?v=690cd1c0" defer></script>
+<script src="/assets/js/site.js?v=274bec1b" defer></script>
 </body>
 </html>
