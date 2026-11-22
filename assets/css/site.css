@@ -2148,3 +2148,33 @@ html.js .nojs-only { display: none; }
 }
 
 @media print { .cta-dock { display: none !important; } }
+
+/* ------------------------------------------------------------ query intent sorter and semantic content checker */
+
+.int-out, .sc-out { margin-top: 18px; }
+.post-body .int-sum { color: var(--ink); font-size: 0.9375rem; }
+.int-phase { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+.post-body .int-phase-title { color: var(--accent); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.int-group + .int-group { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.int-group:first-of-type { margin-top: 8px; }
+.post-body .int-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0; color: var(--ink); font-weight: 700; }
+.post-body .int-want { color: var(--muted); font-size: 0.8125rem; font-weight: 400; }
+.post-body .int-page { margin-left: auto; padding: 2px 10px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink-2); font-size: 0.75rem; font-weight: 600; }
+.post-body .int-group ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
+.post-body .int-group li { margin: 0; padding: 4px 10px; border-radius: 8px; background: var(--bg-raise); color: var(--ink-2); font-size: 0.8125rem; line-height: 1.4; }
+.int-review { border-style: dashed; }
+.post-body .int-review .int-phase-title { color: var(--ink-2); }
+.int-out .tool-actions { margin-top: 14px; }
+
+.post-body .sc-list { margin: 12px 0 0; padding: 0; list-style: none; }
+.post-body .sc-item { margin: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+.post-body .sc-item + .sc-item { margin-top: 8px; }
+.post-body .sc-row { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--ink); }
+.sc-tag { flex: 0 0 auto; min-width: 58px; padding: 2px 8px; border-radius: 999px; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.06em; text-align: center; text-transform: uppercase; }
+.is-pass .sc-tag { background: var(--accent); color: var(--accent-ink); }
+.is-warn .sc-tag { border: 1px solid var(--ink-2); color: var(--ink); }
+.is-fail .sc-tag { background: #f2a65d; color: var(--accent-ink); }
+.post-body .sc-detail { margin: 6px 0 0; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+.post-body .sc-issues { margin: 6px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.5; }
+.post-body .sc-issues li { margin: 2px 0; }
+@media (max-width: 640px) { .post-body .int-page { margin-left: 0; } }

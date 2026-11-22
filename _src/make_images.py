@@ -280,6 +280,27 @@ def feature_canvas(W, H, split, question, answer, note=None, label="ENTITY SEO G
     return im, d
 
 
+def meaning_graph(d, cx, cy):
+    """A page at the centre of the six parts of semantic SEO, linked to each other in a ring."""
+    labels = ["Entities", "Triples", "Intent", "Topical map", "Schema", "Context"]
+    rx, ry = 175, 190
+    nodes = []
+    for k, label in enumerate(labels):
+        a = math.radians(-90 + k * 60)
+        nodes.append((px(cx + rx * math.cos(a)), px(cy + ry * math.sin(a)), label))
+    for k, (x, y, _) in enumerate(nodes):                     # the parts also link to each other
+        x2, y2, _ = nodes[(k + 1) % len(nodes)]
+        dashed(d, (x, y), (x2, y2), fill=LINE_STRONG, width=R)
+    for x, y, label in nodes:
+        d.line([(px(cx), px(cy)), (x, y)], fill=ACCENT if label == "Triples" else LINE_STRONG, width=px(2))
+    f = bahn(21, "SemiBold SemiCondensed")
+    for x, y, label in nodes:
+        lime = label == "Triples"
+        pill(d, x, y, label, f, outline=ACCENT if lime else LINE_STRONG, ink=ACCENT if lime else INK)
+    d.ellipse([px(cx - 70), px(cy - 70), px(cx + 70), px(cy + 70)], fill=ACCENT)
+    d.text((px(cx), px(cy)), "Meaning", font=bahn(32, "Bold Condensed"), fill=INK_DARK, anchor="mm")
+
+
 def entity_graph(d, cx, cy):
     """An entity in the middle with the five things entity SEO defines around it."""
     labels = ["Type", "Attributes", "Relations", "Wikidata ID", "sameAs"]
@@ -638,6 +659,22 @@ def blog_images():
                                   ("case-study-turbocharger-collection.webp", (1600, 840), "WEBP", dict(quality=82, method=6)),
                                   ("case-study-turbocharger-collection-thumb.webp", (640, 336), "WEBP", dict(quality=80, method=6))):
         save_scaled(cover, name, size, fmt, **opts)
+
+    cover, d = feature_canvas(1200, 630, 690, ("What is", "semantic SEO?"),
+                              "Optimizing a site for meaning: its entities, the facts it states and the questions it answers.",
+                              label="SEMANTIC SEO GUIDE")
+    meaning_graph(d, 945, 315)
+    save_scaled(cover, "what-is-semantic-seo.jpg", (1200, 630), "JPEG", quality=88, optimize=True, progressive=True)
+    save_scaled(cover, "what-is-semantic-seo.webp", (1600, 840), "WEBP", quality=82, method=6)
+    save_scaled(cover, "what-is-semantic-seo-thumb.webp", (640, 336), "WEBP", quality=80, method=6)
+
+    card, d = feature_canvas(1200, 675, 640, ("Semantic SEO", "in 7 steps"),
+                             "From the business and its central entity to a measured, growing content network.",
+                             label="SEMANTIC SEO GUIDE")
+    steps_list(d, 712, 130, ["Define the source context", "Collect the query network", "Group queries by intent",
+                             "Plan the topical map", "Write answer-first content", "Mark up the entities",
+                             "Measure and expand"], step=72)
+    save_scaled(card, "semantic-seo-steps.webp", (1200, 675), "WEBP", quality=84, method=6)
 
 
 if __name__ == "__main__":

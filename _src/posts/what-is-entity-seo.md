@@ -1,12 +1,12 @@
 <!--
 {
   "date": "2026-10-14",
-  "updated": "2026-11-07",
+  "updated": "2026-11-22",
   "image": "what-is-entity-seo",
   "imageAlt": "What is entity SEO? Optimizing a website so search engines identify its entities, their attributes and their relations.",
   "section": "Entity SEO",
   "tags": ["Entity SEO", "Knowledge Graph", "Structured data"],
-  "keywords": ["entity SEO", "what is entity SEO", "entity-based SEO", "knowledge graph", "entity schema", "semantic SEO"],
+  "keywords": ["entity SEO", "what is entity SEO", "entity-based SEO", "knowledge graph", "entity schema"],
   "takeaways": [
       "Entity SEO optimizes a website so search engines identify its entities, such as people, places, products and concepts, understand their attributes and connect the site to them.",
       "Entity SEO, keyword SEO and semantic SEO optimize different units, and all 3 lead to the same practice: name entities clearly, state their facts and connect related pages.",
@@ -179,7 +179,7 @@ Entity SEO, keyword SEO and semantic SEO overlap, but each approach optimizes a 
 | Typical output | One page per keyword group | Pages and markup that define entities | A connected set of pages around a topic |
 | The query [ada] | One string to match | Three separate entities to tell apart | Context that shows which meaning a page serves |
 
-Holistic SEO treats entities as one layer of semantic SEO, next to context, topical maps and query networks. Ahrefs argues that entity SEO is simply good SEO. Both views lead to the same practice: name entities clearly, state their facts and connect related pages. The guide to [entity SEO vs keyword SEO](/blog/entity-seo-vs-keyword-seo/) compares the first 2 approaches in depth, with Google's documentation and research on both.
+Holistic SEO treats entities as one layer of semantic SEO, next to context, topical maps and query networks. Ahrefs argues that entity SEO is simply good SEO. Both views lead to the same practice: name entities clearly, state their facts and connect related pages. The [guide to semantic SEO](/blog/what-is-semantic-seo/) covers the wider approach, from triples and word relations to topical maps. The guide to [entity SEO vs keyword SEO](/blog/entity-seo-vs-keyword-seo/) compares the first 2 approaches in depth, with Google's documentation and research on both.
 
 ## Core Concepts Behind Entity SEO
 

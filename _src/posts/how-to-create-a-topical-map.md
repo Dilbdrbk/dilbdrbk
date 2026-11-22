@@ -1,6 +1,7 @@
 <!--
 {
   "date": "2026-11-01",
+  "updated": "2026-11-22",
   "image": "how-to-create-a-topical-map",
   "imageAlt": "How to create a topical map: define the central entity, map its attributes, collect real queries and decide which ones deserve a page.",
   "section": "Topical Maps",
@@ -54,7 +55,7 @@ A 4-rule page test then decides whether a topic earns its own URL, merges into a
 
 A topical map is a structured plan of every page and section a website needs to cover one topic completely. It names the central entity, the attributes of that entity, the questions people search about each attribute, and the page that answers each question.
 
-A topical map differs from a keyword list because it decides structure, not only targets. Each row of the map carries a decision, such as an own page, a heading inside a parent page or a variant of an existing page, plus the internal links that connect it.
+A topical map differs from a keyword list because it decides structure, not only targets. Each row of the map carries a decision, such as an own page, a heading inside a parent page or a variant of an existing page, plus the internal links that connect it. A topical map is the planning layer of [semantic SEO](/blog/what-is-semantic-seo/), which optimizes a whole site for meaning rather than single keywords.
 
 ### Topical Map vs Keyword List vs Content Calendar
 

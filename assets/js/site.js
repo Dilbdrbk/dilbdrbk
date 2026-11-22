@@ -788,6 +788,252 @@
     sync();
   });
 
+  // Query intent sorter: 15 intents grouped by journey stage, first matching cue wins,
+  // queries with no cue go to a review list instead of a guessed group.
+  var escHtml = function (s) {
+    return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  };
+  var INTENTS = [
+    ['comparison', 'Comparison', 'this against an alternative', /\bvs\.?\b|\bversus\b|\bdifference between\b|\bcompared? (to|with)\b|\balternatives?\b|\bor\b.*\b(better|cheaper)\b/],
+    ['cost', 'Cost', 'the price and what drives it', /\bcosts?\b|\bprices?\b|\bpricing\b|\bhow much\b|\bcheap(est)?\b|\bfees?\b|\bquotes?\b|\brates\b/],
+    ['governance', 'Governance', 'rules, codes, warranty and law', /\bwarrant(y|ies)\b|\bpermits?\b|\blicen[cs]es?\b|\bcode requirements?\b|\blegal\b|\bregulations?\b|\bcompliance\b|\bcertifi(ed|cation)\b|\blaws?\b|\bpolicy\b|\bpolicies\b|\bguidelines\b/],
+    ['diagnosis', 'Diagnosis', 'the fault behind a symptom', /\bwhy (is|does|do|are|did) my\b|\bsigns? of\b|\bsymptoms?\b|\bnot working\b|\bwon'?t\b|\bcauses?\b|\bfailure\b|\bfailing\b|\bnoise\b|\bleak(s|ing)?\b|\bsmok(e|ing)\b|\bdropped\b/],
+    ['remediation', 'Remediation', 'to make it right again', /\bfix(es|ing)?\b|\brepair(s|ing)?\b|\btroubleshoot(ing)?\b|\brecover(y)?\b|\bunclog\b|\breset\b/],
+    ['acquisition', 'Acquisition', 'to buy, install, hire or sign up', /\bwhere to (buy|get|find)\b|\bbuy(ing)?\b|\bfor sale\b|\bhire\b|\bnear me\b|\bhow to (install|get|order|sign up|apply)\b|\binstall(ation)?\b|\bshop\b|\border\b|\bsign up\b/],
+    ['transition', 'Transition', 'to replace, upgrade or switch', /\breplac(e|ing)\b|\bupgrad(e|ing)\b|\bswitch(ing)? (from|to)\b|\bmigrat(e|ion|ing)\b|\bcancel\b|\bconvert(ing)?\b/],
+    ['selection', 'Selection', 'which one or which provider', /\bbest\b|\btop \d+\b|\btop rated\b|\bhow to (choose|pick)\b|\bwhich\b|\bbrands?\b|\bcompan(y|ies)\b|\bagenc(y|ies)\b|\bprovider\b/],
+    ['value', 'Value', 'the upside and whether it pays', /\bbenefits?\b|\badvantages?\b|\bpros\b|\bworth it\b|\bis .* worth\b|\broi\b|\bwhy (use|choose|get|do)\b|\bimportance\b|\bimportant\b|\bwhy .* matters?\b/],
+    ['risk', 'Risk', 'the downside and failure modes', /\bdisadvantages?\b|\bcons\b|\bsafe\b|\brisks?\b|\bdangers?\b|\bdangerous\b|\bside effects?\b|\bproblems?\b|\bdownsides?\b|\bmistakes\b|\bmyths?\b/],
+    ['evidence', 'Evidence', 'proof, data and cases', /\bstatistics?\b|\bstats\b|\bcase stud(y|ies)\b|\breviews?\b|\bexamples?\b|\bresults\b|\bresearch\b|\bstudy\b|\bproof\b|^(does|do|can|will) .* work\b/],
+    ['taxonomy', 'Taxonomy', 'the kinds, types and sizes', /\btypes? of\b|\bkinds? of\b|\bsizes?\b|\bgrades?\b|\bvariants?\b|\bcategor(y|ies)\b|\blist of\b|\bparts of\b|\bcomponents\b/],
+    ['mechanism', 'Mechanism', 'how it works and why', /\bhow (does|do|is|are)\b|\bworks?\b|\bwhy (does|do|is|are)\b|\bprocess\b|\bexplained\b/],
+    ['operation', 'Operation', 'to use, maintain or improve it', /\bhow to\b|\bmaintenance\b|\bmaintain\b|\btips\b|\bguide\b|\bstrategy\b|\bchecklist\b|\bbest practices\b|\bsteps\b|\btutorial\b|\btools?\b|\bwriting\b|\boptimi[sz](e|ation)\b|\bimprove\b|\btemplate\b/],
+    ['identity', 'Identity', 'a definition and scope', /\bwhat (is|are|does)\b|\bwhat'?s\b|\bmeaning\b|\bmeans\b|\bdefin(e|ition)\b|\bwho is\b|\bwho are\b/]
+  ];
+  var PHASES = [
+    ['Understand', ['identity', 'mechanism', 'taxonomy']],
+    ['Evaluate', ['value', 'comparison', 'evidence', 'risk']],
+    ['Acquire', ['cost', 'selection', 'acquisition']],
+    ['Operate', ['operation']],
+    ['Troubleshoot', ['diagnosis', 'remediation']],
+    ['Exit', ['transition']],
+    ['Context', ['governance']]
+  ];
+  var PAGE = { cost: 'Service or product page', selection: 'Service or product page', acquisition: 'Service or product page', transition: 'Check the top results' };
+  document.querySelectorAll('[data-tool="intents"]').forEach(function (tool) {
+    var input = tool.querySelector('[data-int-input]');
+    var out = tool.querySelector('[data-int-out]');
+    var plain = '';
+    var run = function () {
+      var seen = {};
+      var queries = input.value.split(/\n/).map(function (q) { return q.trim().replace(/\s+/g, ' '); })
+        .filter(function (q) { var k = q.toLowerCase(); if (!q || seen[k]) return false; seen[k] = 1; return true; });
+      if (!queries.length) {
+        out.innerHTML = '<p class="tool-hint">Paste at least one query, one per line.</p>';
+        return;
+      }
+      var groups = {}, review = [];
+      queries.forEach(function (q) {
+        var low = q.toLowerCase();
+        for (var i = 0; i < INTENTS.length; i++) {
+          if (INTENTS[i][3].test(low)) { (groups[INTENTS[i][0]] = groups[INTENTS[i][0]] || []).push(q); return; }
+        }
+        review.push(q);
+      });
+      var label = {};
+      INTENTS.forEach(function (it) { label[it[0]] = it; });
+      var used = Object.keys(groups).length;
+      var html = '<p class="int-sum"><strong>' + queries.length + ' queries</strong>: ' + (queries.length - review.length) +
+        ' sorted into ' + used + ' of 15 intents' + (review.length ? ', ' + review.length + ' to review' : '') + '.</p>';
+      var text = ['Query intent sorter: ' + queries.length + ' queries'];
+      PHASES.forEach(function (ph) {
+        var ids = ph[1].filter(function (id) { return groups[id]; });
+        if (!ids.length) return;
+        html += '<div class="int-phase"><p class="int-phase-title">' + ph[0] + '</p>';
+        text.push('', ph[0].toUpperCase());
+        ids.forEach(function (id) {
+          var page = PAGE[id] || 'Guide or blog post';
+          html += '<div class="int-group"><p class="int-name"><span>' + label[id][1] + '</span><span class="int-want">' + label[id][2] +
+            '</span><span class="int-page">' + page + '</span></p><ul>' +
+            groups[id].map(function (q) { return '<li>' + escHtml(q) + '</li>'; }).join('') + '</ul></div>';
+          text.push(label[id][1] + ' (' + page + '): ' + groups[id].join('; '));
+        });
+        html += '</div>';
+      });
+      if (review.length) {
+        html += '<div class="int-phase int-review"><p class="int-phase-title">Review by hand</p><div class="int-group"><p class="int-name"><span>No clear cue</span>' +
+          '<span class="int-want">a bare entity or brand name, or a phrasing the sorter does not know</span></p><ul>' +
+          review.map(function (q) { return '<li>' + escHtml(q) + '</li>'; }).join('') + '</ul></div></div>';
+        text.push('', 'REVIEW BY HAND: ' + review.join('; '));
+      }
+      plain = text.join('\n');
+      html += '<div class="tool-actions"><button class="tool-copy" type="button" data-int-copy>Copy as text</button></div>';
+      out.innerHTML = html;
+    };
+    var EXAMPLE = ['what is a turbocharger', 'how does a turbocharger work', 'types of turbochargers', 'rebuilt vs new turbocharger',
+      'is a rebuilt turbo worth it', 'turbocharger cost', 'best turbocharger brands', 'where to buy turbochargers',
+      'turbocharger maintenance tips', 'signs of a bad turbo', 'how to fix turbo lag', 'replace turbocharger',
+      'turbocharger warranty', 'turbo failure causes', 'garrett gt35'].join('\n');
+    tool.querySelector('[data-int-run]').addEventListener('click', run);
+    tool.querySelector('[data-int-example]').addEventListener('click', function () { input.value = EXAMPLE; run(); });
+    tool.querySelector('[data-int-clear]').addEventListener('click', function () {
+      input.value = '';
+      out.innerHTML = '<p class="tool-hint">Sorted queries appear here, grouped by journey stage and intent.</p>';
+    });
+    out.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-int-copy]');
+      if (!b || !navigator.clipboard) return;
+      navigator.clipboard.writeText(plain).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy as text'; }, 1500); });
+    });
+  });
+
+  // Semantic content checker: the measurable writing rules every guide on this site passes.
+  var FILLER = ['Additionally', 'As an ai', 'Beacon', 'Discover', 'Dive', 'Delve', 'Embrace', 'Utmost', 'Explore', 'elevate', 'However',
+    'Bombastic', 'Boost', 'Buckle up', 'same token', 'Comparatively', 'Enhance', 'Equally', 'Ever-evolving', 'First', 'Furthermore',
+    'Get ready', 'Gone are the days', 'Identically', 'light of', 'sea of', 'Lastly', 'Leverage', 'Likewise', 'Look no further', 'Maximize',
+    'Moreover', 'Navigating', 'Nested', 'Plethora', 'Realm', 'Secondly', 'Shed light', 'Solace', 'Switching gears', 'Unleash',
+    "We've got you covered", 'When it comes to', 'addition', 'conclusion', 'crucial', 'daunting task', 'digital landscape', 'digital world',
+    'embark', 'essential', 'go deeper'];
+  var STEMMED = { elevate: 1, enhance: 1, boost: 1, maximize: 1, leverage: 1, essential: 1, embark: 1, delve: 1, embrace: 1, unleash: 1, explore: 1, dive: 1 };
+  var reEsc = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
+  var fillerRe = FILLER.map(function (w) {
+    var k = w.toLowerCase();
+    if (k === 'first') return [w, /(?:^|[.!?]\s+)First\b(?=[,\s])/g];
+    var tail = STEMMED[k] ? '(?:s|d|es|ed|ing|ment)?' : '';
+    return [w, new RegExp('(?:^|[^A-Za-z-])' + reEsc(w) + tail + '(?![A-Za-z-])', 'gi')];
+  });
+  var STOP = ' about after also and are because been before being between both but can could does doing each from have having here how into its just more most much once only other over same should some such than that the their them then there these they this those through under until very what when where which while who whom why will with would your you '.split(' ');
+  var stop = {};
+  STOP.forEach(function (w) { if (w) stop[w] = 1; });
+  var content = function (s) {
+    return (s.toLowerCase().match(/[a-z0-9]+/g) || []).filter(function (w) { return w.length > 3 && !stop[w]; })
+      .map(function (w) { return w.replace(/ies$/, 'y').replace(/(ing|ed)$/, '').replace(/s$/, ''); });
+  };
+  var sentences = function (s) { return s.replace(/([.!?])\s+(?=[A-Z0-9"'])/g, '$1\n').split('\n').filter(Boolean); };
+  document.querySelectorAll('[data-tool="semcheck"]').forEach(function (tool) {
+    var phraseIn = tool.querySelector('[data-sc-phrase]');
+    var input = tool.querySelector('[data-sc-input]');
+    var out = tool.querySelector('[data-sc-out]');
+    var run = function () {
+      var text = input.value.replace(/\r/g, '');
+      var phrase = phraseIn.value.trim().toLowerCase();
+      if (!text.trim()) { out.innerHTML = '<p class="tool-hint">Paste a draft to check.</p>'; return; }
+      var lines = text.split('\n');
+      var checks = [];
+      var add = function (status, name, detail, items) { checks.push({ s: status, n: name, d: detail, i: items || [] }); };
+      var lineOf = function (idx) { return text.slice(0, idx).split('\n').length; };
+
+      // Headings and the blocks of prose under them.
+      var heads = [], blocks = [], buf = [], start = 0;
+      var flush = function () { if (buf.length) { blocks.push({ line: start, text: buf.join(' ') }); buf = []; } };
+      lines.forEach(function (raw, i) {
+        var m = raw.match(/^(#{1,4})\s+(.+)$/);
+        var s = raw.trim();
+        if (m) { flush(); heads.push({ line: i + 1, lvl: m[1].length, text: m[2].trim(), block: blocks.length }); return; }
+        if (!s || /^([-*+]|\d+\.)\s/.test(s) || /^\|/.test(s)) { flush(); return; }
+        if (!buf.length) start = i + 1;
+        buf.push(s);
+      });
+      flush();
+      var words = (text.match(/\S+/g) || []).length;
+
+      // 1. Heading order.
+      if (!heads.length) {
+        add('warn', 'Heading order', 'No headings found. Mark them as # H1, ## H2 and ### H3 so the checker can test the structure.');
+      } else {
+        var h1 = heads.filter(function (h) { return h.lvl === 1; }).length;
+        var jumps = [];
+        heads.forEach(function (h, k) { if (k && h.lvl > heads[k - 1].lvl + 1) jumps.push('Line ' + h.line + ': H' + heads[k - 1].lvl + ' jumps to H' + h.lvl + ', ' + h.text); });
+        if (h1 !== 1) jumps.unshift('The draft has ' + h1 + ' H1 headings; it needs exactly 1.');
+        add(jumps.length ? 'fail' : 'pass', 'Heading order', jumps.length ? 'Fix the heading levels below.' : 'One H1, and no heading skips a level.', jumps);
+      }
+
+      // 2. Answer-first: the first sentence under a heading shares a content word with it.
+      var late = [];
+      heads.forEach(function (h) {
+        if (h.lvl === 1 || /(references|sources|faq|frequently asked)/i.test(h.text)) return;
+        var b = blocks[h.block];
+        var next = heads.filter(function (x) { return x.line > h.line; })[0];
+        if (!b || (next && b.line > next.line)) { late.push('Line ' + h.line + ': no paragraph under "' + h.text + '"'); return; }
+        var first = sentences(b.text)[0];
+        var hw = content(h.text), fw = content(first);
+        var hit = hw.some(function (w) { return fw.indexOf(w) > -1; });
+        if (hw.length && !hit) late.push('Line ' + h.line + ': "' + h.text + '" opens with "' + first.slice(0, 70) + (first.length > 70 ? '...' : '') + '"');
+      });
+      if (heads.length) add(late.length ? 'warn' : 'pass', 'Answer-first headings',
+        late.length ? 'These sections open without the heading\'s own words, so the answer may come too late.' : 'Every section opens with a sentence that answers its heading.', late);
+
+      // 3. Topic phrase under every H2.
+      if (!phrase) {
+        add('warn', 'Topic phrase coverage', 'Enter the main topic phrase to check it appears in the H1, the opening and every main section.');
+      } else {
+        var miss = [];
+        var low = text.toLowerCase();
+        var h1h = heads.filter(function (h) { return h.lvl === 1; })[0];
+        if (h1h && h1h.text.toLowerCase().indexOf(phrase) < 0) miss.push('The H1 does not contain "' + phrase + '".');
+        if (blocks[0] && blocks[0].text.toLowerCase().indexOf(phrase) < 0) miss.push('The opening paragraph does not contain "' + phrase + '".');
+        var h2s = heads.filter(function (h) { return h.lvl === 2 && !/^references/i.test(h.text); });
+        h2s.forEach(function (h, k) {
+          var end = k + 1 < h2s.length ? h2s[k + 1].line : lines.length + 1;
+          var seg = lines.slice(h.line - 1, end - 1).join('\n').toLowerCase();
+          if (seg.indexOf(phrase) < 0) miss.push('Line ' + h.line + ': no "' + phrase + '" under "' + h.text + '"');
+        });
+        var count = low.split(phrase).length - 1;
+        add(miss.length ? 'warn' : 'pass', 'Topic phrase coverage',
+          (miss.length ? 'Add the phrase where it is missing, in a sentence that reads naturally.' : 'The phrase appears in the H1, the opening and under every main section.') + ' It appears ' + count + ' times in ' + words + ' words.', miss);
+      }
+
+      // 4. Paragraph length: 2 to 4 sentences.
+      var longP = [];
+      blocks.forEach(function (b) { var n = sentences(b.text).length; if (n > 4) longP.push('Line ' + b.line + ': ' + n + ' sentences'); });
+      add(longP.length ? 'warn' : 'pass', 'Paragraph length', longP.length ? 'Split these paragraphs so each holds one idea in 2 to 4 sentences.' : 'Every paragraph holds 4 sentences or fewer.', longP);
+
+      // 5. Concrete examples after plural nouns.
+      var grounding = (text.match(/\b(such as|including|for example|for instance)\b|\(e\.g\./gi) || []).length;
+      var per = words ? (1000 * grounding / words) : 0;
+      var enough = words < 150 || per >= 2;
+      add(enough ? 'pass' : 'warn', 'Concrete examples',
+        grounding + ' example markers, such as "such as" or "for example", which is ' + per.toFixed(1) + ' per 1,000 words.' +
+        (enough ? '' : ' Follow plural nouns with a named instance, such as a brand, a number or a place.'));
+
+      // 6. Long sentences that separate the subject from its verb and object.
+      var longS = [];
+      blocks.forEach(function (b) { sentences(b.text).forEach(function (s) { var n = (s.match(/\S+/g) || []).length; if (n > 32) longS.push('Line ' + b.line + ': ' + n + ' words, "' + s.slice(0, 60) + '..."'); }); });
+      add(longS.length ? 'warn' : 'pass', 'Sentence length', longS.length ? 'Shorten these so the subject stays close to its verb and object.' : 'No sentence runs past 32 words.', longS);
+
+      // 7. Dashes and filler words.
+      var bad = [];
+      lines.forEach(function (l, i) { if (l.indexOf('—') > -1) bad.push('Line ' + (i + 1) + ': em dash'); if (l.indexOf('–') > -1) bad.push('Line ' + (i + 1) + ': en dash'); });
+      fillerRe.forEach(function (f) {
+        f[1].lastIndex = 0;
+        var m;
+        while ((m = f[1].exec(text))) bad.push('Line ' + lineOf(m.index + (m[0].length - m[0].replace(/^[^A-Za-z]+/, '').length)) + ': "' + f[0] + '"');
+      });
+      add(bad.length ? 'fail' : 'pass', 'Dashes and filler words', bad.length ? 'Replace these with plain words and commas.' : 'No dashes and none of the filler words on the list.', bad.slice(0, 20));
+
+      var passed = checks.filter(function (c) { return c.s === 'pass'; }).length;
+      var html = '<p class="int-sum"><strong>' + passed + ' of ' + checks.length + ' checks pass</strong> for ' + words + ' words, ' + heads.length + ' headings and ' + blocks.length + ' paragraphs.</p><ul class="sc-list">';
+      checks.forEach(function (c) {
+        var tag = { pass: 'Pass', warn: 'Review', fail: 'Fix' }[c.s];
+        html += '<li class="sc-item is-' + c.s + '"><p class="sc-row"><span class="sc-tag">' + tag + '</span><strong>' + c.n + '</strong></p><p class="sc-detail">' + escHtml(c.d) + '</p>' +
+          (c.i.length ? '<ul class="sc-issues">' + c.i.map(function (x) { return '<li>' + escHtml(x) + '</li>'; }).join('') + '</ul>' : '') + '</li>';
+      });
+      out.innerHTML = html + '</ul>';
+    };
+    var EXAMPLE = ['# What Is a Rebuilt Turbocharger?', '',
+      'A rebuilt turbocharger is a used unit that a technician takes apart, cleans and fits with new wear parts, such as bearings and seals. It costs less than a new unit and suits engines out of warranty.', '',
+      '## How Is a Rebuilt Turbocharger Made?', '',
+      'A rebuilt turbocharger is made in 4 stages: teardown, cleaning, part replacement and balancing. The technician inspects the housings and replaces any worn part, such as the shaft or the compressor wheel.', '',
+      '## Benefits of Buying One', '',
+      'However, many buyers ask about quality. Cost is the main benefit, and the price usually sits well below a new unit, which matters for fleets that run older trucks.'].join('\n');
+    tool.querySelector('[data-sc-run]').addEventListener('click', run);
+    tool.querySelector('[data-sc-example]').addEventListener('click', function () { phraseIn.value = 'rebuilt turbocharger'; input.value = EXAMPLE; run(); });
+    tool.querySelector('[data-sc-clear]').addEventListener('click', function () {
+      phraseIn.value = ''; input.value = '';
+      out.innerHTML = '<p class="tool-hint">Results appear here, with the line of each issue.</p>';
+    });
+  });
+
   // Coverage, fan-out, Knowledge Graph readiness and core update recovery checkers share one handler;
   // a tool's data-* attributes rename the two groups and the advice text.
   document.querySelectorAll('[data-tool="coverage"], [data-tool="fanout"], [data-tool="kgready"], [data-tool="corecheck"]').forEach(function (tool) {

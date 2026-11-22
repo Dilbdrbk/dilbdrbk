@@ -1,0 +1,21 @@
+<div class="post-tool" data-tool="intents">
+  <div class="tool-head">
+    <p class="tool-kicker">Free tool</p>
+    <p class="tool-title">Query intent sorter</p>
+    <p class="tool-note">Paste search queries, one per line. The sorter reads the wording of each query, assigns it to one of 15 intents and groups the intents by the stage of the searcher's journey, with a page type for each group. It is a first pass: a query with no clear cue goes to a review list, never to a guessed group, and every group still needs a human check.</p>
+  </div>
+  <div class="tool-form">
+    <label>Search queries, one per line
+      <textarea rows="9" data-int-input spellcheck="false" placeholder="what is a turbocharger&#10;how does a turbocharger work&#10;rebuilt vs new turbocharger"></textarea>
+    </label>
+    <div class="tool-actions js-only">
+      <button class="btn" type="button" data-int-run>Sort queries</button>
+      <button class="btn btn-ghost" type="button" data-int-example>Load an example</button>
+      <button class="btn btn-ghost" type="button" data-int-clear>Clear</button>
+    </div>
+  </div>
+  <div class="int-out js-only" data-int-out aria-live="polite">
+    <p class="tool-hint">Sorted queries appear here, grouped by journey stage and intent.</p>
+  </div>
+  <p class="tool-hint">The 15 intents and the page type rule come from the topical map method in this guide: understanding, comparison and troubleshooting intents become guides, while cost, selection and buying intents usually belong on service or product pages. Nothing you paste leaves your browser.</p>
+</div>

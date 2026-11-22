@@ -1,0 +1,24 @@
+<div class="post-tool" data-tool="semcheck">
+  <div class="tool-head">
+    <p class="tool-kicker">Free tool</p>
+    <p class="tool-title">Semantic content checker</p>
+    <p class="tool-note">Paste a draft with its headings marked as # H1, ## H2 and ### H3, and enter the main topic phrase. The checker tests the draft against the measurable rules from the checklist above: answer-first headings, the topic phrase under every main section, paragraph length, concrete examples after plural nouns, heading order, dashes and overused filler words. It checks the writing, not the facts, so it is not a Google score.</p>
+  </div>
+  <div class="tool-form">
+    <label>Main topic phrase
+      <input type="text" data-sc-phrase placeholder="rebuilt turbocharger" autocomplete="off">
+    </label>
+    <label>Draft, with # headings
+      <textarea rows="12" data-sc-input spellcheck="false" placeholder="# What Is a Rebuilt Turbocharger?&#10;&#10;A rebuilt turbocharger is a used unit that a technician takes apart, cleans and fits with new wear parts..."></textarea>
+    </label>
+    <div class="tool-actions js-only">
+      <button class="btn" type="button" data-sc-run>Check the draft</button>
+      <button class="btn btn-ghost" type="button" data-sc-example>Load an example</button>
+      <button class="btn btn-ghost" type="button" data-sc-clear>Clear</button>
+    </div>
+  </div>
+  <div class="sc-out js-only" data-sc-out aria-live="polite">
+    <p class="tool-hint">Results appear here, with the line of each issue.</p>
+  </div>
+  <p class="tool-hint">The filler-word list and the 2 to 4 sentence paragraph rule follow the writing rules every guide on this site passes before publishing. Nothing you paste leaves your browser.</p>
+</div>

@@ -76,7 +76,7 @@ CHAT_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><pat
 LAYOUT_UPDATED = "2026-11-18"
 
 PAGES = [
-    dict(path="/", body="home.html", crumb="Home", updated="2026-10-29", kind="home",
+    dict(path="/", body="home.html", crumb="Home", updated="2026-11-22", kind="home",
          title="Semantic SEO Specialist in Nepal | Dil Bahadur B.K.",
          description="Dil Bahadur B.K., a semantic SEO specialist in Nepal, drives organic traffic and leads with topical authority and entity-based, technical and local SEO."),
     dict(path="/about/", body="about.html", crumb="About", updated="2026-10-25", kind="profile",
@@ -122,7 +122,7 @@ PAGES = [
          title="SEO Case Studies: Before and After | Dil Bahadur B.K.",
          description="SEO case studies from real client pages, with each page shown before and after the change, the method behind it and results added once measured."),
     dict(path="/case-studies/diesel-turbocharger-collection-page/", body="case-study-turbocharger-collection.html",
-         crumb="Turbocharger Collection Page", updated="2026-11-18", kind="guide",
+         crumb="Turbocharger Collection Page", updated="2026-11-22", kind="guide",
          trail=[("Case Studies", "/case-studies/")],
          og_image="/assets/img/blog/case-study-turbocharger-collection.jpg",
          og_image_alt="Case study: a diesel turbocharger collection page moved from around position 20 to #1 on US Google, with AI Overview citations.",

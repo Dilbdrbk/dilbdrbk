@@ -24,6 +24,7 @@
 
 ## Blog posts
 
+- [What Is Semantic SEO? Meaning, Examples and How to Do It](https://dilbdrbk.com.np/blog/what-is-semantic-seo/): 
 - [What Is a Google Core Update and How Do You Recover From One?](https://dilbdrbk.com.np/blog/what-is-a-google-core-update/): A Google core update is a broad change to Google's ranking systems that reassesses every site, shifts rankings and rewards helpful content.
 - [What Is the Google Knowledge Graph and How Does It Affect SEO?](https://dilbdrbk.com.np/blog/what-is-the-google-knowledge-graph/): Google's Knowledge Graph is a database of entity facts that feeds knowledge panels and entity matching, shaping SEO without being a listed ranking system.
 - [How to Create a Topical Map](https://dilbdrbk.com.np/blog/how-to-create-a-topical-map/): To create a topical map, define the central entity, map its attributes, gather real queries, then test which deserve a page and link them core to outer.
