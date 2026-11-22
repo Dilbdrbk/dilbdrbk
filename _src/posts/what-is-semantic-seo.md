@@ -36,6 +36,7 @@
     "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
     "https://developers.google.com/search/docs/essentials/spam-policies",
     "https://developers.google.com/search/docs/appearance/ai-features",
+    "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
     "https://blog.google/products/search/search-language-understanding-bert/",
     "https://blog.google/products-and-platforms/products/search/introducing-knowledge-graph-things-not/",
     "https://www.seroundtable.com/google-lsi-keywords-27970.html",
@@ -51,7 +52,7 @@
 Semantic SEO is the practice of optimizing a website for meaning, so search engines understand the entities a page covers, the facts it states about them and the questions it answers. It replaces one keyword per page with a connected network of pages, each answering one intent in clear, fact-based sentences.
 [[/answer]]
 
-Semantic SEO matters because Google reads meaning, not only matching words, and AI answers quote the passages that state facts most clearly. This guide explains what semantic SEO means and how Google understands a search. It then compares semantic SEO with traditional SEO and covers its core parts, a 7-step method and a real client example.
+Semantic SEO matters because Google's ranking systems read meaning, not only matching words. Google's guide to its ranking systems describes current AI systems that interpret language and page sections, such as RankBrain, neural matching, BERT and passage ranking.
 
 [[toc]]
 
@@ -227,20 +228,20 @@ The checker below tests a draft against the checks that can be measured in text.
 
 ## Common Semantic SEO Mistakes
 
-Most semantic SEO mistakes come from treating meaning as a word list. The 6 mistakes below are the ones I see most often in audits.
+Most semantic SEO mistakes come from treating meaning as a word list. Each of the 6 mistakes below conflicts with a Google statement or with the method in this guide.
 
 1. **Chasing "LSI keywords":** Latent semantic indexing is a 1980s retrieval technique, and Google's John Mueller said in July 2019 that there is no such thing as LSI keywords. Related terms help only when they complete the meaning of the topic.
 2. **Stuffing synonyms:** Repeating a phrase in many variants can still amount to keyword stuffing, which Google's spam policies define as filling a page with keywords or numbers to manipulate rankings.
 3. **Writing to a tool score:** Content tools that count terms measure word frequency, not whether the page answers the question. Holistic SEO notes that TF-IDF is of limited importance, useful mainly to see how competitors approach a subject.
 4. **Creating a page for every query:** Thin pages for small variations split relevance and confuse the topical map. A question that shares the same entity and intent belongs as a section.
 5. **Burying the answer:** A page that opens with background makes search engines and readers hunt for the fact. Passage ranking judges sections on their own, so a section that answers first is easier to match.
-6. **Marking up facts the page does not show:** Schema that disagrees with the visible content breaks the consistency semantic SEO depends on.
+6. **Marking up facts the page does not show:** Google's structured data guidelines state that markup must not describe content that is not visible to readers of the page.
 
 Each mistake has the same fix: state the facts plainly, once, in the section where the reader expects them.
 
 ## Semantic SEO for AI Search
 
-Semantic SEO prepares a site for AI search because AI answers are built from passages, and passages built as clear facts are the easiest to quote. In my work, the passages that AI Overviews, ChatGPT search and Perplexity cite are usually the ones that answer one sub-question directly and name their entities.
+Semantic SEO prepares a site for AI search because AI features compose answers from web pages and link to them as sources. Google states that AI Overviews and AI Mode surface relevant links to help people find information quickly and reliably.
 
 Google states that AI Overviews and AI Mode may use a "query fan-out" technique, which issues multiple related searches across subtopics and data sources to build one response. Google also states that there are no additional requirements or special optimizations needed to appear in these features, and that SEO best practices remain relevant. A semantic SEO topical map already covers those subtopics, so fan-out searches are more likely to find a section of the site that answers them.
 
@@ -252,7 +253,7 @@ The [guide to getting cited by ChatGPT](/blog/how-to-get-cited-by-chatgpt/) cove
 
 ### Is semantic SEO still relevant in 2026?
 
-Yes, semantic SEO is more relevant in 2026 than before, because AI Overviews and AI assistants quote passages that state facts clearly. Google's ranking systems guide, updated in December 2025, still lists language systems such as BERT and neural matching among its current systems.
+Yes, semantic SEO remains relevant in 2026. Google's ranking systems guide, updated in December 2025, still lists language systems such as BERT and neural matching among its current systems. Google's AI features also link to the web pages they draw on.
 
 ### Does semantic SEO replace keyword research?
 
@@ -260,7 +261,7 @@ No, semantic SEO extends keyword research rather than replacing it. Keywords sti
 
 ### How long does semantic SEO take to show results?
 
-Semantic SEO results depend on the site and the competition, and they usually build over months rather than weeks. A rewrite of existing pages can move faster than a new topical map, because the pages already have history in Google.
+Semantic SEO has no fixed timeline, and Google publishes none. Results depend on how often Google recrawls the pages, the competition and how much of the topic the site already covers. In the case study above, the rewritten page ranked #1 for 3 searches within about 3 months of the change.
 
 ### Are LSI keywords part of semantic SEO?
 
@@ -272,7 +273,7 @@ The semantic SEO method in this guide draws on Koray Tugberk Gubur's Topical Aut
 
 ### Can a small website do semantic SEO?
 
-Yes, a small website can do semantic SEO, and a narrow focus often helps. A small site that covers one subject in depth, with every page tied to one source context, can outrank larger sites that cover the subject in passing.
+Yes, a small website can do semantic SEO, because the method scales with the number of topics, not the size of the site. A small site applies it to one central entity and the questions its buyers ask, then adds pages only where query data shows demand.
 
 ## Get a Semantic SEO Plan for Your Site
 
@@ -290,8 +291,9 @@ Google documentation and statements:
 2. Google Search Central, [Introduction to structured data markup in Google Search](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data), updated 10 December 2025
 3. Google Search Central, [Spam policies for Google web search](https://developers.google.com/search/docs/essentials/spam-policies), updated 28 August 2026
 4. Google Search Central, [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features), updated 10 December 2025
-5. Pandu Nayak, Google, [Understanding searches better than ever before](https://blog.google/products/search/search-language-understanding-bert/), 25 October 2019
-6. Amit Singhal, Google, [Introducing the Knowledge Graph: things, not strings](https://blog.google/products-and-platforms/products/search/introducing-knowledge-graph-things-not/), 16 May 2012
+5. Google Search Central, [General structured data guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), updated 10 July 2026
+6. Pandu Nayak, Google, [Understanding searches better than ever before](https://blog.google/products/search/search-language-understanding-bert/), 25 October 2019
+7. Amit Singhal, Google, [Introducing the Knowledge Graph: things, not strings](https://blog.google/products-and-platforms/products/search/introducing-knowledge-graph-things-not/), 16 May 2012
 
 News coverage:
 
