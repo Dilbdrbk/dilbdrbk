@@ -2178,3 +2178,22 @@ html.js .nojs-only { display: none; }
 .post-body .sc-issues { margin: 6px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.5; }
 .post-body .sc-issues li { margin: 2px 0; }
 @media (max-width: 640px) { .post-body .int-page { margin-left: 0; } }
+
+/* ------------------------------------------------------------ video hub: vertical video cards in the card slider */
+
+.video-slider { margin-top: 28px; }
+.video-track { gap: 18px; justify-content: safe center; }
+.video-card { flex: 0 0 300px; scroll-snap-align: start; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--bg-raise); }
+.video-frame { aspect-ratio: 9 / 16; background: #111; border-bottom: 1px solid var(--line); }
+.video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; background: #111; }
+.video-text { display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; }
+.video-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; color: var(--accent); font-size: 0.75rem; font-weight: 600; }
+.video-title { margin: 0; color: var(--ink); font-size: 1.15rem; line-height: 1.15; }
+.video-desc { margin: 0; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+.video-source { margin: 0; color: var(--muted); font-size: 0.8125rem; line-height: 1.45; }
+.video-source a { color: var(--ink-2); }
+.video-guide { margin: 2px 0 0; font-size: 0.875rem; }
+.video-transcript { margin-top: 4px; border-top: 1px solid var(--line); padding-top: 10px; }
+.video-transcript summary { color: var(--ink); font-size: 0.8125rem; font-weight: 600; cursor: pointer; }
+.video-transcript p { margin: 8px 0 0; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.55; }
+@media (max-width: 480px) { .video-card { flex-basis: 82%; } }

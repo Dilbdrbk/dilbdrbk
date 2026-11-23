@@ -58,8 +58,8 @@ NAV = [
 NAV_MENU = [
     ("About", [("/about/", "About Me"), ("/expertise/", "Expertise"), ("/industries/", "Industries"),
                ("/resume/", "Resume"), ("/profiles/", "Profiles"), ("/editorial-policy/", "Editorial Policy")]),
-    ("Resources", [("/blog/", "Blog"), ("/how-search-works/", "How Search Works"), ("/checklists/", "Checklists"),
-                   ("/tools/", "Tools")]),
+    ("Resources", [("/blog/", "Blog"), ("/videos/", "Videos"), ("/how-search-works/", "How Search Works"),
+                   ("/checklists/", "Checklists"), ("/tools/", "Tools")]),
     ("/case-studies/", "Case Studies"),
     ("/contact/", "Contact"),
 ]
@@ -73,7 +73,7 @@ CHAT_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><pat
 # `updated` feeds sitemap lastmod; bump it when a page's content changes.
 # The header, footer and Person schema sit on every page. Bump this when they change so the
 # sitemap lastmod stays accurate for pages whose own content did not change.
-LAYOUT_UPDATED = "2026-11-18"
+LAYOUT_UPDATED = "2026-11-23"
 
 PAGES = [
     dict(path="/", body="home.html", crumb="Home", updated="2026-11-22", kind="home",
@@ -128,10 +128,15 @@ PAGES = [
          og_image_alt="Case study: a diesel turbocharger collection page moved from around position 20 to #1 on US Google, with AI Overview citations.",
          title="Collection Page SEO Case Study | Dil Bahadur B.K.",
          description="A diesel parts store's turbocharger page went from position 20 to #1 on US Google, with AI Overview citations, after an intro rewritten as triples."),
+    dict(path="/videos/", body="videos.html", crumb="Videos", updated="2026-11-23", kind="page", videos=True,
+         og_image="/assets/img/videos/missed-in-seo-02-block-gptbot-not-oai-searchbot.jpg",
+         og_image_alt="Missed in SEO episode 2: blocking AI bots, with a robots.txt that disallows GPTBot and OAI-SearchBot.",
+         title="SEO Videos: Missed in SEO Series | Dil Bahadur B.K.",
+         description="Missed in SEO is a short video series that shows one overlooked SEO, entity or AI search fix per episode, with the source it comes from."),
     dict(path="/editorial-policy/", body="editorial-policy.html", crumb="Editorial Policy", updated="2026-10-29", kind="page",
          title="Editorial Policy: How SEO Guides Are Checked | Dil Bahadur B.K.",
          description="How Dil Bahadur B.K. researches, fact-checks and updates every SEO guide: a six-tier source hierarchy, claim-by-claim checks, AI use and corrections."),
-    dict(path="/privacy-policy/", body="privacy-policy.html", crumb="Privacy Policy", updated="2026-10-29", kind="page",
+    dict(path="/privacy-policy/", body="privacy-policy.html", crumb="Privacy Policy", updated="2026-11-23", kind="page",
          title="Privacy Policy: No Cookies, No Tracking | Dil Bahadur B.K.",
          description="The privacy policy of dilbdrbk.com.np: no cookies, no analytics and no stored form data, plus what Cloudflare, GitHub Pages and Google Fonts process."),
 ]
@@ -432,7 +437,7 @@ FOOTER_BIO = ("I'm an entity-first semantic SEO consultant in Nepal. I design cl
 
 def footer() -> str:
     """Three columns: who (photo, role, bio, profile chips), site links, and contact rows."""
-    nav = "\n".join(f'        <li><a href="{h}">{l}</a></li>' for h, l in [("/", "Home")] + NAV + [("/case-studies/", "Case Studies"), ("/profiles/", "Profiles"), ("/contact/", "Contact")])
+    nav = "\n".join(f'        <li><a href="{h}">{l}</a></li>' for h, l in [("/", "Home")] + NAV + [("/case-studies/", "Case Studies"), ("/videos/", "Videos"), ("/profiles/", "Profiles"), ("/contact/", "Contact")])
     chips = "\n".join(
         f'        <li><a href="{esc(p["url"])}" rel="{"noopener" if p.get("listing") else "me noopener"}" target="_blank">{esc(p["platform"])}</a></li>'
         for p in SITE["profiles"][:4]
@@ -769,6 +774,81 @@ CHECKLISTS = [
 ]
 
 
+# Missed in SEO videos, newest first. Files are self-hosted, so no third-party player or tracking loads.
+VIDEOS = [
+    dict(slug="missed-in-seo-02-block-gptbot-not-oai-searchbot", ep="02", date="2026-11-23", seconds=39, theme="ChatGPT search",
+         title="Block GPTBot, Not OAI-SearchBot (ChatGPT Search Visibility)",
+         description="OpenAI gives two separate robots.txt controls: GPTBot for model training and OAI-SearchBot for ChatGPT search. "
+                     "Disallow GPTBot to opt out of training, and keep OAI-SearchBot allowed to stay visible in ChatGPT search.",
+         source=("OpenAI, Overview of OpenAI Crawlers", "https://developers.openai.com/api/docs/bots"),
+         guide=("/blog/how-to-get-cited-by-chatgpt/", "Guide to getting cited by ChatGPT"),
+         transcript="If your robots.txt blocks every OpenAI bot at once, here's the cost. OpenAI gives you two separate robots.txt controls. "
+                    "GPTBot crawls content that may be used to train OpenAI's models. OAI-SearchBot is what shows sites in ChatGPT search. "
+                    "OpenAI says sites that block OAI-SearchBot won't be shown in ChatGPT search answers, though they can still appear as "
+                    "navigational links. So if you only want to opt out of training, disallow GPTBot and keep OAI-SearchBot allowed. "
+                    "OpenAI says search can take about 24 hours to reflect a robots.txt change."),
+    dict(slug="missed-in-seo-01-core-update-drop", ep="01", date="2026-11-23", seconds=31, theme="Core updates",
+         title="Core Update Drop? Compare These Two Weeks, Not Yesterday",
+         description="Google's three steps for measuring a core update drop: confirm the update has finished, wait a full week, "
+                     "then compare that week with the week before the update started.",
+         source=("Google Search Central, Google Search's core updates", "https://developers.google.com/search/docs/appearance/core-updates"),
+         guide=("/blog/what-is-a-google-core-update/", "Guide to Google core updates"),
+         transcript="Traffic dropped during a Google core update? Don't compare yesterday with last week. Google's guidance has three steps. "
+                    "First, confirm on the Search Status Dashboard that the update has finished. Second, wait at least one full week after "
+                    "it ends. Third, compare that week with the week before the update started, and check Web, Images, Video and the News "
+                    "tab separately. The November 2026 core update started on November 10, so check the dashboard for its end date before "
+                    "you compare."),
+]
+
+
+def video_slider_html() -> str:
+    """Video hub: one vertical card per episode in the shared card slider, with source, guide and transcript."""
+    cards = []
+    for v in VIDEOS:
+        poster = asset(f'/assets/img/videos/{v["slug"]}.webp')
+        mp4 = asset(f'/assets/video/{v["slug"]}.mp4')
+        cards.append(
+            f'<li class="video-card" id="ep{v["ep"]}">'
+            f'<div class="video-frame"><video controls preload="none" playsinline width="1080" height="1920" poster="{poster}" '
+            f'aria-label="Missed in SEO episode {v["ep"]}: {esc(v["title"])}"><source src="{mp4}" type="video/mp4"></video></div>'
+            f'<div class="video-text">'
+            f'<p class="video-meta"><span>Episode {v["ep"]}</span><span>{v["seconds"]} seconds</span><span>{esc(v["theme"])}</span></p>'
+            f'<h3 class="video-title">{esc(v["title"])}</h3>'
+            f'<p class="video-desc">{esc(v["description"])}</p>'
+            f'<p class="video-source">Source: <a href="{esc(v["source"][1])}" rel="noopener" target="_blank">{esc(v["source"][0])}</a></p>'
+            f'<p class="video-guide"><a class="arrow-link" href="{v["guide"][0]}">{esc(v["guide"][1])}</a></p>'
+            f'<details class="video-transcript"><summary>Transcript</summary><p>{esc(v["transcript"])}</p></details>'
+            f'</div></li>')
+    prev = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>'
+    nxt = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+    return ('<div class="edge video-slider" data-carousel>\n'
+            '<ul class="edge-track video-track" role="list" tabindex="0" aria-label="Missed in SEO episodes, newest first">\n'
+            + "\n".join(cards) + "\n</ul>\n"
+            '<div class="edge-nav js-only">'
+            f'<button class="edge-btn" type="button" data-dir="-1" aria-label="Previous video">{prev}</button>'
+            f'<button class="edge-btn" type="button" data-dir="1" aria-label="Next video">{nxt}</button>'
+            '</div>\n</div>')
+
+
+def video_nodes(page: dict) -> list[dict]:
+    """One VideoObject per episode, so search engines can index the self-hosted videos."""
+    return [{
+        "@type": "VideoObject",
+        "@id": absolute(page["path"]) + f'#ep{v["ep"]}',
+        "name": v["title"],
+        "description": v["description"],
+        "thumbnailUrl": [absolute(f'/assets/img/videos/{v["slug"]}.jpg'), absolute(f'/assets/img/videos/{v["slug"]}.webp')],
+        "uploadDate": f'{v["date"]}T00:00:00+05:45',
+        "duration": f'PT{v["seconds"]}S',
+        "contentUrl": absolute(f'/assets/video/{v["slug"]}.mp4'),
+        "inLanguage": "en-US",
+        "transcript": v["transcript"],
+        "creator": person_ref(),
+        "citation": v["source"][1],
+        "isPartOf": {"@type": "CreativeWorkSeries", "name": "Missed in SEO"},
+    } for v in VIDEOS]
+
+
 # Case studies, newest first. Clients stay anonymous: a broad entity, never a name, logo or link.
 CASE_STUDIES = [
     dict(path="/case-studies/diesel-turbocharger-collection-page/", image="case-study-turbocharger-collection",
@@ -1094,6 +1174,7 @@ def build() -> None:
         "checklistFeature": checklist_cards_html(wide=True),
         "caseStudyCards": case_study_cards_html(),
         "caseStudyFeature": case_study_cards_html(wide=True),
+        "videoSlider": video_slider_html(),
         "email": SITE["email"],
         "phone": SITE["phone"],
         "phoneHref": SITE["phoneHref"],
@@ -1110,6 +1191,8 @@ def build() -> None:
         graph = None
         if page.get("trail"):
             graph = [breadcrumb_node(page, page["trail"] + [(page["crumb"], page["path"])])]
+        if page.get("videos"):
+            graph = (graph or []) + video_nodes(page)
         current = page["trail"][0][1] if page.get("trail") else page["path"]
         write(page["path"], head(page, schema_blocks(page, body, graph), noindex) + "\n" + header(current) + "\n" + body + "\n" + footer())
         if not noindex:

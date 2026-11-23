@@ -19,6 +19,7 @@
 - [SEO Audit Checklist](https://dilbdrbk.com.np/seo-audit-checklist/): An SEO audit checklist of 56 checks covers technical SEO, on-page, content, local, off-page and AI search, so you find and fix what blocks rankings.
 - [Case Studies](https://dilbdrbk.com.np/case-studies/): SEO case studies from real client pages, with each page shown before and after the change, the method behind it and results added once measured.
 - [Turbocharger Collection Page](https://dilbdrbk.com.np/case-studies/diesel-turbocharger-collection-page/): A diesel parts store's turbocharger page went from position 20 to #1 on US Google, with AI Overview citations, after an intro rewritten as triples.
+- [Videos](https://dilbdrbk.com.np/videos/): Missed in SEO is a short video series that shows one overlooked SEO, entity or AI search fix per episode, with the source it comes from.
 - [Editorial Policy](https://dilbdrbk.com.np/editorial-policy/): How Dil Bahadur B.K. researches, fact-checks and updates every SEO guide: a six-tier source hierarchy, claim-by-claim checks, AI use and corrections.
 - [Privacy Policy](https://dilbdrbk.com.np/privacy-policy/): The privacy policy of dilbdrbk.com.np: no cookies, no analytics and no stored form data, plus what Cloudflare, GitHub Pages and Google Fonts process.
 
