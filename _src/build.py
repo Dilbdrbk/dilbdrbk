@@ -129,10 +129,10 @@ PAGES = [
          title="Collection Page SEO Case Study | Dil Bahadur B.K.",
          description="A diesel parts store's turbocharger page went from position 20 to #1 on US Google, with AI Overview citations, after an intro rewritten as triples."),
     dict(path="/videos/", body="videos.html", crumb="Videos", updated="2026-11-23", kind="page", videos=True,
-         og_image="/assets/img/videos/missed-in-seo-02-block-gptbot-not-oai-searchbot.jpg",
-         og_image_alt="Missed in SEO episode 2: blocking AI bots, with a robots.txt that disallows GPTBot and OAI-SearchBot.",
-         title="SEO Videos: Missed in SEO Series | Dil Bahadur B.K.",
-         description="Missed in SEO is a short video series that shows one overlooked SEO, entity or AI search fix per episode, with the source it comes from."),
+         og_image="/assets/img/videos/one-minute-seo-fixes-02-block-gptbot-not-oai-searchbot.jpg",
+         og_image_alt="One-Minute SEO Fixes episode 2: blocking AI bots, with a robots.txt that disallows GPTBot and OAI-SearchBot.",
+         title="SEO Videos: One-Minute SEO Fixes | Dil Bahadur B.K.",
+         description="One-Minute SEO Fixes is a short video series: each episode shows one SEO, entity or AI search fix in under a minute, with the source it comes from."),
     dict(path="/editorial-policy/", body="editorial-policy.html", crumb="Editorial Policy", updated="2026-10-29", kind="page",
          title="Editorial Policy: How SEO Guides Are Checked | Dil Bahadur B.K.",
          description="How Dil Bahadur B.K. researches, fact-checks and updates every SEO guide: a six-tier source hierarchy, claim-by-claim checks, AI use and corrections."),
@@ -774,9 +774,9 @@ CHECKLISTS = [
 ]
 
 
-# Missed in SEO videos, newest first. Files are self-hosted, so no third-party player or tracking loads.
+# One-Minute SEO Fixes videos, newest first. Files are self-hosted, so no third-party player or tracking loads.
 VIDEOS = [
-    dict(slug="missed-in-seo-02-block-gptbot-not-oai-searchbot", ep="02", date="2026-11-23", seconds=39, theme="ChatGPT search",
+    dict(slug="one-minute-seo-fixes-02-block-gptbot-not-oai-searchbot", ep="02", date="2026-11-23", seconds=39, theme="ChatGPT search",
          title="Block GPTBot, Not OAI-SearchBot (ChatGPT Search Visibility)",
          description="OpenAI gives two separate robots.txt controls: GPTBot for model training and OAI-SearchBot for ChatGPT search. "
                      "Disallow GPTBot to opt out of training, and keep OAI-SearchBot allowed to stay visible in ChatGPT search.",
@@ -787,7 +787,7 @@ VIDEOS = [
                     "OpenAI says sites that block OAI-SearchBot won't be shown in ChatGPT search answers, though they can still appear as "
                     "navigational links. So if you only want to opt out of training, disallow GPTBot and keep OAI-SearchBot allowed. "
                     "OpenAI says search can take about 24 hours to reflect a robots.txt change."),
-    dict(slug="missed-in-seo-01-core-update-drop", ep="01", date="2026-11-23", seconds=31, theme="Core updates",
+    dict(slug="one-minute-seo-fixes-01-core-update-drop", ep="01", date="2026-11-23", seconds=31, theme="Core updates",
          title="Core Update Drop? Compare These Two Weeks, Not Yesterday",
          description="Google's three steps for measuring a core update drop: confirm the update has finished, wait a full week, "
                      "then compare that week with the week before the update started.",
@@ -810,7 +810,7 @@ def video_slider_html() -> str:
         cards.append(
             f'<li class="video-card" id="ep{v["ep"]}">'
             f'<div class="video-frame"><video controls preload="none" playsinline width="1080" height="1920" poster="{poster}" '
-            f'aria-label="Missed in SEO episode {v["ep"]}: {esc(v["title"])}"><source src="{mp4}" type="video/mp4"></video></div>'
+            f'aria-label="One-Minute SEO Fixes episode {v["ep"]}: {esc(v["title"])}"><source src="{mp4}" type="video/mp4"></video></div>'
             f'<div class="video-text">'
             f'<p class="video-meta"><span>Episode {v["ep"]}</span><span>{v["seconds"]} seconds</span><span>{esc(v["theme"])}</span></p>'
             f'<h3 class="video-title">{esc(v["title"])}</h3>'
@@ -822,7 +822,7 @@ def video_slider_html() -> str:
     prev = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>'
     nxt = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
     return ('<div class="edge video-slider" data-carousel>\n'
-            '<ul class="edge-track video-track" role="list" tabindex="0" aria-label="Missed in SEO episodes, newest first">\n'
+            '<ul class="edge-track video-track" role="list" tabindex="0" aria-label="One-Minute SEO Fixes episodes, newest first">\n'
             + "\n".join(cards) + "\n</ul>\n"
             '<div class="edge-nav js-only">'
             f'<button class="edge-btn" type="button" data-dir="-1" aria-label="Previous video">{prev}</button>'
@@ -845,7 +845,7 @@ def video_nodes(page: dict) -> list[dict]:
         "transcript": v["transcript"],
         "creator": person_ref(),
         "citation": v["source"][1],
-        "isPartOf": {"@type": "CreativeWorkSeries", "name": "Missed in SEO"},
+        "isPartOf": {"@type": "CreativeWorkSeries", "name": "One-Minute SEO Fixes"},
     } for v in VIDEOS]
 
 
