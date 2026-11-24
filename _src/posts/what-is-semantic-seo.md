@@ -48,9 +48,11 @@
 -->
 # What Is Semantic SEO? Meaning, Examples and How to Do It
 
+Meta Title: What Is Semantic SEO?
+Meta Description: Semantic SEO optimizes a website for meaning: the entities it covers, the facts it states and the questions it answers. See the 7 steps and an example.
+
 [[answer]]
 Semantic SEO is the practice of optimizing a website for meaning, so search engines understand the entities a page covers, the facts it states about them and the questions it answers. It replaces one keyword per page with a connected network of pages, each answering one intent in clear, fact-based sentences.
-[[/answer]]
 
 Semantic SEO matters because Google's ranking systems read meaning, not only matching words. Google's guide to its ranking systems describes current AI systems that interpret language and page sections, such as RankBrain, neural matching, BERT and passage ranking.
 
