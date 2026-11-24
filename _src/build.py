@@ -79,9 +79,9 @@ PAGES = [
     dict(path="/", body="home.html", crumb="Home", updated="2026-11-22", kind="home",
          title="Semantic SEO Specialist in Nepal | Dil Bahadur B.K.",
          description="Dil Bahadur B.K., a semantic SEO specialist in Nepal, drives organic traffic and leads with topical authority and entity-based, technical and local SEO."),
-    dict(path="/about/", body="about.html", crumb="About", updated="2026-10-25", kind="profile",
-         title="About Dil Bahadur B.K. | Semantic SEO Specialist From Nepal",
-         description="Who Dil Bahadur B.K. is: a semantic SEO specialist from Kathmandu who grew from link building into entity-based SEO, topical authority and AI search."),
+    dict(path="/about/", body="about.html", crumb="About", updated="2026-11-25", kind="profile",
+         title="About Dil Bahadur B.K. | From Link Building to Semantic SEO",
+         description="Dil Bahadur B.K. started in link building in December 2023 and moved into entity-based SEO, topical authority and AI search. Read the full story."),
     dict(path="/expertise/", body="expertise.html", crumb="Expertise", updated="2026-10-25", kind="page",
          title="SEO Expertise: Semantic, Local & AI Search | Dil Bahadur B.K.",
          description="Twelve areas of SEO expertise: semantic and entity SEO, topical maps, technical, on-page, local and off-page SEO, programmatic SEO, GEO, AEO and Reddit SEO."),
@@ -90,22 +90,22 @@ PAGES = [
          description="How a page is crawled, understood and ranked, how AI search composes an answer, how an entity becomes a topical map, and how I test SEO ideas."),
     # Employer names appear only in the body of the Resume page, never in its
     # title, description, schema or llms.txt summary.
-    dict(path="/resume/", body="resume.html", crumb="Resume", updated="2026-10-16", kind="page",
-         title="Resume: Dil Bahadur B.K., Semantic SEO Specialist in Nepal",
-         description="Resume of Dil Bahadur B.K., semantic SEO specialist in Nepal: six roles since 2023, skills, tools, 25+ industries and education. Download the PDF.",
+    dict(path="/resume/", body="resume.html", crumb="Resume", updated="2026-11-25", kind="page",
+         title="Dil Bahadur B.K. Resume: SEO Career, Skills & Tools",
+         description="The resume of Dil Bahadur B.K. lists six SEO roles since 2023, skills, tools, 25+ industries and education, with a PDF to download.",
          summary="Resume: SEO career since December 2023, from link building to semantic SEO specialist; skills, tools, industries and education, with a PDF to download."),
     dict(path="/industries/", body="industries.html", crumb="Industries", updated="2026-10-25", kind="page",
          title="Industries: Local, Nationwide & E-commerce SEO | Dil Bahadur B.K.",
          description="SEO across 25+ industries: current e-commerce and B2B projects, local services such as plumbing and HVAC, and nationwide niches such as SaaS and finance."),
-    dict(path="/blog/", body="blog.html", crumb="Blog", updated="2026-10-25", kind="blog",
+    dict(path="/blog/", body="blog.html", crumb="Blog", updated="2026-11-25", kind="blog",
          title="SEO Blog | Dil Bahadur B.K.",
-         description="Notes on semantic SEO, topical authority, local SEO and AI search by Dil Bahadur B.K., semantic SEO specialist from Kathmandu, Nepal."),
-    dict(path="/profiles/", body="profiles.html", crumb="Profiles", updated="2026-11-14", kind="page",
+         description="Dil Bahadur B.K. writes about semantic SEO, topical authority, entity SEO and AI search, with named sources and free tools in the guides."),
+    dict(path="/profiles/", body="profiles.html", crumb="Profiles", updated="2026-11-25", kind="page",
          title="Dil Bahadur B.K. Online: LinkedIn, GitHub & Other Profiles",
-         description="Every official profile of Dil Bahadur B.K., semantic SEO specialist from Kathmandu, Nepal, in one place: LinkedIn, GitHub and more."),
-    dict(path="/contact/", body="contact.html", crumb="Contact", updated="2026-10-25", kind="contact",
-         title="Contact Dil Bahadur B.K. | Semantic SEO Specialist, Kathmandu",
-         description="Reach Dil Bahadur B.K. by email, phone or LinkedIn. Based in Kathmandu, Nepal (NPT, UTC+5:45)."),
+         description="Every official profile of Dil Bahadur B.K. in one place, such as LinkedIn and GitHub, so you can confirm which accounts are real."),
+    dict(path="/contact/", body="contact.html", crumb="Contact", updated="2026-11-25", kind="contact",
+         title="Contact Dil Bahadur B.K. | Hire for SEO Projects",
+         description="Contact Dil Bahadur B.K. by email, phone or LinkedIn to discuss an SEO project. Based in Nepal (NPT, UTC+5:45)."),
     dict(path="/tools/", body="tools.html", crumb="Tools", updated="2026-11-03", kind="page",
          title="Free SEO Tools | Dil Bahadur B.K.",
          description="Free SEO tools run in your browser with no sign-up and no data sent, starting with a SERP snippet preview that checks titles and meta descriptions."),
@@ -985,7 +985,7 @@ def author_box() -> str:
         <p class="author-kicker">Written by</p>
         <p class="author-name" id="author-name"><a href="/about/" rel="author">{esc(SITE["name"])}</a></p>
         <p class="author-role">{esc(SITE["jobTitle"])}, {SITE["countryName"]}</p>
-        <p class="author-bio">I'm {esc(SITE["name"])}, a semantic SEO specialist from Nepal. I plan websites around entities and topical maps, then strengthen them with technical, local, on-page and off-page SEO. My SEO career started in December 2023, and my method follows the {esc(method["name"])} methodology I learned from {esc(method["by"])}.</p>
+        <p class="author-bio">I'm {esc(SITE["name"])}, a semantic SEO consultant from Nepal. I plan websites around entities and topical maps, then strengthen them with technical, local, on-page and off-page SEO. My SEO career started in December 2023, and my method follows the {esc(method["name"])} methodology I learned from {esc(method["by"])}.</p>
         <p class="author-links"><a href="/about/">About me</a><a href="{esc(SITE["linkedin"])}" rel="me noopener" target="_blank">LinkedIn</a><a href="/profiles/">All profiles</a><a href="/editorial-policy/">How I research</a><a href="/contact/" data-open-form>Hire Me</a></p>
       </div>
     </aside>"""
