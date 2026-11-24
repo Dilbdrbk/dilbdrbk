@@ -190,6 +190,12 @@
       "sameAs": false
     },
     {
+      "platform": "Sortlist",
+      "handle": "Agency listing",
+      "url": "https://www.sortlist.com/agency/dil-bahadur-bk",
+      "listing": true
+    },
+    {
       "platform": "BizDire Nepal",
       "handle": "Business listing",
       "url": "https://bizdirenepal.com/semantic-seo-topical-authority-ai-search-optimization",
