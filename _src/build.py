@@ -76,13 +76,13 @@ CHAT_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><pat
 LAYOUT_UPDATED = "2026-11-23"
 
 PAGES = [
-    dict(path="/", body="home.html", crumb="Home", updated="2026-11-22", kind="home",
+    dict(path="/", body="home.html", crumb="Home", updated="2026-11-26", kind="home",
          title="Semantic SEO Specialist in Nepal | Dil Bahadur B.K.",
          description="Dil Bahadur B.K., a semantic SEO specialist in Nepal, drives organic traffic and leads with topical authority and entity-based, technical and local SEO."),
-    dict(path="/about/", body="about.html", crumb="About", updated="2026-11-25", kind="profile",
+    dict(path="/about/", body="about.html", crumb="About", updated="2026-11-26", kind="profile",
          title="About Dil Bahadur B.K. | From Link Building to Semantic SEO",
          description="Dil Bahadur B.K. started in link building in December 2023 and moved into entity-based SEO, topical authority and AI search. Read the full story."),
-    dict(path="/expertise/", body="expertise.html", crumb="Expertise", updated="2026-10-25", kind="page",
+    dict(path="/expertise/", body="expertise.html", crumb="Expertise", updated="2026-11-26", kind="page",
          title="SEO Expertise: Semantic, Local & AI Search | Dil Bahadur B.K.",
          description="Twelve areas of SEO expertise: semantic and entity SEO, topical maps, technical, on-page, local and off-page SEO, programmatic SEO, GEO, AEO and Reddit SEO."),
     dict(path="/how-search-works/", body="how-search-works.html", crumb="How Search Works", updated="2026-10-25", kind="guide",
@@ -90,7 +90,7 @@ PAGES = [
          description="How a page is crawled, understood and ranked, how AI search composes an answer, how an entity becomes a topical map, and how I test SEO ideas."),
     # Employer names appear only in the body of the Resume page, never in its
     # title, description, schema or llms.txt summary.
-    dict(path="/resume/", body="resume.html", crumb="Resume", updated="2026-11-25", kind="page",
+    dict(path="/resume/", body="resume.html", crumb="Resume", updated="2026-11-26", kind="page",
          title="Dil Bahadur B.K. Resume: SEO Career, Skills & Tools",
          description="The resume of Dil Bahadur B.K. lists six SEO roles since 2023, skills, tools, 25+ industries and education, with a PDF to download.",
          summary="Resume: SEO career since December 2023, from link building to semantic SEO specialist; skills, tools, industries and education, with a PDF to download."),

@@ -23,6 +23,7 @@
       "bullets": [
         "Led the SEO team and set data-driven strategy for local service and e-commerce projects.",
         "Planned project workflows and delivered SEO initiatives on schedule.",
+        "Managed dozens of concurrent SEO projects, with set workflows for writers, developers and content teams.",
         "Mentored team members and partnered with developers and content teams on implementation.",
         "Owned SEO projects end to end, from strategy and execution to performance analysis."
       ]
@@ -91,6 +92,7 @@
     "Link building",
     "Keyword research",
     "Programmatic SEO",
+    "SEO automation",
     "GEO & AEO",
     "Reddit SEO"
   ],
@@ -110,6 +112,10 @@
     {
       "title": "Programmatic SEO, GEO and AI search",
       "text": "I launch programmatic SEO systems for large keyword sets. I structure content and entities so brands appear in AI answers on ChatGPT, Gemini, Perplexity and Google's AI Overviews."
+    },
+    {
+      "title": "SEO tools and automation",
+      "text": "I create custom NLP and automation tools and WordPress plugins for SEO work. They suit large content sites that deal with crawl logs, programmatic pages and complex schema graphs."
     },
     {
       "title": "SEO hypothesis testing",
