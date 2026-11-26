@@ -334,7 +334,7 @@ def head(page: dict, schema: list[dict], noindex: bool = False) -> str:
 <meta name="theme-color" content="#262626">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap">
 <link rel="stylesheet" href="{asset("/assets/css/site.css")}">
 <script>document.documentElement.classList.add('js')</script>
 {ld_scripts(schema)}
